@@ -1,0 +1,137 @@
+{
+  "active": true,
+  "connections": {
+    "Groq Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AI Agent": {
+      "main": [
+        [
+          {
+            "node": "Respond to Webhook",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-09-26T09:15:02.291Z",
+  "id": "gUqvJVx8YewqPGDm",
+  "isArchived": false,
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "Fun AI Chat",
+  "nodes": [
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "={{ $json.body }}",
+        "options": {
+          "systemMessage": "You are a funny helpful assistant and chat agent from  India. Given input has \"history\" of the conversation and \"message\". You have to reply to the \"message\" ignore the history so that every message reply is unique and funny. Your replies are hilarious and funny. You can choose mix any language between gujarati, english or hindi. It upto you to chose that. Make user laugh without hurting their sentiments"
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 2.2,
+      "position": [
+        288,
+        0
+      ],
+      "id": "5bb13bb0-7c2c-4a9b-a45c-f4daaac44135",
+      "name": "AI Agent"
+    },
+    {
+      "parameters": {
+        "model": "openai/gpt-oss-120b",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatGroq",
+      "typeVersion": 1,
+      "position": [
+        288,
+        208
+      ],
+      "id": "3018b7f4-ea09-46f0-9d74-1479a5957fcb",
+      "name": "Groq Chat Model",
+      "credentials": {
+        "groqApi": {
+          "id": "r0NeqMETZY1fBvSF",
+          "name": "Groq account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "450c3b10-8900-41b7-b1b5-a029623fcbf4",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2.1,
+      "position": [
+        0,
+        0
+      ],
+      "id": "4e6c3f30-6271-4af5-8ac9-61ab72f6a239",
+      "name": "Webhook",
+      "webhookId": "450c3b10-8900-41b7-b1b5-a029623fcbf4"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.4,
+      "position": [
+        624,
+        0
+      ],
+      "id": "77169bfb-e8d5-4683-97be-5c9feedb48b9",
+      "name": "Respond to Webhook"
+    }
+  ],
+  "pinData": {},
+  "repo_name": "dt-n8n-workflow-backups",
+  "repo_owner": "devenkhatri",
+  "repo_path": "main-vps-n8n-backups/",
+  "settings": {
+    "executionOrder": "v1",
+    "callerPolicy": "workflowsFromSameOwner",
+    "errorWorkflow": "WftHi0Te0JlKqc6n"
+  },
+  "shared": [
+    {
+      "createdAt": "2025-09-26T09:15:02.314Z",
+      "updatedAt": "2025-09-26T09:15:02.314Z",
+      "role": "workflow:owner",
+      "workflowId": "gUqvJVx8YewqPGDm",
+      "projectId": "aWyvbmsnIGDehq9r"
+    }
+  ],
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 1,
+  "updatedAt": "2025-09-29T05:10:57.000Z",
+  "versionId": "515d6ebe-c347-4a81-b392-aa1880e1352a"
+}
