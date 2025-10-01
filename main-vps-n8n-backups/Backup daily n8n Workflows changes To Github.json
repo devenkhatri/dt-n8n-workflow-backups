@@ -1,5 +1,5 @@
 {
-  "active": false,
+  "active": true,
   "connections": {
     "Config": {
       "main": [
@@ -379,8 +379,8 @@
       "name": "Sticky Note4",
       "type": "n8n-nodes-base.stickyNote",
       "position": [
-        -1472,
-        -48
+        -1648,
+        -64
       ],
       "typeVersion": 1
     },
@@ -541,7 +541,9 @@
       "parameters": {
         "rule": {
           "interval": [
-            {}
+            {
+              "triggerAtHour": 2
+            }
           ]
         }
       },
@@ -659,7 +661,7 @@
           "mode": "list",
           "cachedResultName": "n8n-notifications"
         },
-        "text": "=:information_source:  Starting n8n Workflows Backup to Github [{{ $execution.id }}]",
+        "text": "=:information_source:  Starting 'Backup daily n8n Workflows changes To Github' Workflow at {{ $now }} [{{ $execution.id }}]",
         "otherOptions": {
           "includeLinkToWorkflow": true
         }
@@ -690,7 +692,7 @@
           "mode": "list",
           "cachedResultName": "n8n-notifications"
         },
-        "text": "=✅ n8n Workflow Backup has completed - {{ $('Get Workflows').all().length }} workflows have been processed.",
+        "text": "=✅ 'Backup daily n8n Workflows changes To Github' workflow has completed at {{ $now }}  - {{ $('Get Workflows').all().length }} workflows have been processed.",
         "otherOptions": {}
       },
       "id": "5224214f-7d8d-440d-8942-9f6642139ecd",
@@ -729,7 +731,7 @@
       "typeVersion": 1,
       "position": [
         -1024,
-        256
+        -208
       ],
       "id": "6bfbf9fb-c3a5-43c0-a82c-2f067bd3c9dc",
       "name": "When clicking ‘Execute workflow’"
@@ -739,7 +741,8 @@
   "settings": {
     "executionOrder": "v1",
     "timezone": "Asia/Kolkata",
-    "callerPolicy": "workflowsFromSameOwner"
+    "callerPolicy": "workflowsFromSameOwner",
+    "errorWorkflow": "WftHi0Te0JlKqc6n"
   },
   "shared": [
     {
@@ -750,7 +753,11 @@
       "projectId": "aWyvbmsnIGDehq9r"
     }
   ],
-  "staticData": null,
+  "staticData": {
+    "node:Schedule Trigger": {
+      "recurrenceRules": []
+    }
+  },
   "tags": [
     {
       "createdAt": "2025-10-01T05:17:03.484Z",
@@ -771,7 +778,7 @@
       "name": "Slack"
     }
   ],
-  "triggerCount": 0,
-  "updatedAt": "2025-10-01T08:17:47.000Z",
-  "versionId": "82107d70-50d2-4993-9560-1df1a5334ee0"
+  "triggerCount": 1,
+  "updatedAt": "2025-10-01T08:25:57.000Z",
+  "versionId": "cc68c1ec-864f-4b01-b90a-f6fb08bae882"
 }
