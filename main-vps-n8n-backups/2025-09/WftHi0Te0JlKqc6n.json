@@ -1,0 +1,314 @@
+{
+  "active": false,
+  "connections": {
+    "Error Trigger": {
+      "main": [
+        [
+          {
+            "node": "Append row in sheet",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Send a message",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Send a text message",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Send a message1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-09-29T03:21:14.729Z",
+  "id": "WftHi0Te0JlKqc6n",
+  "isArchived": false,
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "9999 - DT - Default Error Logger",
+  "nodes": [
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.errorTrigger",
+      "typeVersion": 1,
+      "position": [
+        -256,
+        -32
+      ],
+      "id": "57dbf7da-81ee-40ec-a017-a4e177c9ecd8",
+      "name": "Error Trigger"
+    },
+    {
+      "parameters": {
+        "operation": "append",
+        "documentId": {
+          "__rl": true,
+          "value": "1iKP281JRul16R-3RjNqH-IR8hKfx2ExEP8CJcWvIrCg",
+          "mode": "list",
+          "cachedResultName": "00 - Dhimahi - Tools Used - Master List",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1iKP281JRul16R-3RjNqH-IR8hKfx2ExEP8CJcWvIrCg/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 220144427,
+          "mode": "list",
+          "cachedResultName": "Automation-Errors",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1iKP281JRul16R-3RjNqH-IR8hKfx2ExEP8CJcWvIrCg/edit#gid=220144427"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Workflow ID": "={{ $json.workflow.id }}",
+            "Workflow Name": "={{ $json.workflow.name }}",
+            "Execution ID": "={{ $json.execution.id }}",
+            "Error Message": "=Message: {{ $json.execution.error.message }}\nStack: {{ $json.execution.error.stack }}",
+            "Mode": "={{ $json.execution.mode }}",
+            "Execution URL": "={{ $json.execution.url }}",
+            "Execution RetryOf": "={{ $json.execution.retryOf }}",
+            "Last Node Executed": "={{ $json.execution.lastNodeExecuted }}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "Workflow ID",
+              "displayName": "Workflow ID",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Workflow Name",
+              "displayName": "Workflow Name",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Execution ID",
+              "displayName": "Execution ID",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Error Message",
+              "displayName": "Error Message",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Mode",
+              "displayName": "Mode",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Execution URL",
+              "displayName": "Execution URL",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Execution RetryOf",
+              "displayName": "Execution RetryOf",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Last Node Executed",
+              "displayName": "Last Node Executed",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        -32,
+        -144
+      ],
+      "id": "5bbe5aa9-9206-4d7e-8f7c-613d4683ba6c",
+      "name": "Append row in sheet",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "ujTRaPhtGjVV4RCC",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "authentication": "oAuth2",
+        "select": "channel",
+        "channelId": {
+          "__rl": true,
+          "value": "C09FJ8X3L2Y",
+          "mode": "list",
+          "cachedResultName": "n8n-error-notifications"
+        },
+        "text": "=**ERROR in N8N WORKFLOW**\nERROR: {{ $json.execution.error.message }}\nWORKFLOW: {{ $json.workflow.name }}\n\nLINK:{{ $json.execution.url }}",
+        "otherOptions": {
+          "includeLinkToWorkflow": true,
+          "mrkdwn": true
+        }
+      },
+      "type": "n8n-nodes-base.slack",
+      "typeVersion": 2.3,
+      "position": [
+        -32,
+        16
+      ],
+      "id": "e84f6485-ebb8-4d5c-a1aa-ff7e4aceab51",
+      "name": "Send a message",
+      "webhookId": "4ff95448-bb2e-4fa1-8059-407bfd0d4fca",
+      "credentials": {
+        "slackOAuth2Api": {
+          "id": "SConh1gN2bh0Ijo9",
+          "name": "Slack account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "chatId": "8344013169",
+        "text": "=**ERROR in N8N WORKFLOW** \n\nERROR: {{ $json.execution.error.message }} WORKFLOW: {{ $json.workflow.name }}  \n\nLINK:{{ $json.execution.url }}",
+        "additionalFields": {
+          "appendAttribution": true
+        }
+      },
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [
+        -16,
+        160
+      ],
+      "id": "b22abcb7-9399-435a-92f6-1e9402700f8c",
+      "name": "Send a text message",
+      "webhookId": "02ec6de3-7dbe-42da-a3a7-65c1df8fc224",
+      "credentials": {
+        "telegramApi": {
+          "id": "jkdBofadPuye3ZBm",
+          "name": "Telegram account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "authentication": "oAuth2",
+        "resource": "message",
+        "guildId": {
+          "__rl": true,
+          "value": "1422160098381398100",
+          "mode": "list",
+          "cachedResultName": "Dhimahi Technolabs",
+          "cachedResultUrl": "https://discord.com/channels/1422160098381398100"
+        },
+        "channelId": {
+          "__rl": true,
+          "value": "1422188187639611434",
+          "mode": "list",
+          "cachedResultName": "n8n-workflow-errors",
+          "cachedResultUrl": "https://discord.com/channels/1422160098381398100/1422188187639611434"
+        },
+        "content": "=**ERROR in N8N WORKFLOW**\nERROR: {{ $json.execution.error.message }}\nWORKFLOW: {{ $json.workflow.name }}\n\nLINK:{{ $json.execution.url }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.discord",
+      "typeVersion": 2,
+      "position": [
+        -64,
+        320
+      ],
+      "id": "15c06ce2-7403-4b8f-827f-f15aaac81d03",
+      "name": "Send a message1",
+      "webhookId": "a9b8de4d-80dd-4bd0-b3d8-1b9a53fc2a7d",
+      "credentials": {
+        "discordOAuth2Api": {
+          "id": "smxLirsq63dOsITt",
+          "name": "Discord account"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "repo_name": "dt-n8n-workflow-backups",
+  "repo_owner": "devenkhatri",
+  "repo_path": "main-vps-n8n-backups/",
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "shared": [
+    {
+      "createdAt": "2025-09-29T03:21:14.791Z",
+      "updatedAt": "2025-09-29T03:21:14.791Z",
+      "role": "workflow:owner",
+      "workflowId": "WftHi0Te0JlKqc6n",
+      "projectId": "aWyvbmsnIGDehq9r"
+    }
+  ],
+  "staticData": null,
+  "tags": [
+    {
+      "createdAt": "2025-09-29T05:19:45.388Z",
+      "updatedAt": "2025-09-29T05:19:45.388Z",
+      "id": "2TVQambhWdBxx6Oa",
+      "name": "Telegram"
+    },
+    {
+      "createdAt": "2025-09-29T05:19:22.714Z",
+      "updatedAt": "2025-09-29T05:19:22.714Z",
+      "id": "CtJhwl7VjSRt4q5D",
+      "name": "Google Sheets"
+    },
+    {
+      "createdAt": "2025-09-29T12:22:54.760Z",
+      "updatedAt": "2025-09-29T12:22:54.760Z",
+      "id": "THGphY3VqF96EmdK",
+      "name": "Discord"
+    },
+    {
+      "createdAt": "2025-09-29T05:19:40.477Z",
+      "updatedAt": "2025-09-29T05:19:40.477Z",
+      "id": "rvS6YFEv4tnJccXU",
+      "name": "Slack"
+    }
+  ],
+  "triggerCount": 0,
+  "updatedAt": "2025-09-29T12:22:58.000Z",
+  "versionId": "bd836b34-378e-4238-b447-d93febcec7a5"
+}
