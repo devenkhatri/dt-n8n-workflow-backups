@@ -784,7 +784,8 @@
             "Completion Message": "=✅ 'Backup daily n8n Workflows changes To Github' workflow has completed at {{ $now }}  - {{ $('Get Workflows').all().length }} workflows have been processed.",
             "Workflow Name": "={{ $workflow.name }}",
             "Workflow ID": "={{ $workflow.id }}",
-            "Execution ID": "={{ $execution.id }}"
+            "Execution ID": "={{ $execution.id }}",
+            "Execution Resume URL": "={{ $execution.resumeUrl }}"
           },
           "matchingColumns": [],
           "schema": [
@@ -821,6 +822,16 @@
             {
               "id": "Execution ID",
               "displayName": "Execution ID",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string",
+              "removed": false
+            },
+            {
+              "id": "Execution Resume URL",
+              "displayName": "Execution Resume URL",
               "required": false,
               "defaultMatch": false,
               "display": true,
@@ -892,6 +903,6 @@
     }
   ],
   "triggerCount": 1,
-  "updatedAt": "2025-10-03T05:32:23.000Z",
-  "versionId": "7ec27934-ec2d-4608-9e00-ae161819e574"
+  "updatedAt": "2025-10-03T05:33:49.000Z",
+  "versionId": "251740aa-41a5-4b12-8927-c5e1671e5f9d"
 }
