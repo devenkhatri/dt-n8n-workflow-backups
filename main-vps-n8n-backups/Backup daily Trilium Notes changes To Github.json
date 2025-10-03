@@ -781,7 +781,7 @@
         "workflowInputs": {
           "mappingMode": "defineBelow",
           "value": {
-            "Completion Message": "=✅ 'Backup daily n8n Workflows changes To Github' workflow has completed at {{ $now }}  - {{ $('Get Workflows').all().length }} workflows have been processed.",
+            "Completion Message": "=✅ 'Backup daily Trilium Notes changes To Github' workflow has completed at {{ $now }}  - {{ $('Get Workflows').all().length }} workflows have been processed.",
             "Workflow Name": "={{ $workflow.name }}",
             "Workflow ID": "={{ $workflow.id }}",
             "Execution ID": "={{ $execution.id }}",
@@ -903,6 +903,6 @@
     }
   ],
   "triggerCount": 1,
-  "updatedAt": "2025-10-03T05:33:49.000Z",
-  "versionId": "251740aa-41a5-4b12-8927-c5e1671e5f9d"
+  "updatedAt": "2025-10-03T05:39:24.000Z",
+  "versionId": "8849d0e9-cfc3-456e-a802-e1be79fba9e3"
 }
