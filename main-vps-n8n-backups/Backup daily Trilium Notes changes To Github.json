@@ -132,6 +132,11 @@
             "node": "Completed Notification",
             "type": "main",
             "index": 0
+          },
+          {
+            "node": "Append row in sheet",
+            "type": "main",
+            "index": 0
           }
         ],
         [
@@ -208,6 +213,11 @@
             "index": 0
           }
         ]
+      ]
+    },
+    "Completed Notification": {
+      "main": [
+        []
       ]
     }
   },
@@ -579,8 +589,8 @@
       "name": "Get a file",
       "type": "n8n-nodes-base.github",
       "position": [
-        320,
-        -176
+        432,
+        -32
       ],
       "webhookId": "f4d30d2c-4e6d-4abb-9d73-e03097a315f1",
       "typeVersion": 1.1,
@@ -632,8 +642,8 @@
       "name": "Is File too large?",
       "type": "n8n-nodes-base.if",
       "position": [
-        544,
-        -176
+        576,
+        -48
       ],
       "typeVersion": 2.2
     },
@@ -647,7 +657,7 @@
       "type": "n8n-nodes-base.httpRequest",
       "position": [
         768,
-        -176
+        -112
       ],
       "typeVersion": 4.2
     },
@@ -699,8 +709,8 @@
       "name": "Completed Notification",
       "type": "n8n-nodes-base.slack",
       "position": [
-        368,
-        -432
+        320,
+        -496
       ],
       "webhookId": "e7b949f3-d644-44ae-89d9-7087eb2eae45",
       "executeOnce": true,
@@ -735,6 +745,123 @@
       ],
       "id": "0bdbb878-908d-4fb0-b12d-65c1e718df0c",
       "name": "When clicking ‘Execute workflow’"
+    },
+    {
+      "parameters": {
+        "url": "https://notes.devengoratela.in/etapi/app-info",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpBearerAuth",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        -736,
+        -160
+      ],
+      "id": "22bfb04d-6d4d-47c5-84ea-e85081ce086a",
+      "name": "HTTP Request",
+      "credentials": {
+        "httpBearerAuth": {
+          "id": "7ivBUm4WkdPCWKRh",
+          "name": "Trilium Notes Bearer Auth account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "append",
+        "documentId": {
+          "__rl": true,
+          "value": "1iKP281JRul16R-3RjNqH-IR8hKfx2ExEP8CJcWvIrCg",
+          "mode": "list",
+          "cachedResultName": "00 - Dhimahi - Tools Used - Master List",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1iKP281JRul16R-3RjNqH-IR8hKfx2ExEP8CJcWvIrCg/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 1377354737,
+          "mode": "list",
+          "cachedResultName": "Automation-Execution-Logs",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1iKP281JRul16R-3RjNqH-IR8hKfx2ExEP8CJcWvIrCg/edit#gid=1377354737"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Workflow Name": "={{ $workflow.name }}",
+            "Date Time": "={{ $('Schedule Trigger').item.json['Readable date'] }}",
+            "Completion Message": "=✅ 'Backup daily n8n Workflows changes To Github' workflow has completed at {{ $('Schedule Trigger').item.json['Readable date'] }}  - {{ $('Get Workflows').all().length }} workflows have been processed.",
+            "Workflow Execution URL": "={{ $execution.resumeUrl }}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "Workflow Name",
+              "displayName": "Workflow Name",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Date Time",
+              "displayName": "Date Time",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Completion Message",
+              "displayName": "Completion Message",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Workflow Execution URL",
+              "displayName": "Workflow Execution URL",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Last Node Executed",
+              "displayName": "Last Node Executed",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        576,
+        -431.3541384269574
+      ],
+      "id": "72ff7ed4-5b0e-4a43-a484-a4764eded216",
+      "name": "Append row in sheet",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "ujTRaPhtGjVV4RCC",
+          "name": "Google Sheets account"
+        }
+      }
     }
   ],
   "pinData": {},
@@ -785,6 +912,6 @@
     }
   ],
   "triggerCount": 1,
-  "updatedAt": "2025-10-03T04:34:53.000Z",
-  "versionId": "313725a8-1a25-4500-9096-149f2e96eb7c"
+  "updatedAt": "2025-10-03T04:51:32.000Z",
+  "versionId": "c6befe36-2ce2-4574-a6ca-61827e3fe019"
 }
