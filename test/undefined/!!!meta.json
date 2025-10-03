@@ -1,0 +1,6380 @@
+{
+	"formatVersion": 2,
+	"appVersion": "0.99.0",
+	"files": [
+		{
+			"isClone": false,
+			"noteId": "root",
+			"notePath": [
+				"root"
+			],
+			"title": "root",
+			"notePosition": 10,
+			"prefix": null,
+			"isExpanded": true,
+			"type": "text",
+			"mime": "text/html",
+			"attributes": [],
+			"format": "html",
+			"attachments": [
+				{
+					"attachmentId": "7IENm4B3xkYL",
+					"title": "grid.json",
+					"role": "viewConfig",
+					"mime": "application/json",
+					"position": 10,
+					"dataFileName": "root_grid.json"
+				}
+			],
+			"dirFileName": "root",
+			"children": [
+				{
+					"isClone": false,
+					"noteId": "CibMoeElTucI",
+					"notePath": [
+						"root",
+						"CibMoeElTucI"
+					],
+					"title": "Kanban Boards",
+					"notePosition": 20,
+					"prefix": null,
+					"isExpanded": false,
+					"type": "text",
+					"mime": "text/html",
+					"attributes": [],
+					"format": "html",
+					"attachments": [
+						{
+							"attachmentId": "F4EhVflLej0j",
+							"title": "grid.json",
+							"role": "viewConfig",
+							"mime": "application/json",
+							"position": 10,
+							"dataFileName": "Kanban Boards_grid.json"
+						}
+					],
+					"dirFileName": "Kanban Boards",
+					"children": [
+						{
+							"isClone": false,
+							"noteId": "gs8GdzYNJgJW",
+							"notePath": [
+								"root",
+								"CibMoeElTucI",
+								"gs8GdzYNJgJW"
+							],
+							"title": "n8n Workflows",
+							"notePosition": 10,
+							"prefix": null,
+							"isExpanded": false,
+							"type": "book",
+							"mime": "",
+							"attributes": [
+								{
+									"type": "relation",
+									"name": "template",
+									"value": "_template_board",
+									"isInheritable": false,
+									"position": 10
+								}
+							],
+							"dataFileName": "n8n Workflows.dat",
+							"attachments": [
+								{
+									"attachmentId": "V46ih6UwK5lS",
+									"title": "board.json",
+									"role": "viewConfig",
+									"mime": "application/json",
+									"position": 10,
+									"dataFileName": "n8n Workflows_board.json"
+								}
+							]
+						}
+					]
+				},
+				{
+					"isClone": false,
+					"noteId": "qslZjVa3CoJf",
+					"notePath": [
+						"root",
+						"qslZjVa3CoJf"
+					],
+					"title": "Journal",
+					"notePosition": 40,
+					"prefix": null,
+					"isExpanded": true,
+					"type": "book",
+					"mime": "",
+					"attributes": [
+						{
+							"type": "label",
+							"name": "calendarRoot",
+							"value": "",
+							"isInheritable": false,
+							"position": 10
+						},
+						{
+							"type": "label",
+							"name": "iconClass",
+							"value": "bx bx-calendar",
+							"isInheritable": false,
+							"position": 20
+						},
+						{
+							"type": "label",
+							"name": "viewType",
+							"value": "calendar",
+							"isInheritable": false,
+							"position": 30
+						},
+						{
+							"type": "label",
+							"name": "calendar:view",
+							"value": "dayGridMonth",
+							"isInheritable": false,
+							"position": 40
+						}
+					],
+					"attachments": [],
+					"dirFileName": "Journal",
+					"children": [
+						{
+							"isClone": false,
+							"noteId": "JemDDWCafa7s",
+							"notePath": [
+								"root",
+								"qslZjVa3CoJf",
+								"JemDDWCafa7s"
+							],
+							"title": "2025",
+							"notePosition": 20,
+							"prefix": null,
+							"isExpanded": true,
+							"type": "text",
+							"mime": "text/html",
+							"attributes": [
+								{
+									"type": "label",
+									"name": "yearNote",
+									"value": "2025",
+									"isInheritable": false,
+									"position": 10
+								},
+								{
+									"type": "label",
+									"name": "sorted",
+									"value": "",
+									"isInheritable": false,
+									"position": 20
+								}
+							],
+							"format": "html",
+							"attachments": [],
+							"dirFileName": "2025",
+							"children": [
+								{
+									"isClone": false,
+									"noteId": "uP3gAzGZKEep",
+									"notePath": [
+										"root",
+										"qslZjVa3CoJf",
+										"JemDDWCafa7s",
+										"uP3gAzGZKEep"
+									],
+									"title": "09 - September",
+									"notePosition": 10,
+									"prefix": null,
+									"isExpanded": false,
+									"type": "text",
+									"mime": "text/html",
+									"attributes": [
+										{
+											"type": "label",
+											"name": "monthNote",
+											"value": "2025-09",
+											"isInheritable": false,
+											"position": 10
+										},
+										{
+											"type": "label",
+											"name": "sorted",
+											"value": "",
+											"isInheritable": false,
+											"position": 20
+										}
+									],
+									"format": "html",
+									"attachments": [
+										{
+											"attachmentId": "Mu6EZzDoanVS",
+											"title": "grid.json",
+											"role": "viewConfig",
+											"mime": "application/json",
+											"position": 10,
+											"dataFileName": "09 - September_grid.json"
+										}
+									],
+									"dirFileName": "09 - September",
+									"children": [
+										{
+											"isClone": false,
+											"noteId": "4hxiy4dNHaIZ",
+											"notePath": [
+												"root",
+												"qslZjVa3CoJf",
+												"JemDDWCafa7s",
+												"uP3gAzGZKEep",
+												"4hxiy4dNHaIZ"
+											],
+											"title": "29 - Monday",
+											"notePosition": 10,
+											"prefix": null,
+											"isExpanded": false,
+											"type": "text",
+											"mime": "text/html",
+											"attributes": [
+												{
+													"type": "label",
+													"name": "dateNote",
+													"value": "2025-09-29",
+													"isInheritable": false,
+													"position": 10
+												}
+											],
+											"format": "html",
+											"dataFileName": "29 - Monday.html",
+											"attachments": []
+										},
+										{
+											"isClone": false,
+											"noteId": "z5MWa9nY1kmn",
+											"notePath": [
+												"root",
+												"qslZjVa3CoJf",
+												"JemDDWCafa7s",
+												"uP3gAzGZKEep",
+												"z5MWa9nY1kmn"
+											],
+											"title": "30 - Tuesday",
+											"notePosition": 20,
+											"prefix": null,
+											"isExpanded": false,
+											"type": "text",
+											"mime": "text/html",
+											"attributes": [
+												{
+													"type": "label",
+													"name": "dateNote",
+													"value": "2025-09-30",
+													"isInheritable": false,
+													"position": 10
+												}
+											],
+											"format": "html",
+											"dataFileName": "30 - Tuesday.html",
+											"attachments": []
+										}
+									]
+								},
+								{
+									"isClone": false,
+									"noteId": "jEGqL9VVUXDH",
+									"notePath": [
+										"root",
+										"qslZjVa3CoJf",
+										"JemDDWCafa7s",
+										"jEGqL9VVUXDH"
+									],
+									"title": "10 - October",
+									"notePosition": 20,
+									"prefix": null,
+									"isExpanded": false,
+									"type": "text",
+									"mime": "text/html",
+									"attributes": [
+										{
+											"type": "label",
+											"name": "monthNote",
+											"value": "2025-10",
+											"isInheritable": false,
+											"position": 10
+										},
+										{
+											"type": "label",
+											"name": "sorted",
+											"value": "",
+											"isInheritable": false,
+											"position": 20
+										}
+									],
+									"format": "html",
+									"attachments": [],
+									"dirFileName": "10 - October",
+									"children": [
+										{
+											"isClone": false,
+											"noteId": "0FILPXgm60fM",
+											"notePath": [
+												"root",
+												"qslZjVa3CoJf",
+												"JemDDWCafa7s",
+												"jEGqL9VVUXDH",
+												"0FILPXgm60fM"
+											],
+											"title": "01 - Wednesday",
+											"notePosition": 10,
+											"prefix": null,
+											"isExpanded": false,
+											"type": "text",
+											"mime": "text/html",
+											"attributes": [
+												{
+													"type": "label",
+													"name": "dateNote",
+													"value": "2025-10-01",
+													"isInheritable": false,
+													"position": 10
+												}
+											],
+											"format": "html",
+											"dataFileName": "01 - Wednesday.html",
+											"attachments": []
+										},
+										{
+											"isClone": false,
+											"noteId": "IFI4ffoBUo8y",
+											"notePath": [
+												"root",
+												"qslZjVa3CoJf",
+												"JemDDWCafa7s",
+												"jEGqL9VVUXDH",
+												"IFI4ffoBUo8y"
+											],
+											"title": "02 - Thursday",
+											"notePosition": 20,
+											"prefix": null,
+											"isExpanded": false,
+											"type": "text",
+											"mime": "text/html",
+											"attributes": [
+												{
+													"type": "label",
+													"name": "dateNote",
+													"value": "2025-10-02",
+													"isInheritable": false,
+													"position": 10
+												}
+											],
+											"format": "html",
+											"dataFileName": "02 - Thursday.html",
+											"attachments": [
+												{
+													"attachmentId": "mNygBu88eIBT",
+													"title": "grid.json",
+													"role": "viewConfig",
+													"mime": "application/json",
+													"position": 10,
+													"dataFileName": "02 - Thursday_grid.json"
+												}
+											]
+										}
+									]
+								}
+							]
+						}
+					]
+				},
+				{
+					"isClone": false,
+					"noteId": "aE2gYa2KHmtW",
+					"notePath": [
+						"root",
+						"aE2gYa2KHmtW"
+					],
+					"title": "Trilium Demo",
+					"notePosition": 60,
+					"prefix": null,
+					"isExpanded": false,
+					"type": "text",
+					"mime": "text/html",
+					"attributes": [
+						{
+							"type": "relation",
+							"name": "internalLink",
+							"value": "0reDnATUDx1E",
+							"isInheritable": false,
+							"position": 10
+						},
+						{
+							"type": "relation",
+							"name": "internalLink",
+							"value": "SxRoSn7uu1Vp",
+							"isInheritable": false,
+							"position": 20
+						},
+						{
+							"type": "relation",
+							"name": "internalLink",
+							"value": "aNy2kE97rfjU",
+							"isInheritable": false,
+							"position": 30
+						},
+						{
+							"type": "relation",
+							"name": "internalLink",
+							"value": "dgjahEyzHdqD",
+							"isInheritable": false,
+							"position": 40
+						},
+						{
+							"type": "relation",
+							"name": "internalLink",
+							"value": "yIBf51sGQyTS",
+							"isInheritable": false,
+							"position": 50
+						},
+						{
+							"type": "label",
+							"name": "iconClass",
+							"value": "bx bx-book-reader",
+							"isInheritable": false,
+							"position": 70
+						}
+					],
+					"format": "html",
+					"dataFileName": "Trilium Demo.html",
+					"attachments": [
+						{
+							"attachmentId": "QhWRHCq6T6oW",
+							"title": "icon-color.svg",
+							"role": "image",
+							"mime": "image/svg+xml",
+							"position": 10,
+							"dataFileName": "Trilium Demo_icon-color.svg"
+						}
+					],
+					"dirFileName": "Trilium Demo",
+					"children": [
+						{
+							"isClone": false,
+							"noteId": "eF5gU30Ddn4c",
+							"notePath": [
+								"root",
+								"aE2gYa2KHmtW",
+								"eF5gU30Ddn4c"
+							],
+							"title": "Inbox",
+							"notePosition": 10,
+							"prefix": null,
+							"isExpanded": false,
+							"type": "text",
+							"mime": "text/html",
+							"attributes": [
+								{
+									"type": "label",
+									"name": "iconClass",
+									"value": "bx bxs-inbox",
+									"isInheritable": false,
+									"position": 1
+								}
+							],
+							"format": "html",
+							"dataFileName": "Inbox.html",
+							"attachments": [],
+							"dirFileName": "Inbox",
+							"children": [
+								{
+									"isClone": false,
+									"noteId": "ApJWuowzGlWb",
+									"notePath": [
+										"root",
+										"aE2gYa2KHmtW",
+										"eF5gU30Ddn4c",
+										"ApJWuowzGlWb"
+									],
+									"title": "Grocery list for today",
+									"notePosition": 0,
+									"prefix": null,
+									"isExpanded": false,
+									"type": "text",
+									"mime": "text/html",
+									"attributes": [],
+									"format": "html",
+									"dataFileName": "Grocery list for today.html",
+									"attachments": []
+								},
+								{
+									"isClone": false,
+									"noteId": "cbJ5bF0MQyjv",
+									"notePath": [
+										"root",
+										"aE2gYa2KHmtW",
+										"eF5gU30Ddn4c",
+										"cbJ5bF0MQyjv"
+									],
+									"title": "Book to read",
+									"notePosition": 10,
+									"prefix": null,
+									"isExpanded": false,
+									"type": "text",
+									"mime": "text/html",
+									"attributes": [],
+									"format": "html",
+									"dataFileName": "Book to read.html",
+									"attachments": []
+								},
+								{
+									"isClone": false,
+									"noteId": "6twt5xGULnRD",
+									"notePath": [
+										"root",
+										"aE2gYa2KHmtW",
+										"eF5gU30Ddn4c",
+										"6twt5xGULnRD"
+									],
+									"title": "The Last Question",
+									"notePosition": 20,
+									"prefix": null,
+									"isExpanded": false,
+									"type": "text",
+									"mime": "text/html",
+									"attributes": [
+										{
+											"type": "relation",
+											"name": "internalLink",
+											"value": "_help_nBAXQFj20hS1",
+											"isInheritable": false,
+											"position": 10
+										}
+									],
+									"format": "html",
+									"dataFileName": "The Last Question.html",
+									"attachments": [],
+									"dirFileName": "The Last Question",
+									"children": [
+										{
+											"isClone": false,
+											"noteId": "1ioMFaVRuZiT",
+											"notePath": [
+												"root",
+												"aE2gYa2KHmtW",
+												"eF5gU30Ddn4c",
+												"6twt5xGULnRD",
+												"1ioMFaVRuZiT"
+											],
+											"title": "The Last Question by Issac Asimov.pdf",
+											"notePosition": 0,
+											"prefix": null,
+											"isExpanded": false,
+											"type": "file",
+											"mime": "application/pdf",
+											"attributes": [
+												{
+													"type": "label",
+													"name": "originalFileName",
+													"value": "the_last_question_-_issac_asimov.pdf",
+													"isInheritable": false,
+													"position": 1
+												}
+											],
+											"dataFileName": "The Last Question by Issac.pdf",
+											"attachments": []
+										}
+									]
+								}
+							]
+						},
+						{
+							"isClone": false,
+							"noteId": "1c1VwW22YH3i",
+							"notePath": [
+								"root",
+								"aE2gYa2KHmtW",
+								"1c1VwW22YH3i"
+							],
+							"title": "Formatting examples",
+							"notePosition": 20,
+							"prefix": null,
+							"isExpanded": false,
+							"type": "book",
+							"mime": "",
+							"attributes": [],
+							"attachments": [],
+							"dirFileName": "Formatting examples",
+							"children": [
+								{
+									"isClone": false,
+									"noteId": "0reDnATUDx1E",
+									"notePath": [
+										"root",
+										"aE2gYa2KHmtW",
+										"1c1VwW22YH3i",
+										"0reDnATUDx1E"
+									],
+									"title": "School schedule",
+									"notePosition": 0,
+									"prefix": null,
+									"isExpanded": false,
+									"type": "text",
+									"mime": "text/html",
+									"attributes": [
+										{
+											"type": "label",
+											"name": "iconClass",
+											"value": "bx bx-table",
+											"isInheritable": false,
+											"position": 10
+										}
+									],
+									"format": "html",
+									"dataFileName": "School schedule.html",
+									"attachments": []
+								},
+								{
+									"isClone": false,
+									"noteId": "SxRoSn7uu1Vp",
+									"notePath": [
+										"root",
+										"aE2gYa2KHmtW",
+										"1c1VwW22YH3i",
+										"SxRoSn7uu1Vp"
+									],
+									"title": "Checkbox lists",
+									"notePosition": 10,
+									"prefix": null,
+									"isExpanded": false,
+									"type": "text",
+									"mime": "text/html",
+									"attributes": [
+										{
+											"type": "label",
+											"name": "iconClass",
+											"value": "bx bx-check",
+											"isInheritable": false,
+											"position": 1
+										}
+									],
+									"format": "html",
+									"dataFileName": "Checkbox lists.html",
+									"attachments": []
+								},
+								{
+									"isClone": false,
+									"noteId": "aNy2kE97rfjU",
+									"notePath": [
+										"root",
+										"aE2gYa2KHmtW",
+										"1c1VwW22YH3i",
+										"aNy2kE97rfjU"
+									],
+									"title": "Highlighting",
+									"notePosition": 20,
+									"prefix": null,
+									"isExpanded": false,
+									"type": "text",
+									"mime": "text/html",
+									"attributes": [
+										{
+											"type": "label",
+											"name": "iconClass",
+											"value": "bx bxs-pencil",
+											"isInheritable": false,
+											"position": 1
+										}
+									],
+									"format": "html",
+									"dataFileName": "Highlighting.html",
+									"attachments": []
+								},
+								{
+									"isClone": false,
+									"noteId": "dgjahEyzHdqD",
+									"notePath": [
+										"root",
+										"aE2gYa2KHmtW",
+										"1c1VwW22YH3i",
+										"dgjahEyzHdqD"
+									],
+									"title": "Code blocks",
+									"notePosition": 30,
+									"prefix": null,
+									"isExpanded": false,
+									"type": "text",
+									"mime": "text/html",
+									"attributes": [
+										{
+											"type": "relation",
+											"name": "internalLink",
+											"value": "VVf3r54UDXV3",
+											"isInheritable": false,
+											"position": 10
+										},
+										{
+											"type": "label",
+											"name": "iconClass",
+											"value": "bx bx-code-alt",
+											"isInheritable": false,
+											"position": 2
+										}
+									],
+									"format": "html",
+									"dataFileName": "Code blocks.html",
+									"attachments": []
+								},
+								{
+									"isClone": false,
+									"noteId": "yIBf51sGQyTS",
+									"notePath": [
+										"root",
+										"aE2gYa2KHmtW",
+										"1c1VwW22YH3i",
+										"yIBf51sGQyTS"
+									],
+									"title": "Math",
+									"notePosition": 40,
+									"prefix": null,
+									"isExpanded": false,
+									"type": "text",
+									"mime": "text/html",
+									"attributes": [
+										{
+											"type": "label",
+											"name": "iconClass",
+											"value": "bx bx-calculator",
+											"isInheritable": false,
+											"position": 1
+										}
+									],
+									"format": "html",
+									"dataFileName": "Math.html",
+									"attachments": []
+								}
+							]
+						},
+						{
+							"isClone": false,
+							"noteId": "CLtEdna3pybw",
+							"notePath": [
+								"root",
+								"aE2gYa2KHmtW",
+								"CLtEdna3pybw"
+							],
+							"title": "Journal",
+							"notePosition": 30,
+							"prefix": null,
+							"isExpanded": true,
+							"type": "text",
+							"mime": "text/html",
+							"attributes": [
+								{
+									"type": "label",
+									"name": "sorted",
+									"value": "",
+									"isInheritable": false,
+									"position": 10
+								},
+								{
+									"type": "label",
+									"name": "iconClass",
+									"value": "bx bx-calendar",
+									"isInheritable": false,
+									"position": 30
+								},
+								{
+									"type": "relation",
+									"name": "dateTemplate",
+									"value": "13byVGqnkokC",
+									"isInheritable": false,
+									"position": 20
+								}
+							],
+							"format": "html",
+							"dataFileName": "Journal.html",
+							"attachments": [],
+							"dirFileName": "Journal",
+							"children": [
+								{
+									"isClone": false,
+									"noteId": "SDDXIOeijIJe",
+									"notePath": [
+										"root",
+										"aE2gYa2KHmtW",
+										"CLtEdna3pybw",
+										"SDDXIOeijIJe"
+									],
+									"title": "2021",
+									"notePosition": 10,
+									"prefix": null,
+									"isExpanded": true,
+									"type": "text",
+									"mime": "text/html",
+									"attributes": [
+										{
+											"type": "label",
+											"name": "sorted",
+											"value": "",
+											"isInheritable": false,
+											"position": 10
+										},
+										{
+											"type": "label",
+											"name": "yearNote",
+											"value": "2021",
+											"isInheritable": false,
+											"position": 20
+										},
+										{
+											"type": "relation",
+											"name": "child:child:template",
+											"value": "13byVGqnkokC",
+											"isInheritable": false,
+											"position": 30
+										}
+									],
+									"format": "html",
+									"attachments": [],
+									"dirFileName": "2021",
+									"children": [
+										{
+											"isClone": false,
+											"noteId": "EmdVI1PNLGRB",
+											"notePath": [
+												"root",
+												"aE2gYa2KHmtW",
+												"CLtEdna3pybw",
+												"SDDXIOeijIJe",
+												"EmdVI1PNLGRB"
+											],
+											"title": "11 - November",
+											"notePosition": 10,
+											"prefix": null,
+											"isExpanded": false,
+											"type": "text",
+											"mime": "text/html",
+											"attributes": [
+												{
+													"type": "label",
+													"name": "sorted",
+													"value": "",
+													"isInheritable": false,
+													"position": 10
+												},
+												{
+													"type": "label",
+													"name": "monthNote",
+													"value": "2021-11",
+													"isInheritable": false,
+													"position": 20
+												},
+												{
+													"type": "relation",
+													"name": "child:template",
+													"value": "13byVGqnkokC",
+													"isInheritable": false,
+													"position": 30
+												}
+											],
+											"format": "html",
+											"attachments": [],
+											"dirFileName": "11 - November",
+											"children": [
+												{
+													"isClone": false,
+													"noteId": "d7etu1xSui8t",
+													"notePath": [
+														"root",
+														"aE2gYa2KHmtW",
+														"CLtEdna3pybw",
+														"SDDXIOeijIJe",
+														"EmdVI1PNLGRB",
+														"d7etu1xSui8t"
+													],
+													"title": "28 - Tuesday",
+													"notePosition": 10,
+													"prefix": null,
+													"isExpanded": false,
+													"type": "text",
+													"mime": "text/html",
+													"attributes": [
+														{
+															"type": "label",
+															"name": "dateNote",
+															"value": "2021-11-28",
+															"isInheritable": false,
+															"position": 10
+														},
+														{
+															"type": "relation",
+															"name": "template",
+															"value": "13byVGqnkokC",
+															"isInheritable": false,
+															"position": 20
+														}
+													],
+													"format": "html",
+													"dataFileName": "28 - Tuesday.html",
+													"attachments": [],
+													"dirFileName": "28 - Tuesday",
+													"children": [
+														{
+															"isClone": false,
+															"noteId": "eYxaVsR6gOBZ",
+															"notePath": [
+																"root",
+																"aE2gYa2KHmtW",
+																"CLtEdna3pybw",
+																"SDDXIOeijIJe",
+																"EmdVI1PNLGRB",
+																"d7etu1xSui8t",
+																"eYxaVsR6gOBZ"
+															],
+															"title": "Phone call about work project",
+															"notePosition": 0,
+															"prefix": null,
+															"isExpanded": true,
+															"type": "text",
+															"mime": "text/html",
+															"attributes": [],
+															"format": "html",
+															"dataFileName": "Phone call about work project.html",
+															"attachments": []
+														},
+														{
+															"isClone": false,
+															"noteId": "ALSewyEBqnVP",
+															"notePath": [
+																"root",
+																"aE2gYa2KHmtW",
+																"CLtEdna3pybw",
+																"SDDXIOeijIJe",
+																"EmdVI1PNLGRB",
+																"d7etu1xSui8t",
+																"ALSewyEBqnVP"
+															],
+															"title": "Christmas gift ideas",
+															"notePosition": 10,
+															"prefix": null,
+															"isExpanded": false,
+															"type": "text",
+															"mime": "text/html",
+															"attributes": [],
+															"format": "html",
+															"dataFileName": "Christmas gift ideas.html",
+															"attachments": []
+														},
+														{
+															"isClone": false,
+															"noteId": "3HkqHaGZSaVT",
+															"notePath": [
+																"root",
+																"aE2gYa2KHmtW",
+																"CLtEdna3pybw",
+																"SDDXIOeijIJe",
+																"EmdVI1PNLGRB",
+																"d7etu1xSui8t",
+																"3HkqHaGZSaVT"
+															],
+															"title": "Trusted timestamping",
+															"notePosition": 20,
+															"prefix": null,
+															"isExpanded": false,
+															"type": "text",
+															"mime": "text/html",
+															"attributes": [],
+															"format": "html",
+															"dataFileName": "Trusted timestamping.html",
+															"attachments": []
+														}
+													]
+												}
+											]
+										},
+										{
+											"isClone": false,
+											"noteId": "N0X0ZjP1l3aF",
+											"notePath": [
+												"root",
+												"aE2gYa2KHmtW",
+												"CLtEdna3pybw",
+												"SDDXIOeijIJe",
+												"N0X0ZjP1l3aF"
+											],
+											"title": "12 - December",
+											"notePosition": 20,
+											"prefix": null,
+											"isExpanded": false,
+											"type": "text",
+											"mime": "text/html",
+											"attributes": [
+												{
+													"type": "label",
+													"name": "sorted",
+													"value": "",
+													"isInheritable": false,
+													"position": 10
+												},
+												{
+													"type": "label",
+													"name": "monthNote",
+													"value": "2021-12",
+													"isInheritable": false,
+													"position": 20
+												},
+												{
+													"type": "relation",
+													"name": "child:template",
+													"value": "13byVGqnkokC",
+													"isInheritable": false,
+													"position": 30
+												}
+											],
+											"format": "html",
+											"attachments": [],
+											"dirFileName": "12 - December",
+											"children": [
+												{
+													"isClone": false,
+													"noteId": "yY78jG5AAsUE",
+													"notePath": [
+														"root",
+														"aE2gYa2KHmtW",
+														"CLtEdna3pybw",
+														"SDDXIOeijIJe",
+														"N0X0ZjP1l3aF",
+														"yY78jG5AAsUE"
+													],
+													"title": "18 - Monday",
+													"notePosition": 10,
+													"prefix": null,
+													"isExpanded": false,
+													"type": "text",
+													"mime": "text/html",
+													"attributes": [
+														{
+															"type": "relation",
+															"name": "template",
+															"value": "13byVGqnkokC",
+															"isInheritable": false,
+															"position": 10
+														},
+														{
+															"type": "label",
+															"name": "dateNote",
+															"value": "2021-12-18",
+															"isInheritable": false,
+															"position": 20
+														},
+														{
+															"type": "label",
+															"name": "weight",
+															"value": "74.9",
+															"isInheritable": false,
+															"position": 30
+														}
+													],
+													"format": "html",
+													"dataFileName": "18 - Monday.html",
+													"attachments": [],
+													"dirFileName": "18 - Monday",
+													"children": [
+														{
+															"isClone": false,
+															"noteId": "eHBHK6le7J8j",
+															"notePath": [
+																"root",
+																"aE2gYa2KHmtW",
+																"CLtEdna3pybw",
+																"SDDXIOeijIJe",
+																"N0X0ZjP1l3aF",
+																"yY78jG5AAsUE",
+																"eHBHK6le7J8j"
+															],
+															"title": "Meeting minutes",
+															"notePosition": 0,
+															"prefix": null,
+															"isExpanded": false,
+															"type": "text",
+															"mime": "text/html",
+															"attributes": [],
+															"format": "html",
+															"dataFileName": "Meeting minutes.html",
+															"attachments": []
+														},
+														{
+															"isClone": false,
+															"noteId": "mV4Z7v9afJEB",
+															"notePath": [
+																"root",
+																"aE2gYa2KHmtW",
+																"CLtEdna3pybw",
+																"SDDXIOeijIJe",
+																"N0X0ZjP1l3aF",
+																"yY78jG5AAsUE",
+																"mV4Z7v9afJEB"
+															],
+															"title": "Photos from the trip",
+															"notePosition": 10,
+															"prefix": null,
+															"isExpanded": false,
+															"type": "book",
+															"mime": "text/html",
+															"attributes": [
+																{
+																	"type": "label",
+																	"name": "bookZoomLevel",
+																	"value": "2",
+																	"isInheritable": false,
+																	"position": 0
+																}
+															],
+															"attachments": [],
+															"dirFileName": "Photos from the trip",
+															"children": [
+																{
+																	"isClone": false,
+																	"noteId": "py4SKXHR5zD5",
+																	"notePath": [
+																		"root",
+																		"aE2gYa2KHmtW",
+																		"CLtEdna3pybw",
+																		"SDDXIOeijIJe",
+																		"N0X0ZjP1l3aF",
+																		"yY78jG5AAsUE",
+																		"mV4Z7v9afJEB",
+																		"py4SKXHR5zD5"
+																	],
+																	"title": "01.jpeg",
+																	"notePosition": 0,
+																	"prefix": null,
+																	"isExpanded": false,
+																	"type": "image",
+																	"mime": "image/jpg",
+																	"attributes": [
+																		{
+																			"type": "label",
+																			"name": "originalFileName",
+																			"value": "01.jpeg",
+																			"isInheritable": false,
+																			"position": 1
+																		},
+																		{
+																			"type": "label",
+																			"name": "fileSize",
+																			"value": "16881",
+																			"isInheritable": false,
+																			"position": 2
+																		}
+																	],
+																	"dataFileName": "01.jpeg",
+																	"attachments": []
+																},
+																{
+																	"isClone": false,
+																	"noteId": "M5GKUr5ReZn7",
+																	"notePath": [
+																		"root",
+																		"aE2gYa2KHmtW",
+																		"CLtEdna3pybw",
+																		"SDDXIOeijIJe",
+																		"N0X0ZjP1l3aF",
+																		"yY78jG5AAsUE",
+																		"mV4Z7v9afJEB",
+																		"M5GKUr5ReZn7"
+																	],
+																	"title": "02.jpeg",
+																	"notePosition": 10,
+																	"prefix": null,
+																	"isExpanded": false,
+																	"type": "image",
+																	"mime": "image/jpg",
+																	"attributes": [
+																		{
+																			"type": "label",
+																			"name": "originalFileName",
+																			"value": "02.jpeg",
+																			"isInheritable": false,
+																			"position": 1
+																		},
+																		{
+																			"type": "label",
+																			"name": "fileSize",
+																			"value": "31697",
+																			"isInheritable": false,
+																			"position": 2
+																		}
+																	],
+																	"dataFileName": "02.jpeg",
+																	"attachments": []
+																},
+																{
+																	"isClone": false,
+																	"noteId": "nP2Cr5zMGVyO",
+																	"notePath": [
+																		"root",
+																		"aE2gYa2KHmtW",
+																		"CLtEdna3pybw",
+																		"SDDXIOeijIJe",
+																		"N0X0ZjP1l3aF",
+																		"yY78jG5AAsUE",
+																		"mV4Z7v9afJEB",
+																		"nP2Cr5zMGVyO"
+																	],
+																	"title": "03.jpeg",
+																	"notePosition": 20,
+																	"prefix": null,
+																	"isExpanded": false,
+																	"type": "image",
+																	"mime": "image/jpg",
+																	"attributes": [
+																		{
+																			"type": "label",
+																			"name": "originalFileName",
+																			"value": "03.jpeg",
+																			"isInheritable": false,
+																			"position": 1
+																		},
+																		{
+																			"type": "label",
+																			"name": "fileSize",
+																			"value": "72522",
+																			"isInheritable": false,
+																			"position": 2
+																		}
+																	],
+																	"dataFileName": "03.jpeg",
+																	"attachments": []
+																},
+																{
+																	"isClone": false,
+																	"noteId": "Macy6XKykL00",
+																	"notePath": [
+																		"root",
+																		"aE2gYa2KHmtW",
+																		"CLtEdna3pybw",
+																		"SDDXIOeijIJe",
+																		"N0X0ZjP1l3aF",
+																		"yY78jG5AAsUE",
+																		"mV4Z7v9afJEB",
+																		"Macy6XKykL00"
+																	],
+																	"title": "04.jpeg",
+																	"notePosition": 30,
+																	"prefix": null,
+																	"isExpanded": false,
+																	"type": "image",
+																	"mime": "image/jpg",
+																	"attributes": [
+																		{
+																			"type": "label",
+																			"name": "originalFileName",
+																			"value": "04.jpeg",
+																			"isInheritable": false,
+																			"position": 1
+																		},
+																		{
+																			"type": "label",
+																			"name": "fileSize",
+																			"value": "43670",
+																			"isInheritable": false,
+																			"position": 2
+																		}
+																	],
+																	"dataFileName": "04.jpeg",
+																	"attachments": []
+																},
+																{
+																	"isClone": false,
+																	"noteId": "1HmWhm5qAIjl",
+																	"notePath": [
+																		"root",
+																		"aE2gYa2KHmtW",
+																		"CLtEdna3pybw",
+																		"SDDXIOeijIJe",
+																		"N0X0ZjP1l3aF",
+																		"yY78jG5AAsUE",
+																		"mV4Z7v9afJEB",
+																		"1HmWhm5qAIjl"
+																	],
+																	"title": "05.jpeg",
+																	"notePosition": 40,
+																	"prefix": null,
+																	"isExpanded": false,
+																	"type": "image",
+																	"mime": "image/jpg",
+																	"attributes": [
+																		{
+																			"type": "label",
+																			"name": "originalFileName",
+																			"value": "05.jpeg",
+																			"isInheritable": false,
+																			"position": 1
+																		},
+																		{
+																			"type": "label",
+																			"name": "fileSize",
+																			"value": "22327",
+																			"isInheritable": false,
+																			"position": 2
+																		}
+																	],
+																	"dataFileName": "05.jpeg",
+																	"attachments": []
+																},
+																{
+																	"isClone": false,
+																	"noteId": "97mHd1FFTIQP",
+																	"notePath": [
+																		"root",
+																		"aE2gYa2KHmtW",
+																		"CLtEdna3pybw",
+																		"SDDXIOeijIJe",
+																		"N0X0ZjP1l3aF",
+																		"yY78jG5AAsUE",
+																		"mV4Z7v9afJEB",
+																		"97mHd1FFTIQP"
+																	],
+																	"title": "06.jpeg",
+																	"notePosition": 50,
+																	"prefix": null,
+																	"isExpanded": false,
+																	"type": "image",
+																	"mime": "image/jpg",
+																	"attributes": [
+																		{
+																			"type": "label",
+																			"name": "originalFileName",
+																			"value": "06.jpeg",
+																			"isInheritable": false,
+																			"position": 1
+																		},
+																		{
+																			"type": "label",
+																			"name": "fileSize",
+																			"value": "79751",
+																			"isInheritable": false,
+																			"position": 2
+																		}
+																	],
+																	"dataFileName": "06.jpeg",
+																	"attachments": []
+																},
+																{
+																	"isClone": false,
+																	"noteId": "XmhdJQogn7wF",
+																	"notePath": [
+																		"root",
+																		"aE2gYa2KHmtW",
+																		"CLtEdna3pybw",
+																		"SDDXIOeijIJe",
+																		"N0X0ZjP1l3aF",
+																		"yY78jG5AAsUE",
+																		"mV4Z7v9afJEB",
+																		"XmhdJQogn7wF"
+																	],
+																	"title": "07.jpeg",
+																	"notePosition": 60,
+																	"prefix": null,
+																	"isExpanded": false,
+																	"type": "image",
+																	"mime": "image/jpg",
+																	"attributes": [
+																		{
+																			"type": "label",
+																			"name": "originalFileName",
+																			"value": "07.jpeg",
+																			"isInheritable": false,
+																			"position": 1
+																		},
+																		{
+																			"type": "label",
+																			"name": "fileSize",
+																			"value": "30223",
+																			"isInheritable": false,
+																			"position": 2
+																		}
+																	],
+																	"dataFileName": "07.jpeg",
+																	"attachments": []
+																},
+																{
+																	"isClone": false,
+																	"noteId": "TBuxSyLcRytV",
+																	"notePath": [
+																		"root",
+																		"aE2gYa2KHmtW",
+																		"CLtEdna3pybw",
+																		"SDDXIOeijIJe",
+																		"N0X0ZjP1l3aF",
+																		"yY78jG5AAsUE",
+																		"mV4Z7v9afJEB",
+																		"TBuxSyLcRytV"
+																	],
+																	"title": "08.jpeg",
+																	"notePosition": 70,
+																	"prefix": null,
+																	"isExpanded": false,
+																	"type": "image",
+																	"mime": "image/jpg",
+																	"attributes": [
+																		{
+																			"type": "label",
+																			"name": "originalFileName",
+																			"value": "08.jpeg",
+																			"isInheritable": false,
+																			"position": 1
+																		},
+																		{
+																			"type": "label",
+																			"name": "fileSize",
+																			"value": "39928",
+																			"isInheritable": false,
+																			"position": 2
+																		}
+																	],
+																	"dataFileName": "08.jpeg",
+																	"attachments": []
+																},
+																{
+																	"isClone": false,
+																	"noteId": "ayoaZoN4asEg",
+																	"notePath": [
+																		"root",
+																		"aE2gYa2KHmtW",
+																		"CLtEdna3pybw",
+																		"SDDXIOeijIJe",
+																		"N0X0ZjP1l3aF",
+																		"yY78jG5AAsUE",
+																		"mV4Z7v9afJEB",
+																		"ayoaZoN4asEg"
+																	],
+																	"title": "09.jpeg",
+																	"notePosition": 80,
+																	"prefix": null,
+																	"isExpanded": false,
+																	"type": "image",
+																	"mime": "image/jpg",
+																	"attributes": [
+																		{
+																			"type": "label",
+																			"name": "originalFileName",
+																			"value": "09.jpeg",
+																			"isInheritable": false,
+																			"position": 1
+																		},
+																		{
+																			"type": "label",
+																			"name": "fileSize",
+																			"value": "48918",
+																			"isInheritable": false,
+																			"position": 2
+																		}
+																	],
+																	"dataFileName": "09.jpeg",
+																	"attachments": []
+																},
+																{
+																	"isClone": false,
+																	"noteId": "MREX7K0z7riX",
+																	"notePath": [
+																		"root",
+																		"aE2gYa2KHmtW",
+																		"CLtEdna3pybw",
+																		"SDDXIOeijIJe",
+																		"N0X0ZjP1l3aF",
+																		"yY78jG5AAsUE",
+																		"mV4Z7v9afJEB",
+																		"MREX7K0z7riX"
+																	],
+																	"title": "10.jpeg",
+																	"notePosition": 90,
+																	"prefix": null,
+																	"isExpanded": false,
+																	"type": "image",
+																	"mime": "image/jpg",
+																	"attributes": [
+																		{
+																			"type": "label",
+																			"name": "originalFileName",
+																			"value": "10.jpeg",
+																			"isInheritable": false,
+																			"position": 1
+																		},
+																		{
+																			"type": "label",
+																			"name": "fileSize",
+																			"value": "44150",
+																			"isInheritable": false,
+																			"position": 2
+																		}
+																	],
+																	"dataFileName": "10.jpeg",
+																	"attachments": []
+																},
+																{
+																	"isClone": false,
+																	"noteId": "FoJin0vAa6FE",
+																	"notePath": [
+																		"root",
+																		"aE2gYa2KHmtW",
+																		"CLtEdna3pybw",
+																		"SDDXIOeijIJe",
+																		"N0X0ZjP1l3aF",
+																		"yY78jG5AAsUE",
+																		"mV4Z7v9afJEB",
+																		"FoJin0vAa6FE"
+																	],
+																	"title": "11.jpeg",
+																	"notePosition": 100,
+																	"prefix": null,
+																	"isExpanded": false,
+																	"type": "image",
+																	"mime": "image/jpg",
+																	"attributes": [
+																		{
+																			"type": "label",
+																			"name": "originalFileName",
+																			"value": "11.jpeg",
+																			"isInheritable": false,
+																			"position": 1
+																		},
+																		{
+																			"type": "label",
+																			"name": "fileSize",
+																			"value": "76231",
+																			"isInheritable": false,
+																			"position": 2
+																		}
+																	],
+																	"dataFileName": "11.jpeg",
+																	"attachments": []
+																},
+																{
+																	"isClone": false,
+																	"noteId": "Cu12LJ2GE3wB",
+																	"notePath": [
+																		"root",
+																		"aE2gYa2KHmtW",
+																		"CLtEdna3pybw",
+																		"SDDXIOeijIJe",
+																		"N0X0ZjP1l3aF",
+																		"yY78jG5AAsUE",
+																		"mV4Z7v9afJEB",
+																		"Cu12LJ2GE3wB"
+																	],
+																	"title": "12.jpeg",
+																	"notePosition": 110,
+																	"prefix": null,
+																	"isExpanded": false,
+																	"type": "image",
+																	"mime": "image/jpg",
+																	"attributes": [
+																		{
+																			"type": "label",
+																			"name": "originalFileName",
+																			"value": "12.jpeg",
+																			"isInheritable": false,
+																			"position": 1
+																		},
+																		{
+																			"type": "label",
+																			"name": "fileSize",
+																			"value": "44286",
+																			"isInheritable": false,
+																			"position": 2
+																		}
+																	],
+																	"dataFileName": "12.jpeg",
+																	"attachments": []
+																}
+															]
+														},
+														{
+															"isClone": false,
+															"noteId": "hHzOEr7qemwq",
+															"notePath": [
+																"root",
+																"aE2gYa2KHmtW",
+																"CLtEdna3pybw",
+																"SDDXIOeijIJe",
+																"N0X0ZjP1l3aF",
+																"yY78jG5AAsUE",
+																"hHzOEr7qemwq"
+															],
+															"title": "Send invites for christmas party",
+															"notePosition": 20,
+															"prefix": "TODO",
+															"isExpanded": false,
+															"type": "text",
+															"mime": "text/html",
+															"attributes": [
+																{
+																	"type": "label",
+																	"name": "task",
+																	"value": "",
+																	"isInheritable": false,
+																	"position": 10
+																},
+																{
+																	"type": "label",
+																	"name": "location",
+																	"value": "work",
+																	"isInheritable": false,
+																	"position": 30
+																},
+																{
+																	"type": "label",
+																	"name": "cssClass",
+																	"value": "todo",
+																	"isInheritable": false,
+																	"position": 40
+																},
+																{
+																	"type": "label",
+																	"name": "cssClass",
+																	"value": "todo",
+																	"isInheritable": false,
+																	"position": 50
+																},
+																{
+																	"type": "label",
+																	"name": "todoDate",
+																	"value": "2021-12-18",
+																	"isInheritable": false,
+																	"position": 60
+																}
+															],
+															"format": "html",
+															"dataFileName": "TODO - Send invites for christ.html",
+															"attachments": []
+														}
+													]
+												},
+												{
+													"isClone": false,
+													"noteId": "9nQQxg5AFmZx",
+													"notePath": [
+														"root",
+														"aE2gYa2KHmtW",
+														"CLtEdna3pybw",
+														"SDDXIOeijIJe",
+														"N0X0ZjP1l3aF",
+														"9nQQxg5AFmZx"
+													],
+													"title": "19 - Tuesday",
+													"notePosition": 20,
+													"prefix": null,
+													"isExpanded": false,
+													"type": "text",
+													"mime": "text/html",
+													"attributes": [
+														{
+															"type": "relation",
+															"name": "template",
+															"value": "13byVGqnkokC",
+															"isInheritable": false,
+															"position": 10
+														},
+														{
+															"type": "label",
+															"name": "dateNote",
+															"value": "2021-12-19",
+															"isInheritable": false,
+															"position": 20
+														},
+														{
+															"type": "label",
+															"name": "weight",
+															"value": "75.4",
+															"isInheritable": false,
+															"position": 30
+														}
+													],
+													"format": "html",
+													"dataFileName": "19 - Tuesday.html",
+													"attachments": [],
+													"dirFileName": "19 - Tuesday",
+													"children": [
+														{
+															"isClone": false,
+															"noteId": "OaYblmnOfpdv",
+															"notePath": [
+																"root",
+																"aE2gYa2KHmtW",
+																"CLtEdna3pybw",
+																"SDDXIOeijIJe",
+																"N0X0ZjP1l3aF",
+																"9nQQxg5AFmZx",
+																"OaYblmnOfpdv"
+															],
+															"title": "Dentist appointment",
+															"notePosition": 0,
+															"prefix": "DONE",
+															"isExpanded": false,
+															"type": "text",
+															"mime": "text/html",
+															"attributes": [
+																{
+																	"type": "label",
+																	"name": "task",
+																	"value": "",
+																	"isInheritable": false,
+																	"position": 10
+																},
+																{
+																	"type": "label",
+																	"name": "tag",
+																	"value": "health",
+																	"isInheritable": false,
+																	"position": 30
+																},
+																{
+																	"type": "label",
+																	"name": "cssClass",
+																	"value": "done",
+																	"isInheritable": false,
+																	"position": 40
+																},
+																{
+																	"type": "label",
+																	"name": "todoDate",
+																	"value": "2021-12-19",
+																	"isInheritable": false,
+																	"position": 50
+																},
+																{
+																	"type": "label",
+																	"name": "doneDate",
+																	"value": "2021-12-19",
+																	"isInheritable": false,
+																	"position": 60
+																}
+															],
+															"format": "html",
+															"dataFileName": "DONE - Dentist appointment.html",
+															"attachments": []
+														}
+													]
+												},
+												{
+													"isClone": false,
+													"noteId": "CCfohVWHDBhm",
+													"notePath": [
+														"root",
+														"aE2gYa2KHmtW",
+														"CLtEdna3pybw",
+														"SDDXIOeijIJe",
+														"N0X0ZjP1l3aF",
+														"CCfohVWHDBhm"
+													],
+													"title": "20 - Wednesday",
+													"notePosition": 30,
+													"prefix": null,
+													"isExpanded": false,
+													"type": "text",
+													"mime": "text/html",
+													"attributes": [
+														{
+															"type": "relation",
+															"name": "template",
+															"value": "13byVGqnkokC",
+															"isInheritable": false,
+															"position": 10
+														},
+														{
+															"type": "label",
+															"name": "dateNote",
+															"value": "2021-12-20",
+															"isInheritable": false,
+															"position": 20
+														},
+														{
+															"type": "label",
+															"name": "weight",
+															"value": "75.2",
+															"isInheritable": false,
+															"position": 30
+														}
+													],
+													"format": "html",
+													"dataFileName": "20 - Wednesday.html",
+													"attachments": []
+												},
+												{
+													"isClone": false,
+													"noteId": "lMOyanJY2o9d",
+													"notePath": [
+														"root",
+														"aE2gYa2KHmtW",
+														"CLtEdna3pybw",
+														"SDDXIOeijIJe",
+														"N0X0ZjP1l3aF",
+														"lMOyanJY2o9d"
+													],
+													"title": "21 - Thursday",
+													"notePosition": 40,
+													"prefix": null,
+													"isExpanded": false,
+													"type": "text",
+													"mime": "text/html",
+													"attributes": [
+														{
+															"type": "label",
+															"name": "dateNote",
+															"value": "2021-12-21",
+															"isInheritable": false,
+															"position": 10
+														},
+														{
+															"type": "relation",
+															"name": "template",
+															"value": "13byVGqnkokC",
+															"isInheritable": false,
+															"position": 20
+														},
+														{
+															"type": "label",
+															"name": "weight",
+															"value": "76",
+															"isInheritable": false,
+															"position": 30
+														}
+													],
+													"format": "html",
+													"dataFileName": "21 - Thursday.html",
+													"attachments": [],
+													"dirFileName": "21 - Thursday",
+													"children": [
+														{
+															"isClone": false,
+															"noteId": "Rov5urtOIKsZ",
+															"notePath": [
+																"root",
+																"aE2gYa2KHmtW",
+																"CLtEdna3pybw",
+																"SDDXIOeijIJe",
+																"N0X0ZjP1l3aF",
+																"lMOyanJY2o9d",
+																"Rov5urtOIKsZ"
+															],
+															"title": "Christmas shopping",
+															"notePosition": 0,
+															"prefix": null,
+															"isExpanded": true,
+															"type": "text",
+															"mime": "text/html",
+															"attributes": [],
+															"format": "html",
+															"dataFileName": "Christmas shopping.html",
+															"attachments": []
+														},
+														{
+															"isClone": false,
+															"noteId": "yfqPalf9emjZ",
+															"notePath": [
+																"root",
+																"aE2gYa2KHmtW",
+																"CLtEdna3pybw",
+																"SDDXIOeijIJe",
+																"N0X0ZjP1l3aF",
+																"lMOyanJY2o9d",
+																"yfqPalf9emjZ"
+															],
+															"title": "Office party",
+															"notePosition": 10,
+															"prefix": null,
+															"isExpanded": false,
+															"type": "text",
+															"mime": "text/html",
+															"attributes": [],
+															"format": "html",
+															"dataFileName": "Office party.html",
+															"attachments": []
+														}
+													]
+												},
+												{
+													"isClone": false,
+													"noteId": "CF9Zu4uoakmp",
+													"notePath": [
+														"root",
+														"aE2gYa2KHmtW",
+														"CLtEdna3pybw",
+														"SDDXIOeijIJe",
+														"N0X0ZjP1l3aF",
+														"CF9Zu4uoakmp"
+													],
+													"title": "22 - Friday",
+													"notePosition": 50,
+													"prefix": null,
+													"isExpanded": false,
+													"type": "text",
+													"mime": "text/html",
+													"attributes": [
+														{
+															"type": "label",
+															"name": "dateNote",
+															"value": "2021-12-22",
+															"isInheritable": false,
+															"position": 10
+														},
+														{
+															"type": "relation",
+															"name": "template",
+															"value": "13byVGqnkokC",
+															"isInheritable": false,
+															"position": 20
+														},
+														{
+															"type": "label",
+															"name": "weight",
+															"value": "75.9",
+															"isInheritable": false,
+															"position": 30
+														}
+													],
+													"format": "html",
+													"dataFileName": "22 - Friday.html",
+													"attachments": [],
+													"dirFileName": "22 - Friday",
+													"children": [
+														{
+															"isClone": false,
+															"noteId": "oUbseUriptif",
+															"notePath": [
+																"root",
+																"aE2gYa2KHmtW",
+																"CLtEdna3pybw",
+																"SDDXIOeijIJe",
+																"N0X0ZjP1l3aF",
+																"CF9Zu4uoakmp",
+																"oUbseUriptif"
+															],
+															"title": "Christmas shopping",
+															"notePosition": 0,
+															"prefix": null,
+															"isExpanded": false,
+															"type": "text",
+															"mime": "text/html",
+															"attributes": [],
+															"format": "html",
+															"dataFileName": "Christmas shopping.html",
+															"attachments": []
+														},
+														{
+															"isClone": false,
+															"noteId": "BZosDDMytptO",
+															"notePath": [
+																"root",
+																"aE2gYa2KHmtW",
+																"CLtEdna3pybw",
+																"SDDXIOeijIJe",
+																"N0X0ZjP1l3aF",
+																"CF9Zu4uoakmp",
+																"BZosDDMytptO"
+															],
+															"title": "The Mechanical",
+															"notePosition": 10,
+															"prefix": null,
+															"isExpanded": false,
+															"type": "text",
+															"mime": "text/html",
+															"attributes": [],
+															"format": "html",
+															"dataFileName": "The Mechanical.html",
+															"attachments": [],
+															"dirFileName": "The Mechanical",
+															"children": [
+																{
+																	"isClone": false,
+																	"noteId": "8HGWOpbIdvqo",
+																	"notePath": [
+																		"root",
+																		"aE2gYa2KHmtW",
+																		"CLtEdna3pybw",
+																		"SDDXIOeijIJe",
+																		"N0X0ZjP1l3aF",
+																		"CF9Zu4uoakmp",
+																		"BZosDDMytptO",
+																		"8HGWOpbIdvqo"
+																	],
+																	"title": "Highlights",
+																	"notePosition": 0,
+																	"prefix": null,
+																	"isExpanded": false,
+																	"type": "text",
+																	"mime": "text/html",
+																	"attributes": [],
+																	"format": "html",
+																	"dataFileName": "Highlights.html",
+																	"attachments": []
+																}
+															]
+														}
+													]
+												},
+												{
+													"isClone": false,
+													"noteId": "n3bf61ErzQvS",
+													"notePath": [
+														"root",
+														"aE2gYa2KHmtW",
+														"CLtEdna3pybw",
+														"SDDXIOeijIJe",
+														"N0X0ZjP1l3aF",
+														"n3bf61ErzQvS"
+													],
+													"title": "23 - Saturday",
+													"notePosition": 60,
+													"prefix": null,
+													"isExpanded": false,
+													"type": "text",
+													"mime": "text/html",
+													"attributes": [
+														{
+															"type": "relation",
+															"name": "template",
+															"value": "13byVGqnkokC",
+															"isInheritable": false,
+															"position": 10
+														},
+														{
+															"type": "label",
+															"name": "dateNote",
+															"value": "2021-12-23",
+															"isInheritable": false,
+															"position": 20
+														},
+														{
+															"type": "label",
+															"name": "weight",
+															"value": "75.6",
+															"isInheritable": false,
+															"position": 30
+														}
+													],
+													"format": "html",
+													"dataFileName": "23 - Saturday.html",
+													"attachments": []
+												},
+												{
+													"isClone": false,
+													"noteId": "eBtQqHck321M",
+													"notePath": [
+														"root",
+														"aE2gYa2KHmtW",
+														"CLtEdna3pybw",
+														"SDDXIOeijIJe",
+														"N0X0ZjP1l3aF",
+														"eBtQqHck321M"
+													],
+													"title": "24 - Sunday - Christmas Eve!",
+													"notePosition": 70,
+													"prefix": null,
+													"isExpanded": false,
+													"type": "text",
+													"mime": "text/html",
+													"attributes": [
+														{
+															"type": "relation",
+															"name": "template",
+															"value": "13byVGqnkokC",
+															"isInheritable": false,
+															"position": 10
+														},
+														{
+															"type": "label",
+															"name": "dateNote",
+															"value": "2021-12-24",
+															"isInheritable": false,
+															"position": 20
+														},
+														{
+															"type": "label",
+															"name": "weight",
+															"value": "76.1",
+															"isInheritable": false,
+															"position": 30
+														}
+													],
+													"format": "html",
+													"dataFileName": "24 - Sunday - Christmas Eve!.html",
+													"attachments": [],
+													"dirFileName": "24 - Sunday - Christmas Eve!",
+													"children": [
+														{
+															"isClone": false,
+															"noteId": "y1ykFBJvIzc8",
+															"notePath": [
+																"root",
+																"aE2gYa2KHmtW",
+																"CLtEdna3pybw",
+																"SDDXIOeijIJe",
+																"N0X0ZjP1l3aF",
+																"eBtQqHck321M",
+																"y1ykFBJvIzc8"
+															],
+															"title": "Buy a board game for Alice",
+															"notePosition": 0,
+															"prefix": "DONE",
+															"isExpanded": false,
+															"type": "text",
+															"mime": "text/html",
+															"attributes": [
+																{
+																	"type": "label",
+																	"name": "task",
+																	"value": "",
+																	"isInheritable": false,
+																	"position": 10
+																},
+																{
+																	"type": "label",
+																	"name": "location",
+																	"value": "mall",
+																	"isInheritable": false,
+																	"position": 30
+																},
+																{
+																	"type": "label",
+																	"name": "cssClass",
+																	"value": "done",
+																	"isInheritable": false,
+																	"position": 40
+																},
+																{
+																	"type": "label",
+																	"name": "tag",
+																	"value": "christmas",
+																	"isInheritable": false,
+																	"position": 50
+																},
+																{
+																	"type": "label",
+																	"name": "tag",
+																	"value": "shopping",
+																	"isInheritable": false,
+																	"position": 60
+																},
+																{
+																	"type": "label",
+																	"name": "todoDate",
+																	"value": "2021-12-20",
+																	"isInheritable": false,
+																	"position": 70
+																},
+																{
+																	"type": "label",
+																	"name": "doneDate",
+																	"value": "2021-12-24",
+																	"isInheritable": false,
+																	"position": 80
+																}
+															],
+															"format": "html",
+															"dataFileName": "DONE - Buy a board game for Al.html",
+															"attachments": [
+																{
+																	"attachmentId": "LB1oLRWLfpfC",
+																	"title": "codenames.jpg",
+																	"role": "image",
+																	"mime": "image/jpg",
+																	"position": 10,
+																	"dataFileName": "DONE - Buy a board game fo.jpg"
+																}
+															]
+														},
+														{
+															"isClone": false,
+															"noteId": "jzj74HYAPPFc",
+															"notePath": [
+																"root",
+																"aE2gYa2KHmtW",
+																"CLtEdna3pybw",
+																"SDDXIOeijIJe",
+																"N0X0ZjP1l3aF",
+																"eBtQqHck321M",
+																"jzj74HYAPPFc"
+															],
+															"title": "Buy milk",
+															"notePosition": 10,
+															"prefix": "TODO",
+															"isExpanded": false,
+															"type": "text",
+															"mime": "text/html",
+															"attributes": [
+																{
+																	"type": "label",
+																	"name": "task",
+																	"value": "",
+																	"isInheritable": false,
+																	"position": 1
+																},
+																{
+																	"type": "label",
+																	"name": "location",
+																	"value": "tesco",
+																	"isInheritable": false,
+																	"position": 3
+																},
+																{
+																	"type": "label",
+																	"name": "cssClass",
+																	"value": "todo",
+																	"isInheritable": false,
+																	"position": 4
+																},
+																{
+																	"type": "label",
+																	"name": "cssClass",
+																	"value": "todo",
+																	"isInheritable": false,
+																	"position": 4
+																},
+																{
+																	"type": "label",
+																	"name": "tag",
+																	"value": "groceries",
+																	"isInheritable": false,
+																	"position": 5
+																},
+																{
+																	"type": "label",
+																	"name": "tag",
+																	"value": "shopping",
+																	"isInheritable": false,
+																	"position": 7
+																},
+																{
+																	"type": "label",
+																	"name": "todoDate",
+																	"value": "2021-12-24",
+																	"isInheritable": false,
+																	"position": 6
+																}
+															],
+															"format": "html",
+															"dataFileName": "TODO - Buy milk.html",
+															"attachments": []
+														}
+													]
+												},
+												{
+													"isClone": false,
+													"noteId": "eHEXTJ4P7Pxp",
+													"notePath": [
+														"root",
+														"aE2gYa2KHmtW",
+														"CLtEdna3pybw",
+														"SDDXIOeijIJe",
+														"N0X0ZjP1l3aF",
+														"eHEXTJ4P7Pxp"
+													],
+													"title": "30 - Thursday",
+													"notePosition": 80,
+													"prefix": null,
+													"isExpanded": false,
+													"type": "text",
+													"mime": "text/html",
+													"attributes": [
+														{
+															"type": "relation",
+															"name": "template",
+															"value": "13byVGqnkokC",
+															"isInheritable": false,
+															"position": 30
+														},
+														{
+															"type": "label",
+															"name": "dateNote",
+															"value": "2021-12-30",
+															"isInheritable": false,
+															"position": 31
+														}
+													],
+													"format": "html",
+													"dataFileName": "30 - Thursday.html",
+													"attachments": []
+												}
+											]
+										},
+										{
+											"isClone": false,
+											"noteId": "Fx52mQ0z3lfX",
+											"notePath": [
+												"root",
+												"aE2gYa2KHmtW",
+												"CLtEdna3pybw",
+												"SDDXIOeijIJe",
+												"Fx52mQ0z3lfX"
+											],
+											"title": "Epics",
+											"notePosition": 30,
+											"prefix": null,
+											"isExpanded": true,
+											"type": "text",
+											"mime": "text/html",
+											"attributes": [],
+											"format": "html",
+											"dataFileName": "Epics.html",
+											"attachments": [],
+											"dirFileName": "Epics",
+											"children": [
+												{
+													"isClone": false,
+													"noteId": "yauuJ4SeYKg6",
+													"notePath": [
+														"root",
+														"aE2gYa2KHmtW",
+														"CLtEdna3pybw",
+														"SDDXIOeijIJe",
+														"Fx52mQ0z3lfX",
+														"yauuJ4SeYKg6"
+													],
+													"title": "Christmas",
+													"notePosition": 0,
+													"prefix": null,
+													"isExpanded": false,
+													"type": "text",
+													"mime": "text/html",
+													"attributes": [],
+													"format": "html",
+													"dataFileName": "Christmas.html",
+													"attachments": [],
+													"dirFileName": "Christmas",
+													"children": [
+														{
+															"isClone": false,
+															"noteId": "MuLT7AKWz2j5",
+															"notePath": [
+																"root",
+																"aE2gYa2KHmtW",
+																"CLtEdna3pybw",
+																"SDDXIOeijIJe",
+																"Fx52mQ0z3lfX",
+																"yauuJ4SeYKg6",
+																"MuLT7AKWz2j5"
+															],
+															"title": "Vacation days",
+															"notePosition": 0,
+															"prefix": null,
+															"isExpanded": false,
+															"type": "text",
+															"mime": "text/html",
+															"attributes": [],
+															"format": "html",
+															"dataFileName": "Vacation days.html",
+															"attachments": []
+														},
+														{
+															"isClone": false,
+															"noteId": "0LtktpbGQva4",
+															"notePath": [
+																"root",
+																"aE2gYa2KHmtW",
+																"CLtEdna3pybw",
+																"SDDXIOeijIJe",
+																"Fx52mQ0z3lfX",
+																"yauuJ4SeYKg6",
+																"0LtktpbGQva4"
+															],
+															"title": "Christmas dinner",
+															"notePosition": 10,
+															"prefix": null,
+															"isExpanded": false,
+															"type": "text",
+															"mime": "text/html",
+															"attributes": [],
+															"format": "html",
+															"dataFileName": "Christmas dinner.html",
+															"attachments": []
+														},
+														{
+															"isClone": false,
+															"noteId": "VMgrIehqpOE1",
+															"notePath": [
+																"root",
+																"aE2gYa2KHmtW",
+																"CLtEdna3pybw",
+																"SDDXIOeijIJe",
+																"Fx52mQ0z3lfX",
+																"yauuJ4SeYKg6",
+																"VMgrIehqpOE1"
+															],
+															"title": "Shopping",
+															"notePosition": 20,
+															"prefix": null,
+															"isExpanded": false,
+															"type": "text",
+															"mime": "text/html",
+															"attributes": [],
+															"format": "html",
+															"attachments": [],
+															"dirFileName": "Shopping",
+															"children": [
+																{
+																	"isClone": true,
+																	"noteId": "ALSewyEBqnVP",
+																	"notePath": [
+																		"root",
+																		"aE2gYa2KHmtW",
+																		"CLtEdna3pybw",
+																		"SDDXIOeijIJe",
+																		"Fx52mQ0z3lfX",
+																		"yauuJ4SeYKg6",
+																		"VMgrIehqpOE1",
+																		"ALSewyEBqnVP"
+																	],
+																	"title": "Christmas gift ideas",
+																	"prefix": "28. 11. 2017",
+																	"dataFileName": "28. 11. 2017 - Christmas gift ideas.clone.html",
+																	"type": "text",
+																	"format": "html"
+																}
+															]
+														}
+													]
+												},
+												{
+													"isClone": false,
+													"noteId": "Epv1TFchZfrR",
+													"notePath": [
+														"root",
+														"aE2gYa2KHmtW",
+														"CLtEdna3pybw",
+														"SDDXIOeijIJe",
+														"Fx52mQ0z3lfX",
+														"Epv1TFchZfrR"
+													],
+													"title": "Vacation",
+													"notePosition": 10,
+													"prefix": null,
+													"isExpanded": false,
+													"type": "text",
+													"mime": "text/html",
+													"attributes": [],
+													"format": "html",
+													"dataFileName": "Vacation.html",
+													"attachments": []
+												}
+											]
+										}
+									]
+								},
+								{
+									"isClone": false,
+									"noteId": "13byVGqnkokC",
+									"notePath": [
+										"root",
+										"aE2gYa2KHmtW",
+										"CLtEdna3pybw",
+										"13byVGqnkokC"
+									],
+									"title": "Day template",
+									"notePosition": 20,
+									"prefix": null,
+									"isExpanded": false,
+									"type": "text",
+									"mime": "text/html",
+									"attributes": [
+										{
+											"type": "label",
+											"name": "label:weight",
+											"value": "promoted,number,single,precision=1",
+											"isInheritable": false,
+											"position": 10
+										},
+										{
+											"type": "label",
+											"name": "iconClass",
+											"value": "bx bx-notepad",
+											"isInheritable": false,
+											"position": 20
+										},
+										{
+											"type": "label",
+											"name": "excludeFromNoteMap",
+											"value": "",
+											"isInheritable": false,
+											"position": 30
+										}
+									],
+									"format": "html",
+									"dataFileName": "Day template.html",
+									"attachments": []
+								}
+							]
+						},
+						{
+							"isClone": false,
+							"noteId": "Ck23aCQYRZwf",
+							"notePath": [
+								"root",
+								"aE2gYa2KHmtW",
+								"Ck23aCQYRZwf"
+							],
+							"title": "Tech",
+							"notePosition": 40,
+							"prefix": null,
+							"isExpanded": true,
+							"type": "text",
+							"mime": "text/html",
+							"attributes": [
+								{
+									"type": "label",
+									"name": "iconClass",
+									"value": "bx bx-desktop",
+									"isInheritable": false,
+									"position": 10
+								}
+							],
+							"format": "html",
+							"dataFileName": "Tech.html",
+							"attachments": [],
+							"dirFileName": "Tech",
+							"children": [
+								{
+									"isClone": false,
+									"noteId": "H1r2gZYYfsB3",
+									"notePath": [
+										"root",
+										"aE2gYa2KHmtW",
+										"Ck23aCQYRZwf",
+										"H1r2gZYYfsB3"
+									],
+									"title": "Security",
+									"notePosition": 10,
+									"prefix": null,
+									"isExpanded": false,
+									"type": "text",
+									"mime": "text/html",
+									"attributes": [
+										{
+											"type": "label",
+											"name": "iconClass",
+											"value": "bx bx-lock-alt",
+											"isInheritable": false,
+											"position": 10
+										}
+									],
+									"format": "html",
+									"attachments": [],
+									"dirFileName": "Security",
+									"children": [
+										{
+											"isClone": true,
+											"noteId": "3HkqHaGZSaVT",
+											"notePath": [
+												"root",
+												"aE2gYa2KHmtW",
+												"Ck23aCQYRZwf",
+												"H1r2gZYYfsB3",
+												"3HkqHaGZSaVT"
+											],
+											"title": "Trusted timestamping",
+											"prefix": null,
+											"dataFileName": "Trusted timestamping.clone.html",
+											"type": "text",
+											"format": "html"
+										}
+									]
+								},
+								{
+									"isClone": false,
+									"noteId": "XnnVVZ3aFrXH",
+									"notePath": [
+										"root",
+										"aE2gYa2KHmtW",
+										"Ck23aCQYRZwf",
+										"XnnVVZ3aFrXH"
+									],
+									"title": "Linux",
+									"notePosition": 20,
+									"prefix": null,
+									"isExpanded": false,
+									"type": "text",
+									"mime": "text/html",
+									"attributes": [
+										{
+											"type": "label",
+											"name": "iconClass",
+											"value": "bx bxl-tux",
+											"isInheritable": false,
+											"position": 10
+										}
+									],
+									"format": "html",
+									"attachments": [],
+									"dirFileName": "Linux",
+									"children": [
+										{
+											"isClone": false,
+											"noteId": "VbKg1Z68lBvm",
+											"notePath": [
+												"root",
+												"aE2gYa2KHmtW",
+												"Ck23aCQYRZwf",
+												"XnnVVZ3aFrXH",
+												"VbKg1Z68lBvm"
+											],
+											"title": "History",
+											"notePosition": 0,
+											"prefix": null,
+											"isExpanded": false,
+											"type": "text",
+											"mime": "text/html",
+											"attributes": [],
+											"format": "html",
+											"dataFileName": "History.html",
+											"attachments": []
+										},
+										{
+											"isClone": false,
+											"noteId": "AEdLOuG86ZEy",
+											"notePath": [
+												"root",
+												"aE2gYa2KHmtW",
+												"Ck23aCQYRZwf",
+												"XnnVVZ3aFrXH",
+												"AEdLOuG86ZEy"
+											],
+											"title": "Bash scripting",
+											"notePosition": 10,
+											"prefix": null,
+											"isExpanded": false,
+											"type": "text",
+											"mime": "text/html",
+											"attributes": [],
+											"format": "html",
+											"dataFileName": "Bash scripting.html",
+											"attachments": [],
+											"dirFileName": "Bash scripting",
+											"children": [
+												{
+													"isClone": false,
+													"noteId": "ECMLxSEHPp6F",
+													"notePath": [
+														"root",
+														"aE2gYa2KHmtW",
+														"Ck23aCQYRZwf",
+														"XnnVVZ3aFrXH",
+														"AEdLOuG86ZEy",
+														"ECMLxSEHPp6F"
+													],
+													"title": "While loop",
+													"notePosition": 0,
+													"prefix": null,
+													"isExpanded": false,
+													"type": "text",
+													"mime": "text/html",
+													"attributes": [],
+													"format": "html",
+													"dataFileName": "While loop.html",
+													"attachments": []
+												},
+												{
+													"isClone": false,
+													"noteId": "UIqYsOPSjbvq",
+													"notePath": [
+														"root",
+														"aE2gYa2KHmtW",
+														"Ck23aCQYRZwf",
+														"XnnVVZ3aFrXH",
+														"AEdLOuG86ZEy",
+														"UIqYsOPSjbvq"
+													],
+													"title": "Bash startup modes",
+													"notePosition": 10,
+													"prefix": null,
+													"isExpanded": false,
+													"type": "text",
+													"mime": "text/html",
+													"attributes": [],
+													"format": "html",
+													"dataFileName": "Bash startup modes.html",
+													"attachments": []
+												}
+											]
+										},
+										{
+											"isClone": false,
+											"noteId": "XkYfDJNHpkqT",
+											"notePath": [
+												"root",
+												"aE2gYa2KHmtW",
+												"Ck23aCQYRZwf",
+												"XnnVVZ3aFrXH",
+												"XkYfDJNHpkqT"
+											],
+											"title": "Ubuntu",
+											"notePosition": 20,
+											"prefix": null,
+											"isExpanded": false,
+											"type": "text",
+											"mime": "text/html",
+											"attributes": [],
+											"format": "html",
+											"dataFileName": "Ubuntu.html",
+											"attachments": [],
+											"dirFileName": "Ubuntu",
+											"children": [
+												{
+													"isClone": false,
+													"noteId": "TPsZrZq9VYYM",
+													"notePath": [
+														"root",
+														"aE2gYa2KHmtW",
+														"Ck23aCQYRZwf",
+														"XnnVVZ3aFrXH",
+														"XkYfDJNHpkqT",
+														"TPsZrZq9VYYM"
+													],
+													"title": "Unity shortcuts",
+													"notePosition": 0,
+													"prefix": null,
+													"isExpanded": false,
+													"type": "text",
+													"mime": "text/html",
+													"attributes": [],
+													"format": "html",
+													"dataFileName": "Unity shortcuts.html",
+													"attachments": []
+												}
+											]
+										}
+									]
+								},
+								{
+									"isClone": false,
+									"noteId": "p5OjyPMk6ah7",
+									"notePath": [
+										"root",
+										"aE2gYa2KHmtW",
+										"Ck23aCQYRZwf",
+										"p5OjyPMk6ah7"
+									],
+									"title": "Programming",
+									"notePosition": 30,
+									"prefix": null,
+									"isExpanded": false,
+									"type": "text",
+									"mime": "text/html",
+									"attributes": [
+										{
+											"type": "label",
+											"name": "iconClass",
+											"value": "bx bx-code-alt",
+											"isInheritable": false,
+											"position": 10
+										}
+									],
+									"format": "html",
+									"attachments": [],
+									"dirFileName": "Programming",
+									"children": [
+										{
+											"isClone": false,
+											"noteId": "dRa9mXuTsjXv",
+											"notePath": [
+												"root",
+												"aE2gYa2KHmtW",
+												"Ck23aCQYRZwf",
+												"p5OjyPMk6ah7",
+												"dRa9mXuTsjXv"
+											],
+											"title": "Java",
+											"notePosition": 0,
+											"prefix": null,
+											"isExpanded": false,
+											"type": "text",
+											"mime": "text/html",
+											"attributes": [
+												{
+													"type": "label",
+													"name": "iconClass",
+													"value": "bx bxl-java",
+													"isInheritable": false,
+													"position": 10
+												}
+											],
+											"format": "html",
+											"dataFileName": "Java.html",
+											"attachments": []
+										},
+										{
+											"isClone": true,
+											"noteId": "AEdLOuG86ZEy",
+											"notePath": [
+												"root",
+												"aE2gYa2KHmtW",
+												"Ck23aCQYRZwf",
+												"p5OjyPMk6ah7",
+												"AEdLOuG86ZEy"
+											],
+											"title": "Bash scripting",
+											"prefix": null,
+											"dataFileName": "Bash scripting.clone.html",
+											"type": "text",
+											"format": "html"
+										}
+									]
+								},
+								{
+									"isClone": false,
+									"noteId": "frJLpb4Wf5XM",
+									"notePath": [
+										"root",
+										"aE2gYa2KHmtW",
+										"Ck23aCQYRZwf",
+										"frJLpb4Wf5XM"
+									],
+									"title": "Node.js",
+									"notePosition": 40,
+									"prefix": null,
+									"isExpanded": true,
+									"type": "book",
+									"mime": "text/html",
+									"attributes": [
+										{
+											"type": "label",
+											"name": "iconClass",
+											"value": "bx bxl-nodejs",
+											"isInheritable": false,
+											"position": 10
+										}
+									],
+									"attachments": [],
+									"dirFileName": "Node.js",
+									"children": [
+										{
+											"isClone": false,
+											"noteId": "z4LXKhsWvCtF",
+											"notePath": [
+												"root",
+												"aE2gYa2KHmtW",
+												"Ck23aCQYRZwf",
+												"frJLpb4Wf5XM",
+												"z4LXKhsWvCtF"
+											],
+											"title": "Intro",
+											"notePosition": 0,
+											"prefix": null,
+											"isExpanded": false,
+											"type": "text",
+											"mime": "text/html",
+											"attributes": [],
+											"format": "html",
+											"dataFileName": "Intro.html",
+											"attachments": []
+										},
+										{
+											"isClone": false,
+											"noteId": "gmRirLTV8pbR",
+											"notePath": [
+												"root",
+												"aE2gYa2KHmtW",
+												"Ck23aCQYRZwf",
+												"frJLpb4Wf5XM",
+												"gmRirLTV8pbR"
+											],
+											"title": "Overview",
+											"notePosition": 10,
+											"prefix": null,
+											"isExpanded": true,
+											"type": "text",
+											"mime": "text/html",
+											"attributes": [],
+											"format": "html",
+											"dataFileName": "Overview.html",
+											"attachments": [],
+											"dirFileName": "Overview",
+											"children": [
+												{
+													"isClone": false,
+													"noteId": "pXgXSsEFoKON",
+													"notePath": [
+														"root",
+														"aE2gYa2KHmtW",
+														"Ck23aCQYRZwf",
+														"frJLpb4Wf5XM",
+														"gmRirLTV8pbR",
+														"pXgXSsEFoKON"
+													],
+													"title": "History",
+													"notePosition": 0,
+													"prefix": null,
+													"isExpanded": false,
+													"type": "text",
+													"mime": "text/html",
+													"attributes": [],
+													"format": "html",
+													"dataFileName": "History.html",
+													"attachments": []
+												},
+												{
+													"isClone": false,
+													"noteId": "PrDyqAcxtaPX",
+													"notePath": [
+														"root",
+														"aE2gYa2KHmtW",
+														"Ck23aCQYRZwf",
+														"frJLpb4Wf5XM",
+														"gmRirLTV8pbR",
+														"PrDyqAcxtaPX"
+													],
+													"title": "Platform architecture",
+													"notePosition": 10,
+													"prefix": null,
+													"isExpanded": false,
+													"type": "text",
+													"mime": "text/html",
+													"attributes": [],
+													"format": "html",
+													"dataFileName": "Platform architecture.html",
+													"attachments": []
+												},
+												{
+													"isClone": false,
+													"noteId": "lWrcmWHM8H3g",
+													"notePath": [
+														"root",
+														"aE2gYa2KHmtW",
+														"Ck23aCQYRZwf",
+														"frJLpb4Wf5XM",
+														"gmRirLTV8pbR",
+														"lWrcmWHM8H3g"
+													],
+													"title": "Industry support",
+													"notePosition": 20,
+													"prefix": null,
+													"isExpanded": false,
+													"type": "text",
+													"mime": "text/html",
+													"attributes": [],
+													"format": "html",
+													"dataFileName": "Industry support.html",
+													"attachments": []
+												}
+											]
+										},
+										{
+											"isClone": false,
+											"noteId": "kzjaEkQmJz89",
+											"notePath": [
+												"root",
+												"aE2gYa2KHmtW",
+												"Ck23aCQYRZwf",
+												"frJLpb4Wf5XM",
+												"kzjaEkQmJz89"
+											],
+											"title": "Releases",
+											"notePosition": 20,
+											"prefix": null,
+											"isExpanded": false,
+											"type": "text",
+											"mime": "text/html",
+											"attributes": [],
+											"format": "html",
+											"dataFileName": "Releases.html",
+											"attachments": []
+										}
+									]
+								}
+							]
+						},
+						{
+							"isClone": false,
+							"noteId": "lr3iNo3vU04x",
+							"notePath": [
+								"root",
+								"aE2gYa2KHmtW",
+								"lr3iNo3vU04x"
+							],
+							"title": "Note Types",
+							"notePosition": 60,
+							"prefix": null,
+							"isExpanded": false,
+							"type": "text",
+							"mime": "text/html",
+							"attributes": [
+								{
+									"type": "label",
+									"name": "iconClass",
+									"value": "bx bx-file",
+									"isInheritable": false,
+									"position": 10
+								}
+							],
+							"format": "html",
+							"attachments": [],
+							"dirFileName": "Note Types",
+							"children": [
+								{
+									"isClone": false,
+									"noteId": "NLBqMag8at1K",
+									"notePath": [
+										"root",
+										"aE2gYa2KHmtW",
+										"lr3iNo3vU04x",
+										"NLBqMag8at1K"
+									],
+									"title": "Canvas",
+									"notePosition": 10,
+									"prefix": null,
+									"isExpanded": true,
+									"type": "canvas",
+									"mime": "application/json",
+									"attributes": [],
+									"dataFileName": "Canvas.json",
+									"attachments": [
+										{
+											"attachmentId": "2FzpI6xR2SVV",
+											"title": "canvas-export.svg",
+											"role": "image",
+											"mime": "image/svg+xml",
+											"position": 0,
+											"dataFileName": "Canvas_canvas-export.svg"
+										}
+									]
+								},
+								{
+									"isClone": false,
+									"noteId": "dyR8Ivs2Lcv6",
+									"notePath": [
+										"root",
+										"aE2gYa2KHmtW",
+										"lr3iNo3vU04x",
+										"dyR8Ivs2Lcv6"
+									],
+									"title": "Mermaid Diagrams",
+									"notePosition": 20,
+									"prefix": null,
+									"isExpanded": false,
+									"type": "book",
+									"mime": "",
+									"attributes": [
+										{
+											"type": "label",
+											"name": "iconClass",
+											"value": "bx bx-selection",
+											"isInheritable": false,
+											"position": 10
+										}
+									],
+									"attachments": [],
+									"dirFileName": "Mermaid Diagrams",
+									"children": [
+										{
+											"isClone": false,
+											"noteId": "Fl46SOz2G3BE",
+											"notePath": [
+												"root",
+												"aE2gYa2KHmtW",
+												"lr3iNo3vU04x",
+												"dyR8Ivs2Lcv6",
+												"Fl46SOz2G3BE"
+											],
+											"title": "Flow",
+											"notePosition": 10,
+											"prefix": null,
+											"isExpanded": false,
+											"type": "mermaid",
+											"mime": "text/mermaid",
+											"attributes": [],
+											"dataFileName": "Flow.txt",
+											"attachments": [
+												{
+													"attachmentId": "GAjH28QAgf3X",
+													"title": "mermaid-export.svg",
+													"role": "image",
+													"mime": "image/svg+xml",
+													"position": 10,
+													"dataFileName": "Flow_mermaid-export.svg"
+												}
+											]
+										},
+										{
+											"isClone": false,
+											"noteId": "cBoGSX895edY",
+											"notePath": [
+												"root",
+												"aE2gYa2KHmtW",
+												"lr3iNo3vU04x",
+												"dyR8Ivs2Lcv6",
+												"cBoGSX895edY"
+											],
+											"title": "Flow (ELK)",
+											"notePosition": 11,
+											"prefix": null,
+											"isExpanded": false,
+											"type": "mermaid",
+											"mime": "text/mermaid",
+											"attributes": [],
+											"dataFileName": "Flow (ELK).txt",
+											"attachments": [
+												{
+													"attachmentId": "qgESbdLxpPDj",
+													"title": "mermaid-export.svg",
+													"role": "image",
+													"mime": "image/svg+xml",
+													"position": 10,
+													"dataFileName": "Flow (ELK)_mermaid-export.svg"
+												}
+											]
+										},
+										{
+											"isClone": false,
+											"noteId": "xbdrcWdtmEDi",
+											"notePath": [
+												"root",
+												"aE2gYa2KHmtW",
+												"lr3iNo3vU04x",
+												"dyR8Ivs2Lcv6",
+												"xbdrcWdtmEDi"
+											],
+											"title": "Sequence",
+											"notePosition": 20,
+											"prefix": null,
+											"isExpanded": false,
+											"type": "mermaid",
+											"mime": "text/mermaid",
+											"attributes": [],
+											"dataFileName": "Sequence.txt",
+											"attachments": [
+												{
+													"attachmentId": "R6Sl3FWYAzJE",
+													"title": "mermaid-export.svg",
+													"role": "image",
+													"mime": "image/svg+xml",
+													"position": 10,
+													"dataFileName": "Sequence_mermaid-export.svg"
+												}
+											]
+										},
+										{
+											"isClone": false,
+											"noteId": "3nTqhy40JfwB",
+											"notePath": [
+												"root",
+												"aE2gYa2KHmtW",
+												"lr3iNo3vU04x",
+												"dyR8Ivs2Lcv6",
+												"3nTqhy40JfwB"
+											],
+											"title": "Gantt",
+											"notePosition": 30,
+											"prefix": null,
+											"isExpanded": false,
+											"type": "mermaid",
+											"mime": "text/plain",
+											"attributes": [],
+											"dataFileName": "Gantt.txt",
+											"attachments": [
+												{
+													"attachmentId": "WGcHiLaFMB15",
+													"title": "mermaid-export.svg",
+													"role": "image",
+													"mime": "image/svg+xml",
+													"position": 10,
+													"dataFileName": "Gantt_mermaid-export.svg"
+												}
+											]
+										},
+										{
+											"isClone": false,
+											"noteId": "WPRRLctTABbr",
+											"notePath": [
+												"root",
+												"aE2gYa2KHmtW",
+												"lr3iNo3vU04x",
+												"dyR8Ivs2Lcv6",
+												"WPRRLctTABbr"
+											],
+											"title": "Class",
+											"notePosition": 40,
+											"prefix": null,
+											"isExpanded": false,
+											"type": "mermaid",
+											"mime": "text/plain",
+											"attributes": [],
+											"dataFileName": "Class.txt",
+											"attachments": [
+												{
+													"attachmentId": "WqakBR7NNp7l",
+													"title": "mermaid-export.svg",
+													"role": "image",
+													"mime": "image/svg+xml",
+													"position": 10,
+													"dataFileName": "Class_mermaid-export.svg"
+												}
+											]
+										},
+										{
+											"isClone": false,
+											"noteId": "MnFTEhQdRMu7",
+											"notePath": [
+												"root",
+												"aE2gYa2KHmtW",
+												"lr3iNo3vU04x",
+												"dyR8Ivs2Lcv6",
+												"MnFTEhQdRMu7"
+											],
+											"title": "State",
+											"notePosition": 50,
+											"prefix": null,
+											"isExpanded": false,
+											"type": "mermaid",
+											"mime": "text/plain",
+											"attributes": [],
+											"dataFileName": "State.txt",
+											"attachments": [
+												{
+													"attachmentId": "z8Rd5BipasRC",
+													"title": "mermaid-export.svg",
+													"role": "image",
+													"mime": "image/svg+xml",
+													"position": 10,
+													"dataFileName": "State_mermaid-export.svg"
+												}
+											]
+										},
+										{
+											"isClone": false,
+											"noteId": "n9p5nl3lBDS9",
+											"notePath": [
+												"root",
+												"aE2gYa2KHmtW",
+												"lr3iNo3vU04x",
+												"dyR8Ivs2Lcv6",
+												"n9p5nl3lBDS9"
+											],
+											"title": "Mind Map",
+											"notePosition": 60,
+											"prefix": null,
+											"isExpanded": false,
+											"type": "mermaid",
+											"mime": "text/mermaid",
+											"attributes": [],
+											"dataFileName": "Mind Map.txt",
+											"attachments": [
+												{
+													"attachmentId": "3BbplKNgTXLd",
+													"title": "mermaid-export.svg",
+													"role": "image",
+													"mime": "image/svg+xml",
+													"position": 10,
+													"dataFileName": "Mind Map_mermaid-export.svg"
+												}
+											]
+										},
+										{
+											"isClone": false,
+											"noteId": "4vKMWspUs1Xy",
+											"notePath": [
+												"root",
+												"aE2gYa2KHmtW",
+												"lr3iNo3vU04x",
+												"dyR8Ivs2Lcv6",
+												"4vKMWspUs1Xy"
+											],
+											"title": "Pie",
+											"notePosition": 70,
+											"prefix": null,
+											"isExpanded": false,
+											"type": "mermaid",
+											"mime": "text/plain",
+											"attributes": [],
+											"dataFileName": "Pie.txt",
+											"attachments": [
+												{
+													"attachmentId": "ffJPsi74zsvk",
+													"title": "mermaid-export.svg",
+													"role": "image",
+													"mime": "image/svg+xml",
+													"position": 10,
+													"dataFileName": "Pie_mermaid-export.svg"
+												}
+											]
+										},
+										{
+											"isClone": false,
+											"noteId": "OAeOQujO72w8",
+											"notePath": [
+												"root",
+												"aE2gYa2KHmtW",
+												"lr3iNo3vU04x",
+												"dyR8Ivs2Lcv6",
+												"OAeOQujO72w8"
+											],
+											"title": "Journey",
+											"notePosition": 80,
+											"prefix": null,
+											"isExpanded": false,
+											"type": "mermaid",
+											"mime": "text/plain",
+											"attributes": [],
+											"dataFileName": "Journey.txt",
+											"attachments": [
+												{
+													"attachmentId": "7OAVDTShV2zz",
+													"title": "mermaid-export.svg",
+													"role": "image",
+													"mime": "image/svg+xml",
+													"position": 10,
+													"dataFileName": "Journey_mermaid-export.svg"
+												}
+											]
+										},
+										{
+											"isClone": false,
+											"noteId": "jrxm0JKICLm7",
+											"notePath": [
+												"root",
+												"aE2gYa2KHmtW",
+												"lr3iNo3vU04x",
+												"dyR8Ivs2Lcv6",
+												"jrxm0JKICLm7"
+											],
+											"title": "Git",
+											"notePosition": 90,
+											"prefix": null,
+											"isExpanded": false,
+											"type": "mermaid",
+											"mime": "text/plain",
+											"attributes": [],
+											"dataFileName": "Git.txt",
+											"attachments": [
+												{
+													"attachmentId": "4XfMkwyoDfdl",
+													"title": "mermaid-export.svg",
+													"role": "image",
+													"mime": "image/svg+xml",
+													"position": 10,
+													"dataFileName": "Git_mermaid-export.svg"
+												}
+											]
+										},
+										{
+											"isClone": false,
+											"noteId": "PEBVM2QcEuMc",
+											"notePath": [
+												"root",
+												"aE2gYa2KHmtW",
+												"lr3iNo3vU04x",
+												"dyR8Ivs2Lcv6",
+												"PEBVM2QcEuMc"
+											],
+											"title": "Entity Relationship",
+											"notePosition": 100,
+											"prefix": null,
+											"isExpanded": false,
+											"type": "mermaid",
+											"mime": "text/plain",
+											"attributes": [],
+											"dataFileName": "Entity Relationship.txt",
+											"attachments": [
+												{
+													"attachmentId": "RjQ0gCg2kGmn",
+													"title": "mermaid-export.svg",
+													"role": "image",
+													"mime": "image/svg+xml",
+													"position": 10,
+													"dataFileName": "Entity Relationship_mermai.svg"
+												}
+											]
+										},
+										{
+											"isClone": false,
+											"noteId": "hre3aewUhO4S",
+											"notePath": [
+												"root",
+												"aE2gYa2KHmtW",
+												"lr3iNo3vU04x",
+												"dyR8Ivs2Lcv6",
+												"hre3aewUhO4S"
+											],
+											"title": "Bar chart",
+											"notePosition": 110,
+											"prefix": null,
+											"isExpanded": false,
+											"type": "mermaid",
+											"mime": "text/mermaid",
+											"attributes": [],
+											"dataFileName": "Bar chart.txt",
+											"attachments": [
+												{
+													"attachmentId": "kU8zvBi3szB2",
+													"title": "mermaid-export.svg",
+													"role": "image",
+													"mime": "image/svg+xml",
+													"position": 10,
+													"dataFileName": "Bar chart_mermaid-export.svg"
+												}
+											]
+										},
+										{
+											"isClone": false,
+											"noteId": "VJZL04msMG1V",
+											"notePath": [
+												"root",
+												"aE2gYa2KHmtW",
+												"lr3iNo3vU04x",
+												"dyR8Ivs2Lcv6",
+												"VJZL04msMG1V"
+											],
+											"title": "C4",
+											"notePosition": 120,
+											"prefix": null,
+											"isExpanded": false,
+											"type": "mermaid",
+											"mime": "text/plain",
+											"attributes": [],
+											"dataFileName": "C4.txt",
+											"attachments": [
+												{
+													"attachmentId": "7ISXkbATINE7",
+													"title": "mermaid-export.svg",
+													"role": "image",
+													"mime": "image/svg+xml",
+													"position": 10,
+													"dataFileName": "C4_mermaid-export.svg"
+												}
+											]
+										}
+									]
+								},
+								{
+									"isClone": false,
+									"noteId": "h931A2SzisOd",
+									"notePath": [
+										"root",
+										"aE2gYa2KHmtW",
+										"lr3iNo3vU04x",
+										"h931A2SzisOd"
+									],
+									"title": "Mind Map",
+									"notePosition": 30,
+									"prefix": null,
+									"isExpanded": true,
+									"type": "mindMap",
+									"mime": "application/json",
+									"attributes": [],
+									"dataFileName": "Mind Map.json",
+									"attachments": [
+										{
+											"attachmentId": "BcKdVySdBHpw",
+											"title": "mindmap-export.svg",
+											"role": "image",
+											"mime": "image/svg+xml",
+											"position": 0,
+											"dataFileName": "Mind Map_mindmap-export.svg"
+										}
+									]
+								},
+								{
+									"isClone": false,
+									"noteId": "gufX8lSVOvtc",
+									"notePath": [
+										"root",
+										"aE2gYa2KHmtW",
+										"lr3iNo3vU04x",
+										"gufX8lSVOvtc"
+									],
+									"title": "Geo Map (The Seven Wonders of the World)",
+									"notePosition": 40,
+									"prefix": null,
+									"isExpanded": false,
+									"type": "book",
+									"mime": "",
+									"attributes": [
+										{
+											"type": "relation",
+											"name": "template",
+											"value": "_template_geo_map",
+											"isInheritable": false,
+											"position": 10
+										},
+										{
+											"type": "label",
+											"name": "label:geolocation",
+											"value": "promoted,alias=Geolocation,single,text",
+											"isInheritable": true,
+											"position": 10
+										},
+										{
+											"type": "label",
+											"name": "hidePromotedAttributes",
+											"value": "",
+											"isInheritable": false,
+											"position": 20
+										}
+									],
+									"attachments": [
+										{
+											"attachmentId": "PsHbk11fxBn3",
+											"title": "geoMap.json",
+											"role": "viewConfig",
+											"mime": "application/json",
+											"position": 0,
+											"dataFileName": "Geo Map (The Seven Wonder.json"
+										}
+									],
+									"dirFileName": "Geo Map (The Seven Wonders of the World)",
+									"children": [
+										{
+											"isClone": false,
+											"noteId": "rTmvkCj5352r",
+											"notePath": [
+												"root",
+												"aE2gYa2KHmtW",
+												"lr3iNo3vU04x",
+												"gufX8lSVOvtc",
+												"rTmvkCj5352r"
+											],
+											"title": "The Colosseum, Rome, Italy",
+											"notePosition": 10,
+											"prefix": null,
+											"isExpanded": false,
+											"type": "text",
+											"mime": "text/html",
+											"attributes": [
+												{
+													"type": "label",
+													"name": "geolocation",
+													"value": "41.89024211851462, 12.492263083403595",
+													"isInheritable": false,
+													"position": 20
+												},
+												{
+													"type": "label",
+													"name": "iconClass",
+													"value": "bx bx-circle",
+													"isInheritable": false,
+													"position": 30
+												}
+											],
+											"format": "html",
+											"dataFileName": "The Colosseum, Rome, Italy.html",
+											"attachments": []
+										},
+										{
+											"isClone": false,
+											"noteId": "UBslbffHWRxT",
+											"notePath": [
+												"root",
+												"aE2gYa2KHmtW",
+												"lr3iNo3vU04x",
+												"gufX8lSVOvtc",
+												"UBslbffHWRxT"
+											],
+											"title": "The Great Wall of China",
+											"notePosition": 20,
+											"prefix": null,
+											"isExpanded": false,
+											"type": "text",
+											"mime": "text/html",
+											"attributes": [
+												{
+													"type": "label",
+													"name": "geolocation",
+													"value": "40.431907671437244, 116.57035343915216",
+													"isInheritable": false,
+													"position": 20
+												},
+												{
+													"type": "label",
+													"name": "iconClass",
+													"value": "bx bx-selection",
+													"isInheritable": false,
+													"position": 30
+												}
+											],
+											"format": "html",
+											"dataFileName": "The Great Wall of China.html",
+											"attachments": []
+										},
+										{
+											"isClone": false,
+											"noteId": "oVOoZA5L3VUk",
+											"notePath": [
+												"root",
+												"aE2gYa2KHmtW",
+												"lr3iNo3vU04x",
+												"gufX8lSVOvtc",
+												"oVOoZA5L3VUk"
+											],
+											"title": "The Taj Mahal, India",
+											"notePosition": 30,
+											"prefix": null,
+											"isExpanded": false,
+											"type": "text",
+											"mime": "text/html",
+											"attributes": [
+												{
+													"type": "label",
+													"name": "geolocation",
+													"value": "27.175173410074475, 78.04213146744753",
+													"isInheritable": false,
+													"position": 20
+												},
+												{
+													"type": "label",
+													"name": "iconClass",
+													"value": "bx bx-arch",
+													"isInheritable": false,
+													"position": 30
+												}
+											],
+											"format": "html",
+											"dataFileName": "The Taj Mahal, India.html",
+											"attachments": []
+										},
+										{
+											"isClone": false,
+											"noteId": "zZm9W0ytIxTa",
+											"notePath": [
+												"root",
+												"aE2gYa2KHmtW",
+												"lr3iNo3vU04x",
+												"gufX8lSVOvtc",
+												"zZm9W0ytIxTa"
+											],
+											"title": "Christ the Redeemer, Brazil",
+											"notePosition": 40,
+											"prefix": null,
+											"isExpanded": false,
+											"type": "text",
+											"mime": "text/html",
+											"attributes": [
+												{
+													"type": "label",
+													"name": "geolocation",
+													"value": "-22.951993968508837, -43.21044464113274",
+													"isInheritable": false,
+													"position": 20
+												},
+												{
+													"type": "label",
+													"name": "iconClass",
+													"value": "bx bx-church",
+													"isInheritable": false,
+													"position": 30
+												}
+											],
+											"format": "html",
+											"dataFileName": "Christ the Redeemer, Brazil.html",
+											"attachments": []
+										},
+										{
+											"isClone": false,
+											"noteId": "BJJJfpDUyYTC",
+											"notePath": [
+												"root",
+												"aE2gYa2KHmtW",
+												"lr3iNo3vU04x",
+												"gufX8lSVOvtc",
+												"BJJJfpDUyYTC"
+											],
+											"title": "Machu Picchu, Peru",
+											"notePosition": 50,
+											"prefix": null,
+											"isExpanded": false,
+											"type": "text",
+											"mime": "text/html",
+											"attributes": [
+												{
+													"type": "label",
+													"name": "geolocation",
+													"value": "-13.163198787170078, -72.54528356174288",
+													"isInheritable": false,
+													"position": 20
+												},
+												{
+													"type": "label",
+													"name": "iconClass",
+													"value": "bx bxs-castle",
+													"isInheritable": false,
+													"position": 30
+												}
+											],
+											"format": "html",
+											"dataFileName": "Machu Picchu, Peru.html",
+											"attachments": []
+										},
+										{
+											"isClone": false,
+											"noteId": "Ypyrr4cnEcVT",
+											"notePath": [
+												"root",
+												"aE2gYa2KHmtW",
+												"lr3iNo3vU04x",
+												"gufX8lSVOvtc",
+												"Ypyrr4cnEcVT"
+											],
+											"title": "Chichén Itzá, Mexico",
+											"notePosition": 60,
+											"prefix": null,
+											"isExpanded": false,
+											"type": "text",
+											"mime": "text/html",
+											"attributes": [
+												{
+													"type": "label",
+													"name": "geolocation",
+													"value": "20.678882007143176, -88.56836961554815",
+													"isInheritable": false,
+													"position": 20
+												},
+												{
+													"type": "label",
+													"name": "iconClass",
+													"value": "bx bxs-component",
+													"isInheritable": false,
+													"position": 30
+												}
+											],
+											"format": "html",
+											"dataFileName": "Chichén Itzá, Mexico.html",
+											"attachments": []
+										},
+										{
+											"isClone": false,
+											"noteId": "HvDNljnCVC0u",
+											"notePath": [
+												"root",
+												"aE2gYa2KHmtW",
+												"lr3iNo3vU04x",
+												"gufX8lSVOvtc",
+												"HvDNljnCVC0u"
+											],
+											"title": "Petra, Jordan",
+											"notePosition": 70,
+											"prefix": null,
+											"isExpanded": false,
+											"type": "text",
+											"mime": "text/html",
+											"attributes": [
+												{
+													"type": "label",
+													"name": "geolocation",
+													"value": "30.32084750671952, 35.481009100454926",
+													"isInheritable": false,
+													"position": 20
+												},
+												{
+													"type": "label",
+													"name": "iconClass",
+													"value": "bx bxs-castle",
+													"isInheritable": false,
+													"position": 30
+												}
+											],
+											"format": "html",
+											"dataFileName": "Petra, Jordan.html",
+											"attachments": []
+										}
+									]
+								}
+							]
+						},
+						{
+							"isClone": false,
+							"noteId": "ipgXsvoFKQ7T",
+							"notePath": [
+								"root",
+								"aE2gYa2KHmtW",
+								"ipgXsvoFKQ7T"
+							],
+							"title": "Books",
+							"notePosition": 130,
+							"prefix": null,
+							"isExpanded": true,
+							"type": "text",
+							"mime": "text/html",
+							"attributes": [
+								{
+									"type": "relation",
+									"name": "child:template",
+									"value": "h4kEzexMGVMj",
+									"isInheritable": false,
+									"position": 10
+								},
+								{
+									"type": "label",
+									"name": "wordCount",
+									"value": "",
+									"isInheritable": true,
+									"position": 20
+								},
+								{
+									"type": "label",
+									"name": "iconClass",
+									"value": "bx bx-book-open",
+									"isInheritable": false,
+									"position": 21
+								}
+							],
+							"format": "html",
+							"attachments": [],
+							"dirFileName": "Books",
+							"children": [
+								{
+									"isClone": false,
+									"noteId": "z4YLRUCvEFkc",
+									"notePath": [
+										"root",
+										"aE2gYa2KHmtW",
+										"ipgXsvoFKQ7T",
+										"z4YLRUCvEFkc"
+									],
+									"title": "To read",
+									"notePosition": 0,
+									"prefix": null,
+									"isExpanded": false,
+									"type": "text",
+									"mime": "text/html",
+									"attributes": [],
+									"format": "html",
+									"dataFileName": "To read.html",
+									"attachments": []
+								},
+								{
+									"isClone": false,
+									"noteId": "h4kEzexMGVMj",
+									"notePath": [
+										"root",
+										"aE2gYa2KHmtW",
+										"ipgXsvoFKQ7T",
+										"h4kEzexMGVMj"
+									],
+									"title": "Book template",
+									"notePosition": 10,
+									"prefix": null,
+									"isExpanded": false,
+									"type": "text",
+									"mime": "text/html",
+									"attributes": [
+										{
+											"type": "label",
+											"name": "iconClass",
+											"value": "bx bx-book-reader",
+											"isInheritable": false,
+											"position": 10
+										},
+										{
+											"type": "label",
+											"name": "label:readingEnd",
+											"value": "promoted,single,date",
+											"isInheritable": false,
+											"position": 30
+										},
+										{
+											"type": "label",
+											"name": "label:readingStart",
+											"value": "promoted,single,date",
+											"isInheritable": false,
+											"position": 20
+										},
+										{
+											"type": "label",
+											"name": "label:author",
+											"value": "promoted,single,text",
+											"isInheritable": false,
+											"position": 50
+										},
+										{
+											"type": "label",
+											"name": "template",
+											"value": "",
+											"isInheritable": false,
+											"position": 60
+										},
+										{
+											"type": "label",
+											"name": "label:link",
+											"value": "promoted,single,url",
+											"isInheritable": false,
+											"position": 40
+										}
+									],
+									"format": "html",
+									"dataFileName": "Book template.html",
+									"attachments": [],
+									"dirFileName": "Book template",
+									"children": [
+										{
+											"isClone": false,
+											"noteId": "xIm0X4G0UWxq",
+											"notePath": [
+												"root",
+												"aE2gYa2KHmtW",
+												"ipgXsvoFKQ7T",
+												"h4kEzexMGVMj",
+												"xIm0X4G0UWxq"
+											],
+											"title": "Highlights",
+											"notePosition": 10,
+											"prefix": null,
+											"isExpanded": false,
+											"type": "text",
+											"mime": "text/html",
+											"attributes": [],
+											"format": "html",
+											"dataFileName": "Highlights.html",
+											"attachments": []
+										}
+									]
+								},
+								{
+									"isClone": false,
+									"noteId": "99ASzLKnqWgt",
+									"notePath": [
+										"root",
+										"aE2gYa2KHmtW",
+										"ipgXsvoFKQ7T",
+										"99ASzLKnqWgt"
+									],
+									"title": "Reviews",
+									"notePosition": 20,
+									"prefix": null,
+									"isExpanded": false,
+									"type": "text",
+									"mime": "text/html",
+									"attributes": [
+										{
+											"type": "relation",
+											"name": "child:template",
+											"value": "h4kEzexMGVMj",
+											"isInheritable": false,
+											"position": 10
+										}
+									],
+									"format": "html",
+									"attachments": [],
+									"dirFileName": "Reviews",
+									"children": [
+										{
+											"isClone": true,
+											"noteId": "BZosDDMytptO",
+											"notePath": [
+												"root",
+												"aE2gYa2KHmtW",
+												"ipgXsvoFKQ7T",
+												"99ASzLKnqWgt",
+												"BZosDDMytptO"
+											],
+											"title": "The Mechanical",
+											"prefix": null,
+											"dataFileName": "The Mechanical.clone.html",
+											"type": "text",
+											"format": "html"
+										}
+									]
+								}
+							]
+						},
+						{
+							"isClone": false,
+							"noteId": "YsKJDt1cc0lx",
+							"notePath": [
+								"root",
+								"aE2gYa2KHmtW",
+								"YsKJDt1cc0lx"
+							],
+							"title": "Work",
+							"notePosition": 150,
+							"prefix": null,
+							"isExpanded": true,
+							"type": "text",
+							"mime": "text/html",
+							"attributes": [
+								{
+									"type": "label",
+									"name": "iconClass",
+									"value": "bx bx-briefcase-alt",
+									"isInheritable": false,
+									"position": 10
+								}
+							],
+							"format": "html",
+							"attachments": [],
+							"dirFileName": "Work",
+							"children": [
+								{
+									"isClone": false,
+									"noteId": "KbnW2TOxrb6u",
+									"notePath": [
+										"root",
+										"aE2gYa2KHmtW",
+										"YsKJDt1cc0lx",
+										"KbnW2TOxrb6u"
+									],
+									"title": "HR",
+									"notePosition": 0,
+									"prefix": null,
+									"isExpanded": false,
+									"type": "text",
+									"mime": "text/html",
+									"attributes": [],
+									"format": "html",
+									"dataFileName": "HR.html",
+									"attachments": []
+								},
+								{
+									"isClone": false,
+									"noteId": "gHOFKiUZ7Cpc",
+									"notePath": [
+										"root",
+										"aE2gYa2KHmtW",
+										"YsKJDt1cc0lx",
+										"gHOFKiUZ7Cpc"
+									],
+									"title": "Processes",
+									"notePosition": 10,
+									"prefix": null,
+									"isExpanded": true,
+									"type": "text",
+									"mime": "text/html",
+									"attributes": [],
+									"format": "html",
+									"dataFileName": "Processes.html",
+									"attachments": []
+								},
+								{
+									"isClone": false,
+									"noteId": "s1dgO4CDc1Ax",
+									"notePath": [
+										"root",
+										"aE2gYa2KHmtW",
+										"YsKJDt1cc0lx",
+										"s1dgO4CDc1Ax"
+									],
+									"title": "Projects",
+									"notePosition": 20,
+									"prefix": null,
+									"isExpanded": false,
+									"type": "text",
+									"mime": "text/html",
+									"attributes": [],
+									"format": "html",
+									"dataFileName": "Projects.html",
+									"attachments": []
+								}
+							]
+						},
+						{
+							"isClone": false,
+							"noteId": "5HLqMetcgPn1",
+							"notePath": [
+								"root",
+								"aE2gYa2KHmtW",
+								"5HLqMetcgPn1"
+							],
+							"title": "Steel Blue",
+							"notePosition": 160,
+							"prefix": null,
+							"isExpanded": false,
+							"type": "code",
+							"mime": "text/css",
+							"attributes": [
+								{
+									"type": "label",
+									"name": "appTheme",
+									"value": "steel-blue",
+									"isInheritable": false,
+									"position": 0
+								}
+							],
+							"dataFileName": "Steel Blue.css",
+							"attachments": [],
+							"dirFileName": "Steel Blue",
+							"children": [
+								{
+									"isClone": false,
+									"noteId": "fG62mxPdzAn5",
+									"notePath": [
+										"root",
+										"aE2gYa2KHmtW",
+										"5HLqMetcgPn1",
+										"fG62mxPdzAn5"
+									],
+									"title": "eb-garamond-v9-latin-regular.woff2",
+									"notePosition": 0,
+									"prefix": null,
+									"isExpanded": false,
+									"type": "file",
+									"mime": "application/octet-stream",
+									"attributes": [
+										{
+											"type": "label",
+											"name": "originalFileName",
+											"value": "eb-garamond-v9-latin-regular.woff2",
+											"isInheritable": false,
+											"position": 10
+										},
+										{
+											"type": "label",
+											"name": "fileSize",
+											"value": "27608",
+											"isInheritable": false,
+											"position": 20
+										},
+										{
+											"type": "label",
+											"name": "customResourceProvider",
+											"value": "fonts/garamond.woff2",
+											"isInheritable": false,
+											"position": 30
+										}
+									],
+									"dataFileName": "eb-garamond-v9-latin-reg.woff2",
+									"attachments": []
+								},
+								{
+									"isClone": false,
+									"noteId": "WXY0DkPiawQ3",
+									"notePath": [
+										"root",
+										"aE2gYa2KHmtW",
+										"5HLqMetcgPn1",
+										"WXY0DkPiawQ3"
+									],
+									"title": "raleway-v12-latin-regular.woff2",
+									"notePosition": 10,
+									"prefix": null,
+									"isExpanded": false,
+									"type": "file",
+									"mime": "application/octet-stream",
+									"attributes": [
+										{
+											"type": "label",
+											"name": "originalFileName",
+											"value": "raleway-v12-latin-regular.woff2",
+											"isInheritable": false,
+											"position": 10
+										},
+										{
+											"type": "label",
+											"name": "fileSize",
+											"value": "20444",
+											"isInheritable": false,
+											"position": 20
+										},
+										{
+											"type": "label",
+											"name": "customResourceProvider",
+											"value": "fonts/raleway.woff2",
+											"isInheritable": false,
+											"position": 30
+										}
+									],
+									"dataFileName": "raleway-v12-latin-regula.woff2",
+									"attachments": []
+								}
+							]
+						},
+						{
+							"isClone": false,
+							"noteId": "dzC2ScKVIK7s",
+							"notePath": [
+								"root",
+								"aE2gYa2KHmtW",
+								"dzC2ScKVIK7s"
+							],
+							"title": "Scripting examples",
+							"notePosition": 350,
+							"prefix": null,
+							"isExpanded": true,
+							"type": "text",
+							"mime": "text/html",
+							"attributes": [
+								{
+									"type": "label",
+									"name": "iconClass",
+									"value": "bx bxl-javascript",
+									"isInheritable": false,
+									"position": 1
+								}
+							],
+							"format": "html",
+							"attachments": [],
+							"dirFileName": "Scripting examples",
+							"children": [
+								{
+									"isClone": false,
+									"noteId": "ksxvnq3AkG4K",
+									"notePath": [
+										"root",
+										"aE2gYa2KHmtW",
+										"dzC2ScKVIK7s",
+										"ksxvnq3AkG4K"
+									],
+									"title": "Task manager",
+									"notePosition": 10,
+									"prefix": null,
+									"isExpanded": true,
+									"type": "text",
+									"mime": "text/html",
+									"attributes": [
+										{
+											"type": "label",
+											"name": "iconClass",
+											"value": "bx bx-task",
+											"isInheritable": false,
+											"position": 10
+										}
+									],
+									"format": "html",
+									"dataFileName": "Task manager.html",
+									"attachments": [
+										{
+											"attachmentId": "vVkeGoxioEKc",
+											"title": "grid.json",
+											"role": "viewConfig",
+											"mime": "application/json",
+											"position": 10,
+											"dataFileName": "Task manager_grid.json"
+										}
+									],
+									"dirFileName": "Task manager",
+									"children": [
+										{
+											"isClone": false,
+											"noteId": "CkN4xwQIl7Uq",
+											"notePath": [
+												"root",
+												"aE2gYa2KHmtW",
+												"dzC2ScKVIK7s",
+												"ksxvnq3AkG4K",
+												"CkN4xwQIl7Uq"
+											],
+											"title": "Locations",
+											"notePosition": 10,
+											"prefix": null,
+											"isExpanded": true,
+											"type": "text",
+											"mime": "text/html",
+											"attributes": [
+												{
+													"type": "label",
+													"name": "taskLocationRoot",
+													"value": "",
+													"isInheritable": false,
+													"position": 0
+												},
+												{
+													"type": "label",
+													"name": "iconClass",
+													"value": "bx bx-map",
+													"isInheritable": false,
+													"position": 1
+												}
+											],
+											"format": "html",
+											"attachments": [],
+											"dirFileName": "Locations",
+											"children": [
+												{
+													"isClone": false,
+													"noteId": "QzVdyzxSlc12",
+													"notePath": [
+														"root",
+														"aE2gYa2KHmtW",
+														"dzC2ScKVIK7s",
+														"ksxvnq3AkG4K",
+														"CkN4xwQIl7Uq",
+														"QzVdyzxSlc12"
+													],
+													"title": "gym",
+													"notePosition": 0,
+													"prefix": null,
+													"isExpanded": false,
+													"type": "text",
+													"mime": "text/html",
+													"attributes": [
+														{
+															"type": "label",
+															"name": "taskLocationNote",
+															"value": "gym",
+															"isInheritable": false,
+															"position": 1
+														}
+													],
+													"format": "html",
+													"dataFileName": "gym.html",
+													"attachments": []
+												},
+												{
+													"isClone": false,
+													"noteId": "3CZ6Lk1cyY0r",
+													"notePath": [
+														"root",
+														"aE2gYa2KHmtW",
+														"dzC2ScKVIK7s",
+														"ksxvnq3AkG4K",
+														"CkN4xwQIl7Uq",
+														"3CZ6Lk1cyY0r"
+													],
+													"title": "work",
+													"notePosition": 10,
+													"prefix": null,
+													"isExpanded": false,
+													"type": "text",
+													"mime": "text/html",
+													"attributes": [
+														{
+															"type": "label",
+															"name": "taskLocationNote",
+															"value": "work",
+															"isInheritable": false,
+															"position": 1
+														}
+													],
+													"format": "html",
+													"attachments": [],
+													"dirFileName": "work",
+													"children": [
+														{
+															"isClone": false,
+															"noteId": "U8Wys4AxlEjW",
+															"notePath": [
+																"root",
+																"aE2gYa2KHmtW",
+																"dzC2ScKVIK7s",
+																"ksxvnq3AkG4K",
+																"CkN4xwQIl7Uq",
+																"3CZ6Lk1cyY0r",
+																"U8Wys4AxlEjW"
+															],
+															"title": "Send invites for christmas party",
+															"notePosition": 10,
+															"prefix": null,
+															"isExpanded": false,
+															"type": "text",
+															"mime": "text/html",
+															"attributes": [
+																{
+																	"type": "label",
+																	"name": "task",
+																	"value": "",
+																	"isInheritable": false,
+																	"position": 10
+																},
+																{
+																	"type": "relation",
+																	"name": "template",
+																	"value": "NOLCzXpm4ZBW",
+																	"isInheritable": false,
+																	"position": 20
+																},
+																{
+																	"type": "label",
+																	"name": "location",
+																	"value": "work",
+																	"isInheritable": false,
+																	"position": 30
+																},
+																{
+																	"type": "label",
+																	"name": "cssClass",
+																	"value": "todo",
+																	"isInheritable": false,
+																	"position": 40
+																},
+																{
+																	"type": "label",
+																	"name": "cssClass",
+																	"value": "todo",
+																	"isInheritable": false,
+																	"position": 50
+																},
+																{
+																	"type": "label",
+																	"name": "todoDate",
+																	"value": "2021-12-18",
+																	"isInheritable": false,
+																	"position": 60
+																}
+															],
+															"format": "html",
+															"dataFileName": "Send invites for christmas par.html",
+															"attachments": []
+														}
+													]
+												},
+												{
+													"isClone": false,
+													"noteId": "t2mvSQCREblO",
+													"notePath": [
+														"root",
+														"aE2gYa2KHmtW",
+														"dzC2ScKVIK7s",
+														"ksxvnq3AkG4K",
+														"CkN4xwQIl7Uq",
+														"t2mvSQCREblO"
+													],
+													"title": "tesco",
+													"notePosition": 20,
+													"prefix": null,
+													"isExpanded": false,
+													"type": "text",
+													"mime": "text/html",
+													"attributes": [
+														{
+															"type": "label",
+															"name": "taskLocationNote",
+															"value": "tesco",
+															"isInheritable": false,
+															"position": 1
+														}
+													],
+													"format": "html",
+													"attachments": [],
+													"dirFileName": "tesco",
+													"children": [
+														{
+															"isClone": false,
+															"noteId": "Vf1Ij7kpwaPe",
+															"notePath": [
+																"root",
+																"aE2gYa2KHmtW",
+																"dzC2ScKVIK7s",
+																"ksxvnq3AkG4K",
+																"CkN4xwQIl7Uq",
+																"t2mvSQCREblO",
+																"Vf1Ij7kpwaPe"
+															],
+															"title": "Buy milk",
+															"notePosition": 10,
+															"prefix": null,
+															"isExpanded": false,
+															"type": "text",
+															"mime": "text/html",
+															"attributes": [
+																{
+																	"type": "label",
+																	"name": "task",
+																	"value": "",
+																	"isInheritable": false,
+																	"position": 1
+																},
+																{
+																	"type": "relation",
+																	"name": "template",
+																	"value": "NOLCzXpm4ZBW",
+																	"isInheritable": false,
+																	"position": 2
+																},
+																{
+																	"type": "label",
+																	"name": "location",
+																	"value": "tesco",
+																	"isInheritable": false,
+																	"position": 3
+																},
+																{
+																	"type": "label",
+																	"name": "cssClass",
+																	"value": "todo",
+																	"isInheritable": false,
+																	"position": 4
+																},
+																{
+																	"type": "label",
+																	"name": "cssClass",
+																	"value": "todo",
+																	"isInheritable": false,
+																	"position": 4
+																},
+																{
+																	"type": "label",
+																	"name": "tag",
+																	"value": "groceries",
+																	"isInheritable": false,
+																	"position": 5
+																},
+																{
+																	"type": "label",
+																	"name": "tag",
+																	"value": "shopping",
+																	"isInheritable": false,
+																	"position": 7
+																},
+																{
+																	"type": "label",
+																	"name": "todoDate",
+																	"value": "2021-12-24",
+																	"isInheritable": false,
+																	"position": 6
+																}
+															],
+															"format": "html",
+															"dataFileName": "Buy milk.html",
+															"attachments": []
+														}
+													]
+												},
+												{
+													"isClone": false,
+													"noteId": "voqMYmJGbvRy",
+													"notePath": [
+														"root",
+														"aE2gYa2KHmtW",
+														"dzC2ScKVIK7s",
+														"ksxvnq3AkG4K",
+														"CkN4xwQIl7Uq",
+														"voqMYmJGbvRy"
+													],
+													"title": "mall",
+													"notePosition": 30,
+													"prefix": null,
+													"isExpanded": false,
+													"type": "text",
+													"mime": "text/html",
+													"attributes": [
+														{
+															"type": "label",
+															"name": "taskLocationNote",
+															"value": "mall",
+															"isInheritable": false,
+															"position": 1
+														}
+													],
+													"format": "html",
+													"attachments": [],
+													"dirFileName": "mall",
+													"children": [
+														{
+															"isClone": false,
+															"noteId": "6OXvfZBumf6v",
+															"notePath": [
+																"root",
+																"aE2gYa2KHmtW",
+																"dzC2ScKVIK7s",
+																"ksxvnq3AkG4K",
+																"CkN4xwQIl7Uq",
+																"voqMYmJGbvRy",
+																"6OXvfZBumf6v"
+															],
+															"title": "Buy some book for Bob",
+															"notePosition": 0,
+															"prefix": null,
+															"isExpanded": false,
+															"type": "text",
+															"mime": "text/html",
+															"attributes": [
+																{
+																	"type": "label",
+																	"name": "task",
+																	"value": "",
+																	"isInheritable": false,
+																	"position": 10
+																},
+																{
+																	"type": "relation",
+																	"name": "template",
+																	"value": "NOLCzXpm4ZBW",
+																	"isInheritable": false,
+																	"position": 20
+																},
+																{
+																	"type": "label",
+																	"name": "location",
+																	"value": "mall",
+																	"isInheritable": false,
+																	"position": 30
+																},
+																{
+																	"type": "label",
+																	"name": "cssClass",
+																	"value": "todo",
+																	"isInheritable": false,
+																	"position": 40
+																},
+																{
+																	"type": "label",
+																	"name": "cssClass",
+																	"value": "todo",
+																	"isInheritable": false,
+																	"position": 50
+																},
+																{
+																	"type": "label",
+																	"name": "tag",
+																	"value": "christmas",
+																	"isInheritable": false,
+																	"position": 60
+																},
+																{
+																	"type": "label",
+																	"name": "todoDate",
+																	"value": "",
+																	"isInheritable": false,
+																	"position": 70
+																},
+																{
+																	"type": "label",
+																	"name": "tag",
+																	"value": "shopping",
+																	"isInheritable": false,
+																	"position": 80
+																}
+															],
+															"format": "html",
+															"dataFileName": "Buy some book for Bob.html",
+															"attachments": [],
+															"dirFileName": "Buy some book for Bob",
+															"children": [
+																{
+																	"isClone": false,
+																	"noteId": "i7szbyHMltmD",
+																	"notePath": [
+																		"root",
+																		"aE2gYa2KHmtW",
+																		"dzC2ScKVIK7s",
+																		"ksxvnq3AkG4K",
+																		"CkN4xwQIl7Uq",
+																		"voqMYmJGbvRy",
+																		"6OXvfZBumf6v",
+																		"i7szbyHMltmD"
+																	],
+																	"title": "Maybe Black Swan?",
+																	"notePosition": 0,
+																	"prefix": null,
+																	"isExpanded": false,
+																	"type": "text",
+																	"mime": "text/html",
+																	"attributes": [],
+																	"format": "html",
+																	"dataFileName": "Maybe Black Swan.html",
+																	"attachments": []
+																}
+															]
+														}
+													]
+												}
+											]
+										},
+										{
+											"isClone": false,
+											"noteId": "IgP8ngh8a4En",
+											"notePath": [
+												"root",
+												"aE2gYa2KHmtW",
+												"dzC2ScKVIK7s",
+												"ksxvnq3AkG4K",
+												"IgP8ngh8a4En"
+											],
+											"title": "Done",
+											"notePosition": 20,
+											"prefix": null,
+											"isExpanded": false,
+											"type": "text",
+											"mime": "text/html",
+											"attributes": [
+												{
+													"type": "label",
+													"name": "taskDoneRoot",
+													"value": "",
+													"isInheritable": false,
+													"position": 0
+												},
+												{
+													"type": "label",
+													"name": "iconClass",
+													"value": "bx bx-check-square",
+													"isInheritable": false,
+													"position": 1
+												}
+											],
+											"format": "html",
+											"attachments": [],
+											"dirFileName": "Done",
+											"children": [
+												{
+													"isClone": false,
+													"noteId": "7YHONcafZV3m",
+													"notePath": [
+														"root",
+														"aE2gYa2KHmtW",
+														"dzC2ScKVIK7s",
+														"ksxvnq3AkG4K",
+														"IgP8ngh8a4En",
+														"7YHONcafZV3m"
+													],
+													"title": "Buy a board game for Alice",
+													"notePosition": 10,
+													"prefix": null,
+													"isExpanded": false,
+													"type": "text",
+													"mime": "text/html",
+													"attributes": [
+														{
+															"type": "label",
+															"name": "task",
+															"value": "",
+															"isInheritable": false,
+															"position": 10
+														},
+														{
+															"type": "relation",
+															"name": "template",
+															"value": "NOLCzXpm4ZBW",
+															"isInheritable": false,
+															"position": 20
+														},
+														{
+															"type": "label",
+															"name": "location",
+															"value": "mall",
+															"isInheritable": false,
+															"position": 30
+														},
+														{
+															"type": "label",
+															"name": "cssClass",
+															"value": "done",
+															"isInheritable": false,
+															"position": 40
+														},
+														{
+															"type": "label",
+															"name": "tag",
+															"value": "christmas",
+															"isInheritable": false,
+															"position": 50
+														},
+														{
+															"type": "label",
+															"name": "tag",
+															"value": "shopping",
+															"isInheritable": false,
+															"position": 60
+														},
+														{
+															"type": "label",
+															"name": "todoDate",
+															"value": "2021-12-20",
+															"isInheritable": false,
+															"position": 70
+														},
+														{
+															"type": "label",
+															"name": "doneDate",
+															"value": "2021-12-24",
+															"isInheritable": false,
+															"position": 80
+														}
+													],
+													"format": "html",
+													"dataFileName": "Buy a board game for Alice.html",
+													"attachments": [
+														{
+															"attachmentId": "cllYIIngdNhB",
+															"title": "codenames.jpg",
+															"role": "image",
+															"mime": "image/jpg",
+															"position": 10,
+															"dataFileName": "Buy a board game for Alice.jpg"
+														}
+													]
+												},
+												{
+													"isClone": false,
+													"noteId": "ScEL9hUYoy1n",
+													"notePath": [
+														"root",
+														"aE2gYa2KHmtW",
+														"dzC2ScKVIK7s",
+														"ksxvnq3AkG4K",
+														"IgP8ngh8a4En",
+														"ScEL9hUYoy1n"
+													],
+													"title": "Dentist appointment",
+													"notePosition": 20,
+													"prefix": null,
+													"isExpanded": false,
+													"type": "text",
+													"mime": "text/html",
+													"attributes": [
+														{
+															"type": "label",
+															"name": "task",
+															"value": "",
+															"isInheritable": false,
+															"position": 10
+														},
+														{
+															"type": "relation",
+															"name": "template",
+															"value": "NOLCzXpm4ZBW",
+															"isInheritable": false,
+															"position": 20
+														},
+														{
+															"type": "label",
+															"name": "tag",
+															"value": "health",
+															"isInheritable": false,
+															"position": 30
+														},
+														{
+															"type": "label",
+															"name": "cssClass",
+															"value": "done",
+															"isInheritable": false,
+															"position": 40
+														},
+														{
+															"type": "label",
+															"name": "todoDate",
+															"value": "2021-12-19",
+															"isInheritable": false,
+															"position": 50
+														},
+														{
+															"type": "label",
+															"name": "doneDate",
+															"value": "2021-12-19",
+															"isInheritable": false,
+															"position": 60
+														}
+													],
+													"format": "html",
+													"dataFileName": "Dentist appointment.html",
+													"attachments": []
+												},
+												{
+													"isClone": false,
+													"noteId": "gthOprAnQsUB",
+													"notePath": [
+														"root",
+														"aE2gYa2KHmtW",
+														"dzC2ScKVIK7s",
+														"ksxvnq3AkG4K",
+														"IgP8ngh8a4En",
+														"gthOprAnQsUB"
+													],
+													"title": "Get a gym membership",
+													"notePosition": 20,
+													"prefix": null,
+													"isExpanded": false,
+													"type": "text",
+													"mime": "text/html",
+													"attributes": [
+														{
+															"type": "label",
+															"name": "task",
+															"value": "",
+															"isInheritable": false,
+															"position": 10
+														},
+														{
+															"type": "relation",
+															"name": "template",
+															"value": "NOLCzXpm4ZBW",
+															"isInheritable": false,
+															"position": 20
+														},
+														{
+															"type": "label",
+															"name": "location",
+															"value": "gym",
+															"isInheritable": false,
+															"position": 30
+														},
+														{
+															"type": "label",
+															"name": "cssClass",
+															"value": "done",
+															"isInheritable": false,
+															"position": 40
+														},
+														{
+															"type": "label",
+															"name": "todoDate",
+															"value": "2021-12-28",
+															"isInheritable": false,
+															"position": 50
+														},
+														{
+															"type": "label",
+															"name": "doneDate",
+															"value": "2021-12-30",
+															"isInheritable": false,
+															"position": 60
+														}
+													],
+													"format": "html",
+													"dataFileName": "Get a gym membership.html",
+													"attachments": []
+												}
+											]
+										},
+										{
+											"isClone": false,
+											"noteId": "KQW2chF2eMNJ",
+											"notePath": [
+												"root",
+												"aE2gYa2KHmtW",
+												"dzC2ScKVIK7s",
+												"ksxvnq3AkG4K",
+												"KQW2chF2eMNJ"
+											],
+											"title": "TODO",
+											"notePosition": 30,
+											"prefix": null,
+											"isExpanded": false,
+											"type": "text",
+											"mime": "text/html",
+											"attributes": [
+												{
+													"type": "label",
+													"name": "taskTodoRoot",
+													"value": "",
+													"isInheritable": false,
+													"position": 10
+												},
+												{
+													"type": "label",
+													"name": "child:task",
+													"value": "",
+													"isInheritable": false,
+													"position": 20
+												},
+												{
+													"type": "relation",
+													"name": "child:template",
+													"value": "NOLCzXpm4ZBW",
+													"isInheritable": false,
+													"position": 30
+												},
+												{
+													"type": "label",
+													"name": "child:cssClass",
+													"value": "todo",
+													"isInheritable": false,
+													"position": 40
+												},
+												{
+													"type": "label",
+													"name": "bookmarkFolder",
+													"value": "",
+													"isInheritable": false,
+													"position": 50
+												},
+												{
+													"type": "label",
+													"name": "iconClass",
+													"value": "bx bxs-plane-take-off",
+													"isInheritable": false,
+													"position": 51
+												}
+											],
+											"format": "html",
+											"attachments": [],
+											"dirFileName": "TODO",
+											"children": [
+												{
+													"isClone": true,
+													"noteId": "Vf1Ij7kpwaPe",
+													"notePath": [
+														"root",
+														"aE2gYa2KHmtW",
+														"dzC2ScKVIK7s",
+														"ksxvnq3AkG4K",
+														"KQW2chF2eMNJ",
+														"Vf1Ij7kpwaPe"
+													],
+													"title": "Buy milk",
+													"prefix": null,
+													"dataFileName": "Buy milk.clone.html",
+													"type": "text",
+													"format": "html"
+												},
+												{
+													"isClone": true,
+													"noteId": "6OXvfZBumf6v",
+													"notePath": [
+														"root",
+														"aE2gYa2KHmtW",
+														"dzC2ScKVIK7s",
+														"ksxvnq3AkG4K",
+														"KQW2chF2eMNJ",
+														"6OXvfZBumf6v"
+													],
+													"title": "Buy some book for Bob",
+													"prefix": null,
+													"dataFileName": "Buy some book for Bob.clone.html",
+													"type": "text",
+													"format": "html"
+												},
+												{
+													"isClone": true,
+													"noteId": "U8Wys4AxlEjW",
+													"notePath": [
+														"root",
+														"aE2gYa2KHmtW",
+														"dzC2ScKVIK7s",
+														"ksxvnq3AkG4K",
+														"KQW2chF2eMNJ",
+														"U8Wys4AxlEjW"
+													],
+													"title": "Send invites for christmas party",
+													"prefix": null,
+													"dataFileName": "Send invites for christmas party.clone.html",
+													"type": "text",
+													"format": "html"
+												}
+											]
+										},
+										{
+											"isClone": false,
+											"noteId": "GV6FYarVmXg5",
+											"notePath": [
+												"root",
+												"aE2gYa2KHmtW",
+												"dzC2ScKVIK7s",
+												"ksxvnq3AkG4K",
+												"GV6FYarVmXg5"
+											],
+											"title": "Implementation",
+											"notePosition": 40,
+											"prefix": null,
+											"isExpanded": false,
+											"type": "text",
+											"mime": "text/html",
+											"attributes": [
+												{
+													"type": "label",
+													"name": "iconClass",
+													"value": "bx bx-code-alt",
+													"isInheritable": false,
+													"position": 1
+												}
+											],
+											"format": "html",
+											"attachments": [],
+											"dirFileName": "Implementation",
+											"children": [
+												{
+													"isClone": false,
+													"noteId": "luiSI271dPiI",
+													"notePath": [
+														"root",
+														"aE2gYa2KHmtW",
+														"dzC2ScKVIK7s",
+														"ksxvnq3AkG4K",
+														"GV6FYarVmXg5",
+														"luiSI271dPiI"
+													],
+													"title": "attribute changed",
+													"notePosition": 0,
+													"prefix": null,
+													"isExpanded": false,
+													"type": "code",
+													"mime": "application/javascript;env=backend",
+													"attributes": [],
+													"dataFileName": "attribute changed.js",
+													"attachments": [],
+													"dirFileName": "attribute changed",
+													"children": [
+														{
+															"isClone": false,
+															"noteId": "TQIge9r1ZtgY",
+															"notePath": [
+																"root",
+																"aE2gYa2KHmtW",
+																"dzC2ScKVIK7s",
+																"ksxvnq3AkG4K",
+																"GV6FYarVmXg5",
+																"luiSI271dPiI",
+																"TQIge9r1ZtgY"
+															],
+															"title": "reconcileAssignments",
+															"notePosition": 0,
+															"prefix": null,
+															"isExpanded": false,
+															"type": "code",
+															"mime": "application/javascript;env=backend",
+															"attributes": [],
+															"dataFileName": "reconcileAssignments.js",
+															"attachments": []
+														}
+													]
+												},
+												{
+													"isClone": false,
+													"noteId": "OVzRylmAQWXO",
+													"notePath": [
+														"root",
+														"aE2gYa2KHmtW",
+														"dzC2ScKVIK7s",
+														"ksxvnq3AkG4K",
+														"GV6FYarVmXg5",
+														"OVzRylmAQWXO"
+													],
+													"title": "CSS",
+													"notePosition": 20,
+													"prefix": null,
+													"isExpanded": false,
+													"type": "code",
+													"mime": "text/css",
+													"attributes": [
+														{
+															"type": "label",
+															"name": "appCss",
+															"value": "",
+															"isInheritable": false,
+															"position": 0
+														}
+													],
+													"dataFileName": "CSS.css",
+													"attachments": []
+												},
+												{
+													"isClone": false,
+													"noteId": "NOLCzXpm4ZBW",
+													"notePath": [
+														"root",
+														"aE2gYa2KHmtW",
+														"dzC2ScKVIK7s",
+														"ksxvnq3AkG4K",
+														"GV6FYarVmXg5",
+														"NOLCzXpm4ZBW"
+													],
+													"title": "task template",
+													"notePosition": 30,
+													"prefix": null,
+													"isExpanded": false,
+													"type": "text",
+													"mime": "text/html",
+													"attributes": [
+														{
+															"type": "label",
+															"name": "label:location",
+															"value": "promoted,text,single",
+															"isInheritable": false,
+															"position": 20
+														},
+														{
+															"type": "label",
+															"name": "cssClass",
+															"value": "todo",
+															"isInheritable": false,
+															"position": 30
+														},
+														{
+															"type": "label",
+															"name": "label:tag",
+															"value": "promoted,text,multi",
+															"isInheritable": false,
+															"position": 40
+														},
+														{
+															"type": "label",
+															"name": "label:todoDate",
+															"value": "promoted,date,single",
+															"isInheritable": false,
+															"position": 50
+														},
+														{
+															"type": "label",
+															"name": "label:doneDate",
+															"value": "promoted,date,single",
+															"isInheritable": false,
+															"position": 60
+														},
+														{
+															"type": "label",
+															"name": "iconClass",
+															"value": "bx bx-task",
+															"isInheritable": false,
+															"position": 70
+														},
+														{
+															"type": "label",
+															"name": "task",
+															"value": "",
+															"isInheritable": false,
+															"position": 80
+														},
+														{
+															"type": "relation",
+															"name": "runOnAttributeChange",
+															"value": "luiSI271dPiI",
+															"isInheritable": false,
+															"position": 10
+														}
+													],
+													"format": "html",
+													"dataFileName": "task template.html",
+													"attachments": []
+												},
+												{
+													"isClone": false,
+													"noteId": "zOyQ3dYnHbG7",
+													"notePath": [
+														"root",
+														"aE2gYa2KHmtW",
+														"dzC2ScKVIK7s",
+														"ksxvnq3AkG4K",
+														"GV6FYarVmXg5",
+														"zOyQ3dYnHbG7"
+													],
+													"title": "createNewTask",
+													"notePosition": 40,
+													"prefix": null,
+													"isExpanded": false,
+													"type": "code",
+													"mime": "application/javascript;env=frontend",
+													"attributes": [],
+													"dataFileName": "createNewTask.js",
+													"attachments": []
+												}
+											]
+										},
+										{
+											"isClone": false,
+											"noteId": "jfDqLGg0ByJE",
+											"notePath": [
+												"root",
+												"aE2gYa2KHmtW",
+												"dzC2ScKVIK7s",
+												"ksxvnq3AkG4K",
+												"jfDqLGg0ByJE"
+											],
+											"title": "Tags",
+											"notePosition": 50,
+											"prefix": null,
+											"isExpanded": false,
+											"type": "text",
+											"mime": "text/html",
+											"attributes": [
+												{
+													"type": "label",
+													"name": "taskTagRoot",
+													"value": "",
+													"isInheritable": false,
+													"position": 0
+												},
+												{
+													"type": "label",
+													"name": "iconClass",
+													"value": "bx bx-purchase-tag",
+													"isInheritable": false,
+													"position": 1
+												}
+											],
+											"format": "html",
+											"attachments": [],
+											"dirFileName": "Tags",
+											"children": [
+												{
+													"isClone": false,
+													"noteId": "s2RtoAMwrzhR",
+													"notePath": [
+														"root",
+														"aE2gYa2KHmtW",
+														"dzC2ScKVIK7s",
+														"ksxvnq3AkG4K",
+														"jfDqLGg0ByJE",
+														"s2RtoAMwrzhR"
+													],
+													"title": "health",
+													"notePosition": 0,
+													"prefix": null,
+													"isExpanded": false,
+													"type": "text",
+													"mime": "text/html",
+													"attributes": [
+														{
+															"type": "label",
+															"name": "taskTagNote",
+															"value": "health",
+															"isInheritable": false,
+															"position": 1
+														}
+													],
+													"format": "html",
+													"dataFileName": "health.html",
+													"attachments": []
+												},
+												{
+													"isClone": false,
+													"noteId": "cV8jDXSlqzNj",
+													"notePath": [
+														"root",
+														"aE2gYa2KHmtW",
+														"dzC2ScKVIK7s",
+														"ksxvnq3AkG4K",
+														"jfDqLGg0ByJE",
+														"cV8jDXSlqzNj"
+													],
+													"title": "shopping",
+													"notePosition": 10,
+													"prefix": null,
+													"isExpanded": false,
+													"type": "text",
+													"mime": "text/html",
+													"attributes": [
+														{
+															"type": "label",
+															"name": "taskTagNote",
+															"value": "shopping",
+															"isInheritable": false,
+															"position": 1
+														}
+													],
+													"format": "html",
+													"attachments": [],
+													"dirFileName": "shopping",
+													"children": [
+														{
+															"isClone": true,
+															"noteId": "Vf1Ij7kpwaPe",
+															"notePath": [
+																"root",
+																"aE2gYa2KHmtW",
+																"dzC2ScKVIK7s",
+																"ksxvnq3AkG4K",
+																"jfDqLGg0ByJE",
+																"cV8jDXSlqzNj",
+																"Vf1Ij7kpwaPe"
+															],
+															"title": "Buy milk",
+															"prefix": null,
+															"dataFileName": "Buy milk.clone.html",
+															"type": "text",
+															"format": "html"
+														},
+														{
+															"isClone": true,
+															"noteId": "6OXvfZBumf6v",
+															"notePath": [
+																"root",
+																"aE2gYa2KHmtW",
+																"dzC2ScKVIK7s",
+																"ksxvnq3AkG4K",
+																"jfDqLGg0ByJE",
+																"cV8jDXSlqzNj",
+																"6OXvfZBumf6v"
+															],
+															"title": "Buy some book for Bob",
+															"prefix": null,
+															"dataFileName": "Buy some book for Bob.clone.html",
+															"type": "text",
+															"format": "html"
+														}
+													]
+												},
+												{
+													"isClone": false,
+													"noteId": "T2BFsEPExFO1",
+													"notePath": [
+														"root",
+														"aE2gYa2KHmtW",
+														"dzC2ScKVIK7s",
+														"ksxvnq3AkG4K",
+														"jfDqLGg0ByJE",
+														"T2BFsEPExFO1"
+													],
+													"title": "groceries",
+													"notePosition": 20,
+													"prefix": null,
+													"isExpanded": false,
+													"type": "text",
+													"mime": "text/html",
+													"attributes": [
+														{
+															"type": "label",
+															"name": "taskTagNote",
+															"value": "groceries",
+															"isInheritable": false,
+															"position": 1
+														}
+													],
+													"format": "html",
+													"attachments": [],
+													"dirFileName": "groceries",
+													"children": [
+														{
+															"isClone": true,
+															"noteId": "Vf1Ij7kpwaPe",
+															"notePath": [
+																"root",
+																"aE2gYa2KHmtW",
+																"dzC2ScKVIK7s",
+																"ksxvnq3AkG4K",
+																"jfDqLGg0ByJE",
+																"T2BFsEPExFO1",
+																"Vf1Ij7kpwaPe"
+															],
+															"title": "Buy milk",
+															"prefix": null,
+															"dataFileName": "Buy milk.clone.html",
+															"type": "text",
+															"format": "html"
+														}
+													]
+												},
+												{
+													"isClone": false,
+													"noteId": "TlKIKH7QdHlS",
+													"notePath": [
+														"root",
+														"aE2gYa2KHmtW",
+														"dzC2ScKVIK7s",
+														"ksxvnq3AkG4K",
+														"jfDqLGg0ByJE",
+														"TlKIKH7QdHlS"
+													],
+													"title": "christmas",
+													"notePosition": 30,
+													"prefix": null,
+													"isExpanded": false,
+													"type": "text",
+													"mime": "text/html",
+													"attributes": [
+														{
+															"type": "label",
+															"name": "taskTagNote",
+															"value": "christmas",
+															"isInheritable": false,
+															"position": 1
+														}
+													],
+													"format": "html",
+													"attachments": [],
+													"dirFileName": "christmas",
+													"children": [
+														{
+															"isClone": true,
+															"noteId": "6OXvfZBumf6v",
+															"notePath": [
+																"root",
+																"aE2gYa2KHmtW",
+																"dzC2ScKVIK7s",
+																"ksxvnq3AkG4K",
+																"jfDqLGg0ByJE",
+																"TlKIKH7QdHlS",
+																"6OXvfZBumf6v"
+															],
+															"title": "Buy some book for Bob",
+															"prefix": null,
+															"dataFileName": "Buy some book for Bob.clone.html",
+															"type": "text",
+															"format": "html"
+														}
+													]
+												}
+											]
+										},
+										{
+											"isClone": false,
+											"noteId": "UbwUKH5tjLEs",
+											"notePath": [
+												"root",
+												"aE2gYa2KHmtW",
+												"dzC2ScKVIK7s",
+												"ksxvnq3AkG4K",
+												"UbwUKH5tjLEs"
+											],
+											"title": "Create Launcher",
+											"notePosition": 60,
+											"prefix": null,
+											"isExpanded": false,
+											"type": "code",
+											"mime": "application/javascript;env=backend",
+											"attributes": [
+												{
+													"type": "label",
+													"name": "iconClass",
+													"value": "bx bx-sidebar",
+													"isInheritable": false,
+													"position": 10
+												},
+												{
+													"type": "relation",
+													"name": "createNewTask",
+													"value": "zOyQ3dYnHbG7",
+													"isInheritable": false,
+													"position": 20
+												},
+												{
+													"type": "label",
+													"name": "executeButton",
+													"value": "Create Launcher",
+													"isInheritable": false,
+													"position": 30
+												},
+												{
+													"type": "label",
+													"name": "executeDescription",
+													"value": "This script creates a launcher on the left side bar which can be used to quickly create a new task",
+													"isInheritable": false,
+													"position": 40
+												}
+											],
+											"dataFileName": "Create Launcher.js",
+											"attachments": []
+										}
+									]
+								},
+								{
+									"isClone": false,
+									"noteId": "5SqXenF4c1Ke",
+									"notePath": [
+										"root",
+										"aE2gYa2KHmtW",
+										"dzC2ScKVIK7s",
+										"5SqXenF4c1Ke"
+									],
+									"title": "Word count widget",
+									"notePosition": 20,
+									"prefix": null,
+									"isExpanded": false,
+									"type": "code",
+									"mime": "application/javascript;env=frontend",
+									"attributes": [
+										{
+											"type": "label",
+											"name": "widget",
+											"value": "",
+											"isInheritable": false,
+											"position": 10
+										}
+									],
+									"dataFileName": "Word count widget.js",
+									"attachments": []
+								},
+								{
+									"isClone": false,
+									"noteId": "di6K9jhoXb2n",
+									"notePath": [
+										"root",
+										"aE2gYa2KHmtW",
+										"dzC2ScKVIK7s",
+										"di6K9jhoXb2n"
+									],
+									"title": "Weight Tracker",
+									"notePosition": 40,
+									"prefix": null,
+									"isExpanded": false,
+									"type": "render",
+									"mime": "text/html",
+									"attributes": [
+										{
+											"type": "label",
+											"name": "hideChildrenOverview",
+											"value": "",
+											"isInheritable": false,
+											"position": 10
+										},
+										{
+											"type": "label",
+											"name": "bookmarked",
+											"value": "",
+											"isInheritable": false,
+											"position": 30
+										},
+										{
+											"type": "label",
+											"name": "iconClass",
+											"value": "bx bx-tachometer",
+											"isInheritable": false,
+											"position": 40
+										},
+										{
+											"type": "relation",
+											"name": "renderNote",
+											"value": "8tblGCG94ndS",
+											"isInheritable": false,
+											"position": 20
+										}
+									],
+									"attachments": [],
+									"dirFileName": "Weight Tracker",
+									"children": [
+										{
+											"isClone": false,
+											"noteId": "8tblGCG94ndS",
+											"notePath": [
+												"root",
+												"aE2gYa2KHmtW",
+												"dzC2ScKVIK7s",
+												"di6K9jhoXb2n",
+												"8tblGCG94ndS"
+											],
+											"title": "Implementation",
+											"notePosition": 0,
+											"prefix": null,
+											"isExpanded": false,
+											"type": "code",
+											"mime": "text/html",
+											"attributes": [],
+											"dataFileName": "Implementation.html",
+											"attachments": [],
+											"dirFileName": "Implementation",
+											"children": [
+												{
+													"isClone": false,
+													"noteId": "Rr3ISyctCcs6",
+													"notePath": [
+														"root",
+														"aE2gYa2KHmtW",
+														"dzC2ScKVIK7s",
+														"di6K9jhoXb2n",
+														"8tblGCG94ndS",
+														"Rr3ISyctCcs6"
+													],
+													"title": "JS code",
+													"notePosition": 0,
+													"prefix": null,
+													"isExpanded": false,
+													"type": "code",
+													"mime": "application/javascript;env=frontend",
+													"attributes": [],
+													"dataFileName": "JS code.js",
+													"attachments": [],
+													"dirFileName": "JS code",
+													"children": [
+														{
+															"isClone": false,
+															"noteId": "JsMZyjb5ICA1",
+															"notePath": [
+																"root",
+																"aE2gYa2KHmtW",
+																"dzC2ScKVIK7s",
+																"di6K9jhoXb2n",
+																"8tblGCG94ndS",
+																"Rr3ISyctCcs6",
+																"JsMZyjb5ICA1"
+															],
+															"title": "chart.js",
+															"notePosition": 0,
+															"prefix": null,
+															"isExpanded": false,
+															"type": "file",
+															"mime": "text/javascript",
+															"attributes": [],
+															"dataFileName": "chart.js",
+															"attachments": []
+														}
+													]
+												}
+											]
+										}
+									]
+								},
+								{
+									"isClone": false,
+									"noteId": "qBssGQkZ7X94",
+									"notePath": [
+										"root",
+										"aE2gYa2KHmtW",
+										"dzC2ScKVIK7s",
+										"qBssGQkZ7X94"
+									],
+									"title": "Statistics",
+									"notePosition": 60,
+									"prefix": null,
+									"isExpanded": false,
+									"type": "book",
+									"mime": "",
+									"attributes": [
+										{
+											"type": "label",
+											"name": "bookZoomLevel",
+											"value": "2",
+											"isInheritable": false,
+											"position": 10
+										}
+									],
+									"attachments": [],
+									"dirFileName": "Statistics",
+									"children": [
+										{
+											"isClone": false,
+											"noteId": "JbJijYAiRu56",
+											"notePath": [
+												"root",
+												"aE2gYa2KHmtW",
+												"dzC2ScKVIK7s",
+												"qBssGQkZ7X94",
+												"JbJijYAiRu56"
+											],
+											"title": "Attribute count",
+											"notePosition": 10,
+											"prefix": null,
+											"isExpanded": false,
+											"type": "render",
+											"mime": "",
+											"attributes": [
+												{
+													"type": "relation",
+													"name": "renderNote",
+													"value": "UI0a15ojLdR1",
+													"isInheritable": false,
+													"position": 10
+												}
+											],
+											"attachments": [],
+											"dirFileName": "Attribute count",
+											"children": [
+												{
+													"isClone": false,
+													"noteId": "UI0a15ojLdR1",
+													"notePath": [
+														"root",
+														"aE2gYa2KHmtW",
+														"dzC2ScKVIK7s",
+														"qBssGQkZ7X94",
+														"JbJijYAiRu56",
+														"UI0a15ojLdR1"
+													],
+													"title": "template",
+													"notePosition": 0,
+													"prefix": null,
+													"isExpanded": false,
+													"type": "code",
+													"mime": "text/html",
+													"attributes": [],
+													"dataFileName": "template.html",
+													"attachments": [],
+													"dirFileName": "template",
+													"children": [
+														{
+															"isClone": false,
+															"noteId": "SWzvBRzub0GG",
+															"notePath": [
+																"root",
+																"aE2gYa2KHmtW",
+																"dzC2ScKVIK7s",
+																"qBssGQkZ7X94",
+																"JbJijYAiRu56",
+																"UI0a15ojLdR1",
+																"SWzvBRzub0GG"
+															],
+															"title": "js",
+															"notePosition": 0,
+															"prefix": null,
+															"isExpanded": false,
+															"type": "code",
+															"mime": "application/javascript;env=frontend",
+															"attributes": [],
+															"dataFileName": "js.js",
+															"attachments": [],
+															"dirFileName": "js",
+															"children": [
+																{
+																	"isClone": false,
+																	"noteId": "CFgvrLRzz9eN",
+																	"notePath": [
+																		"root",
+																		"aE2gYa2KHmtW",
+																		"dzC2ScKVIK7s",
+																		"qBssGQkZ7X94",
+																		"JbJijYAiRu56",
+																		"UI0a15ojLdR1",
+																		"SWzvBRzub0GG",
+																		"CFgvrLRzz9eN"
+																	],
+																	"title": "renderPieChart",
+																	"notePosition": 0,
+																	"prefix": null,
+																	"isExpanded": false,
+																	"type": "code",
+																	"mime": "application/javascript;env=frontend",
+																	"attributes": [],
+																	"dataFileName": "renderPieChart.js",
+																	"attachments": [],
+																	"dirFileName": "renderPieChart",
+																	"children": [
+																		{
+																			"isClone": false,
+																			"noteId": "BO6hKw94HIBD",
+																			"notePath": [
+																				"root",
+																				"aE2gYa2KHmtW",
+																				"dzC2ScKVIK7s",
+																				"qBssGQkZ7X94",
+																				"JbJijYAiRu56",
+																				"UI0a15ojLdR1",
+																				"SWzvBRzub0GG",
+																				"CFgvrLRzz9eN",
+																				"BO6hKw94HIBD"
+																			],
+																			"title": "chartjs-plugin-datalabels.min.js",
+																			"notePosition": 0,
+																			"prefix": null,
+																			"isExpanded": false,
+																			"type": "file",
+																			"mime": "text/javascript",
+																			"attributes": [
+																				{
+																					"type": "label",
+																					"name": "originalFileName",
+																					"value": "chartjs-plugin-datalabels.min.js",
+																					"isInheritable": false,
+																					"position": 1
+																				}
+																			],
+																			"dataFileName": "chartjs-plugin-datalabe.min.js",
+																			"attachments": [],
+																			"dirFileName": "chartjs-plugin-datalabels.min.js",
+																			"children": [
+																				{
+																					"isClone": true,
+																					"noteId": "JsMZyjb5ICA1",
+																					"notePath": [
+																						"root",
+																						"aE2gYa2KHmtW",
+																						"dzC2ScKVIK7s",
+																						"qBssGQkZ7X94",
+																						"JbJijYAiRu56",
+																						"UI0a15ojLdR1",
+																						"SWzvBRzub0GG",
+																						"CFgvrLRzz9eN",
+																						"BO6hKw94HIBD",
+																						"JsMZyjb5ICA1"
+																					],
+																					"title": "chart.js",
+																					"prefix": null,
+																					"dataFileName": "chart.js.clone.html",
+																					"type": "text",
+																					"format": "html"
+																				}
+																			]
+																		},
+																		{
+																			"isClone": true,
+																			"noteId": "JsMZyjb5ICA1",
+																			"notePath": [
+																				"root",
+																				"aE2gYa2KHmtW",
+																				"dzC2ScKVIK7s",
+																				"qBssGQkZ7X94",
+																				"JbJijYAiRu56",
+																				"UI0a15ojLdR1",
+																				"SWzvBRzub0GG",
+																				"CFgvrLRzz9eN",
+																				"JsMZyjb5ICA1"
+																			],
+																			"title": "chart.js",
+																			"prefix": null,
+																			"dataFileName": "chart.js.clone.html",
+																			"type": "text",
+																			"format": "html"
+																		}
+																	]
+																},
+																{
+																	"isClone": false,
+																	"noteId": "nnNtwInwiS6M",
+																	"notePath": [
+																		"root",
+																		"aE2gYa2KHmtW",
+																		"dzC2ScKVIK7s",
+																		"qBssGQkZ7X94",
+																		"JbJijYAiRu56",
+																		"UI0a15ojLdR1",
+																		"SWzvBRzub0GG",
+																		"nnNtwInwiS6M"
+																	],
+																	"title": "renderTable",
+																	"notePosition": 10,
+																	"prefix": null,
+																	"isExpanded": false,
+																	"type": "code",
+																	"mime": "application/javascript;env=frontend",
+																	"attributes": [],
+																	"dataFileName": "renderTable.js",
+																	"attachments": []
+																}
+															]
+														}
+													]
+												}
+											]
+										},
+										{
+											"isClone": false,
+											"noteId": "1qLLdu1PbbmS",
+											"notePath": [
+												"root",
+												"aE2gYa2KHmtW",
+												"dzC2ScKVIK7s",
+												"qBssGQkZ7X94",
+												"1qLLdu1PbbmS"
+											],
+											"title": "Largest notes",
+											"notePosition": 20,
+											"prefix": null,
+											"isExpanded": false,
+											"type": "render",
+											"mime": "",
+											"attributes": [
+												{
+													"type": "relation",
+													"name": "renderNote",
+													"value": "JQOSEsKbByD5",
+													"isInheritable": false,
+													"position": 10
+												}
+											],
+											"attachments": [],
+											"dirFileName": "Largest notes",
+											"children": [
+												{
+													"isClone": false,
+													"noteId": "JQOSEsKbByD5",
+													"notePath": [
+														"root",
+														"aE2gYa2KHmtW",
+														"dzC2ScKVIK7s",
+														"qBssGQkZ7X94",
+														"1qLLdu1PbbmS",
+														"JQOSEsKbByD5"
+													],
+													"title": "template",
+													"notePosition": 10,
+													"prefix": null,
+													"isExpanded": false,
+													"type": "code",
+													"mime": "text/html",
+													"attributes": [],
+													"dataFileName": "template.html",
+													"attachments": [],
+													"dirFileName": "template",
+													"children": [
+														{
+															"isClone": false,
+															"noteId": "MaGjodgnSCJA",
+															"notePath": [
+																"root",
+																"aE2gYa2KHmtW",
+																"dzC2ScKVIK7s",
+																"qBssGQkZ7X94",
+																"1qLLdu1PbbmS",
+																"JQOSEsKbByD5",
+																"MaGjodgnSCJA"
+															],
+															"title": "js",
+															"notePosition": 0,
+															"prefix": null,
+															"isExpanded": false,
+															"type": "code",
+															"mime": "application/javascript;env=frontend",
+															"attributes": [],
+															"dataFileName": "js.js",
+															"attachments": []
+														}
+													]
+												}
+											]
+										},
+										{
+											"isClone": false,
+											"noteId": "OAwvF2UsnXAo",
+											"notePath": [
+												"root",
+												"aE2gYa2KHmtW",
+												"dzC2ScKVIK7s",
+												"qBssGQkZ7X94",
+												"OAwvF2UsnXAo"
+											],
+											"title": "Most edited notes",
+											"notePosition": 30,
+											"prefix": null,
+											"isExpanded": false,
+											"type": "render",
+											"mime": "",
+											"attributes": [
+												{
+													"type": "relation",
+													"name": "renderNote",
+													"value": "KATiSYlKt3mF",
+													"isInheritable": false,
+													"position": 10
+												}
+											],
+											"attachments": [],
+											"dirFileName": "Most edited notes",
+											"children": [
+												{
+													"isClone": false,
+													"noteId": "KATiSYlKt3mF",
+													"notePath": [
+														"root",
+														"aE2gYa2KHmtW",
+														"dzC2ScKVIK7s",
+														"qBssGQkZ7X94",
+														"OAwvF2UsnXAo",
+														"KATiSYlKt3mF"
+													],
+													"title": "template",
+													"notePosition": 0,
+													"prefix": null,
+													"isExpanded": false,
+													"type": "code",
+													"mime": "text/html",
+													"attributes": [],
+													"dataFileName": "template.html",
+													"attachments": [],
+													"dirFileName": "template",
+													"children": [
+														{
+															"isClone": false,
+															"noteId": "ByoeMvRnOXLW",
+															"notePath": [
+																"root",
+																"aE2gYa2KHmtW",
+																"dzC2ScKVIK7s",
+																"qBssGQkZ7X94",
+																"OAwvF2UsnXAo",
+																"KATiSYlKt3mF",
+																"ByoeMvRnOXLW"
+															],
+															"title": "js",
+															"notePosition": 0,
+															"prefix": null,
+															"isExpanded": false,
+															"type": "code",
+															"mime": "application/javascript;env=frontend",
+															"attributes": [],
+															"dataFileName": "js.js",
+															"attachments": []
+														}
+													]
+												}
+											]
+										},
+										{
+											"isClone": false,
+											"noteId": "z0ll0pPaKWyF",
+											"notePath": [
+												"root",
+												"aE2gYa2KHmtW",
+												"dzC2ScKVIK7s",
+												"qBssGQkZ7X94",
+												"z0ll0pPaKWyF"
+											],
+											"title": "Most linked notes",
+											"notePosition": 40,
+											"prefix": null,
+											"isExpanded": false,
+											"type": "render",
+											"mime": "",
+											"attributes": [
+												{
+													"type": "relation",
+													"name": "renderNote",
+													"value": "cKqCsQ0MIqPZ",
+													"isInheritable": false,
+													"position": 10
+												}
+											],
+											"attachments": [],
+											"dirFileName": "Most linked notes",
+											"children": [
+												{
+													"isClone": false,
+													"noteId": "cKqCsQ0MIqPZ",
+													"notePath": [
+														"root",
+														"aE2gYa2KHmtW",
+														"dzC2ScKVIK7s",
+														"qBssGQkZ7X94",
+														"z0ll0pPaKWyF",
+														"cKqCsQ0MIqPZ"
+													],
+													"title": "template",
+													"notePosition": 0,
+													"prefix": null,
+													"isExpanded": false,
+													"type": "code",
+													"mime": "text/html",
+													"attributes": [],
+													"dataFileName": "template.html",
+													"attachments": [],
+													"dirFileName": "template",
+													"children": [
+														{
+															"isClone": false,
+															"noteId": "x9JHRwNwsfAd",
+															"notePath": [
+																"root",
+																"aE2gYa2KHmtW",
+																"dzC2ScKVIK7s",
+																"qBssGQkZ7X94",
+																"z0ll0pPaKWyF",
+																"cKqCsQ0MIqPZ",
+																"x9JHRwNwsfAd"
+															],
+															"title": "js",
+															"notePosition": 0,
+															"prefix": null,
+															"isExpanded": false,
+															"type": "code",
+															"mime": "application/javascript;env=frontend",
+															"attributes": [],
+															"dataFileName": "js.js",
+															"attachments": []
+														}
+													]
+												}
+											]
+										},
+										{
+											"isClone": false,
+											"noteId": "YXDKeOe2ITgp",
+											"notePath": [
+												"root",
+												"aE2gYa2KHmtW",
+												"dzC2ScKVIK7s",
+												"qBssGQkZ7X94",
+												"YXDKeOe2ITgp"
+											],
+											"title": "Note type count",
+											"notePosition": 50,
+											"prefix": null,
+											"isExpanded": false,
+											"type": "render",
+											"mime": "",
+											"attributes": [
+												{
+													"type": "relation",
+													"name": "renderNote",
+													"value": "0mv7GpqwgZ6I",
+													"isInheritable": false,
+													"position": 10
+												}
+											],
+											"attachments": [],
+											"dirFileName": "Note type count",
+											"children": [
+												{
+													"isClone": false,
+													"noteId": "0mv7GpqwgZ6I",
+													"notePath": [
+														"root",
+														"aE2gYa2KHmtW",
+														"dzC2ScKVIK7s",
+														"qBssGQkZ7X94",
+														"YXDKeOe2ITgp",
+														"0mv7GpqwgZ6I"
+													],
+													"title": "template",
+													"notePosition": 0,
+													"prefix": null,
+													"isExpanded": false,
+													"type": "code",
+													"mime": "text/html",
+													"attributes": [],
+													"dataFileName": "template.html",
+													"attachments": [],
+													"dirFileName": "template",
+													"children": [
+														{
+															"isClone": false,
+															"noteId": "LVkeNYlgX8DU",
+															"notePath": [
+																"root",
+																"aE2gYa2KHmtW",
+																"dzC2ScKVIK7s",
+																"qBssGQkZ7X94",
+																"YXDKeOe2ITgp",
+																"0mv7GpqwgZ6I",
+																"LVkeNYlgX8DU"
+															],
+															"title": "js",
+															"notePosition": 0,
+															"prefix": null,
+															"isExpanded": false,
+															"type": "code",
+															"mime": "application/javascript;env=frontend",
+															"attributes": [],
+															"dataFileName": "js.js",
+															"attachments": [],
+															"dirFileName": "js",
+															"children": [
+																{
+																	"isClone": false,
+																	"noteId": "nHjE5A4BIYfH",
+																	"notePath": [
+																		"root",
+																		"aE2gYa2KHmtW",
+																		"dzC2ScKVIK7s",
+																		"qBssGQkZ7X94",
+																		"YXDKeOe2ITgp",
+																		"0mv7GpqwgZ6I",
+																		"LVkeNYlgX8DU",
+																		"nHjE5A4BIYfH"
+																	],
+																	"title": "renderTable",
+																	"notePosition": 0,
+																	"prefix": null,
+																	"isExpanded": false,
+																	"type": "code",
+																	"mime": "application/javascript;env=frontend",
+																	"attributes": [],
+																	"dataFileName": "renderTable.js",
+																	"attachments": []
+																},
+																{
+																	"isClone": true,
+																	"noteId": "CFgvrLRzz9eN",
+																	"notePath": [
+																		"root",
+																		"aE2gYa2KHmtW",
+																		"dzC2ScKVIK7s",
+																		"qBssGQkZ7X94",
+																		"YXDKeOe2ITgp",
+																		"0mv7GpqwgZ6I",
+																		"LVkeNYlgX8DU",
+																		"CFgvrLRzz9eN"
+																	],
+																	"title": "renderPieChart",
+																	"prefix": null,
+																	"dataFileName": "renderPieChart.clone.html",
+																	"type": "text",
+																	"format": "html"
+																}
+															]
+														}
+													]
+												}
+											]
+										},
+										{
+											"isClone": false,
+											"noteId": "bhNxNQLNGuFi",
+											"notePath": [
+												"root",
+												"aE2gYa2KHmtW",
+												"dzC2ScKVIK7s",
+												"qBssGQkZ7X94",
+												"bhNxNQLNGuFi"
+											],
+											"title": "Most cloned notes",
+											"notePosition": 60,
+											"prefix": null,
+											"isExpanded": false,
+											"type": "render",
+											"mime": "",
+											"attributes": [
+												{
+													"type": "relation",
+													"name": "renderNote",
+													"value": "t6A84oyWPgDa",
+													"isInheritable": false,
+													"position": 10
+												}
+											],
+											"attachments": [],
+											"dirFileName": "Most cloned notes",
+											"children": [
+												{
+													"isClone": false,
+													"noteId": "t6A84oyWPgDa",
+													"notePath": [
+														"root",
+														"aE2gYa2KHmtW",
+														"dzC2ScKVIK7s",
+														"qBssGQkZ7X94",
+														"bhNxNQLNGuFi",
+														"t6A84oyWPgDa"
+													],
+													"title": "template",
+													"notePosition": 0,
+													"prefix": null,
+													"isExpanded": false,
+													"type": "code",
+													"mime": "text/html",
+													"attributes": [],
+													"dataFileName": "template.html",
+													"attachments": [],
+													"dirFileName": "template",
+													"children": [
+														{
+															"isClone": false,
+															"noteId": "fMd3AMXmtCtf",
+															"notePath": [
+																"root",
+																"aE2gYa2KHmtW",
+																"dzC2ScKVIK7s",
+																"qBssGQkZ7X94",
+																"bhNxNQLNGuFi",
+																"t6A84oyWPgDa",
+																"fMd3AMXmtCtf"
+															],
+															"title": "js",
+															"notePosition": 0,
+															"prefix": null,
+															"isExpanded": false,
+															"type": "code",
+															"mime": "application/javascript;env=frontend",
+															"attributes": [],
+															"dataFileName": "js.js",
+															"attachments": []
+														}
+													]
+												}
+											]
+										}
+									]
+								},
+								{
+									"isClone": false,
+									"noteId": "VVf3r54UDXV3",
+									"notePath": [
+										"root",
+										"aE2gYa2KHmtW",
+										"dzC2ScKVIK7s",
+										"VVf3r54UDXV3"
+									],
+									"title": "Custom request handler",
+									"notePosition": 90,
+									"prefix": null,
+									"isExpanded": false,
+									"type": "code",
+									"mime": "application/javascript;env=backend",
+									"attributes": [
+										{
+											"type": "relation",
+											"name": "targetNote",
+											"value": "eF5gU30Ddn4c",
+											"isInheritable": false,
+											"position": 10
+										},
+										{
+											"type": "label",
+											"name": "customRequestHandler",
+											"value": "create-note",
+											"isInheritable": false,
+											"position": 20
+										}
+									],
+									"dataFileName": "Custom request handler.js",
+									"attachments": []
+								}
+							]
+						}
+					]
+				}
+			]
+		},
+		{
+			"noImport": true,
+			"dataFileName": "navigation.html"
+		},
+		{
+			"noImport": true,
+			"dataFileName": "index.html"
+		},
+		{
+			"noImport": true,
+			"dataFileName": "style.css"
+		}
+	]
+}
