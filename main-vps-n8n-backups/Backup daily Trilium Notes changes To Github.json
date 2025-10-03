@@ -203,7 +203,7 @@
       "main": [
         [
           {
-            "node": "Starting Message",
+            "node": "Config1",
             "type": "main",
             "index": 0
           }
@@ -219,6 +219,84 @@
             "index": 0
           }
         ]
+      ]
+    },
+    "get_year_note": {
+      "main": [
+        [
+          {
+            "node": "get_node_export",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Filter1": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get Workflows1": {
+      "main": [
+        [
+          {
+            "node": "Filter1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Config1": {
+      "main": [
+        [
+          {
+            "node": "Get Workflows1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Completed Notification1": {
+      "main": [
+        [
+          {
+            "node": "Call 'Success Logger'1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Loop Over Items1": {
+      "main": [
+        [
+          {
+            "node": "Completed Notification1",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Call 'Create/Edit File in Github'",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Call 'Create/Edit File in Github'": {
+      "main": [
+        []
       ]
     }
   },
@@ -382,7 +460,7 @@
     },
     {
       "parameters": {
-        "content": "# How it works \nThis workflow will backup all instance workflows to GitHub every 24 hours.\n\nThe files are saved into folders using `repo_path` for the directory path and `ID.json` for the filename.\nThe Repo Owner, Repo Name and Main folder are set using the `Config` node in the subworkflow. \n\nThe workflow runs calls itself to help reduce memory usage, Once the workflow has completed it will send an optional notification to Slack.\n\nPlease check out my other items on [gumroad](https://boanse.gumroad.com/?section=k_Sn6LcT_dzJFnp5jmsM5A%3D%3D)\nYou might also like something else☺️",
+        "content": "# How it works \n\nhttps://pypi.org/project/trilium-client/\n\nThis workflow will backup all instance workflows to GitHub every 24 hours.\n\nThe files are saved into folders using `repo_path` for the directory path and `ID.json` for the filename.\nThe Repo Owner, Repo Name and Main folder are set using the `Config` node in the subworkflow. \n\nThe workflow runs calls itself to help reduce memory usage, Once the workflow has completed it will send an optional notification to Slack.\n\nPlease check out my other items on [gumroad](https://boanse.gumroad.com/?section=k_Sn6LcT_dzJFnp5jmsM5A%3D%3D)\nYou might also like something else☺️",
         "height": 340,
         "width": 400
       },
@@ -741,33 +819,11 @@
       "type": "n8n-nodes-base.manualTrigger",
       "typeVersion": 1,
       "position": [
-        -1024,
-        -208
+        -1568,
+        800
       ],
       "id": "0bdbb878-908d-4fb0-b12d-65c1e718df0c",
       "name": "When clicking ‘Execute workflow’"
-    },
-    {
-      "parameters": {
-        "url": "https://notes.devengoratela.in/etapi/app-info",
-        "authentication": "genericCredentialType",
-        "genericAuthType": "httpBearerAuth",
-        "options": {}
-      },
-      "type": "n8n-nodes-base.httpRequest",
-      "typeVersion": 4.2,
-      "position": [
-        -736,
-        -160
-      ],
-      "id": "22bfb04d-6d4d-47c5-84ea-e85081ce086a",
-      "name": "HTTP Request",
-      "credentials": {
-        "httpBearerAuth": {
-          "id": "7ivBUm4WkdPCWKRh",
-          "name": "Trilium Notes Bearer Auth account"
-        }
-      }
     },
     {
       "parameters": {
@@ -853,6 +909,359 @@
       ],
       "id": "ca49caad-b04f-44c2-9bc0-48f5db117b6c",
       "name": "Call 'Success Logger'"
+    },
+    {
+      "parameters": {
+        "url": "https://notes.devengoratela.in/etapi/notes?search=n8n",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpBearerAuth",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        -768,
+        -352
+      ],
+      "id": "22bfb04d-6d4d-47c5-84ea-e85081ce086a",
+      "name": "Search?n8n",
+      "credentials": {
+        "httpBearerAuth": {
+          "id": "7ivBUm4WkdPCWKRh",
+          "name": "Trilium Notes Bearer Auth account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "url": "https://notes.devengoratela.in/etapi/calendar/years/2025",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpBearerAuth",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        -768,
+        -192
+      ],
+      "id": "9e91c38b-d06e-4b18-8a42-bf0b86285816",
+      "name": "get_year_note",
+      "credentials": {
+        "httpBearerAuth": {
+          "id": "7ivBUm4WkdPCWKRh",
+          "name": "Trilium Notes Bearer Auth account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "url": "=https://notes.devengoratela.in/etapi/notes/{{ $json.noteId }}/export",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpBearerAuth",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        -544,
+        -208
+      ],
+      "id": "0ae48a7c-e0e0-48bb-ba07-c1d0f4ad13c4",
+      "name": "get_node_export",
+      "credentials": {
+        "httpBearerAuth": {
+          "id": "7ivBUm4WkdPCWKRh",
+          "name": "Trilium Notes Bearer Auth account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "loose",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "bb64ed2c-5193-4b8f-a9e8-55cb83ea244c",
+              "operator": {
+                "type": "dateTime",
+                "operation": "afterOrEquals"
+              },
+              "leftValue": "={{ $json.updatedAt }}",
+              "rightValue": "={{ $now.minus(1, 'days') }}"
+            }
+          ],
+          "combinator": "and"
+        },
+        "looseTypeValidation": true,
+        "options": {}
+      },
+      "id": "567667f3-36d2-4f1e-8022-f9df919ba840",
+      "name": "Filter1",
+      "type": "n8n-nodes-base.filter",
+      "position": [
+        -864,
+        816
+      ],
+      "typeVersion": 2.2
+    },
+    {
+      "parameters": {
+        "filters": {},
+        "requestOptions": {}
+      },
+      "id": "0c8f9817-2698-4635-a519-5a4661cdbc47",
+      "name": "Get Workflows1",
+      "type": "n8n-nodes-base.n8n",
+      "position": [
+        -1072,
+        816
+      ],
+      "typeVersion": 1,
+      "credentials": {
+        "n8nApi": {
+          "id": "lbAvT1ePxYXR0pr9",
+          "name": "n8n account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "03f51f9c-4681-4423-91d2-d32f4c18d6bc",
+              "name": "repo_owner",
+              "type": "string",
+              "value": "devenkhatri"
+            },
+            {
+              "id": "0c9b521a-b698-4b43-9eb0-bbf744760158",
+              "name": "repo_name",
+              "type": "string",
+              "value": "dt-n8n-workflow-backups"
+            },
+            {
+              "id": "91627e70-a71a-4be0-a6f6-b04d5c8469d8",
+              "name": "repo_path",
+              "type": "string",
+              "value": "main-vps-n8n-backups"
+            },
+            {
+              "id": "983a2c87-9d69-4d64-ab88-ec1b1117c6e6",
+              "name": "sub_path",
+              "type": "string",
+              "value": ""
+            }
+          ]
+        },
+        "includeOtherFields": true,
+        "options": {}
+      },
+      "id": "ecea5498-c4fc-4516-a212-d9c9ab1ffd96",
+      "name": "Config1",
+      "type": "n8n-nodes-base.set",
+      "position": [
+        -1296,
+        816
+      ],
+      "typeVersion": 3.4
+    },
+    {
+      "parameters": {
+        "authentication": "oAuth2",
+        "select": "channel",
+        "channelId": {
+          "__rl": true,
+          "value": "C09JX12JJP2",
+          "mode": "list",
+          "cachedResultName": "n8n-notifications"
+        },
+        "text": "=✅ 'Backup daily n8n Workflows changes To Github' workflow has completed at {{ $now }}  - {{ $('Get Workflows1').all().length }} workflows have been processed.",
+        "otherOptions": {}
+      },
+      "id": "7109f348-a021-44ae-ac9d-26872279ea8c",
+      "name": "Completed Notification1",
+      "type": "n8n-nodes-base.slack",
+      "position": [
+        -352,
+        656
+      ],
+      "webhookId": "e7b949f3-d644-44ae-89d9-7087eb2eae45",
+      "executeOnce": true,
+      "typeVersion": 2.2,
+      "credentials": {
+        "slackOAuth2Api": {
+          "id": "SConh1gN2bh0Ijo9",
+          "name": "Slack account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "id": "174e41b7-5143-4087-be13-11a0cd267b01",
+      "name": "Loop Over Items1",
+      "type": "n8n-nodes-base.splitInBatches",
+      "position": [
+        -624,
+        816
+      ],
+      "typeVersion": 3
+    },
+    {
+      "parameters": {
+        "workflowId": {
+          "__rl": true,
+          "value": "cxBhhmkbCV2bIKWN",
+          "mode": "list",
+          "cachedResultUrl": "/workflow/cxBhhmkbCV2bIKWN",
+          "cachedResultName": "Success Logger"
+        },
+        "workflowInputs": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Completion Message": "=✅ 'Backup daily Trilium Notes changes To Github' workflow has completed at {{ $now }}  - {{ $('Get Workflows1').all().length }} workflows have been processed.",
+            "Workflow Name": "={{ $workflow.name }}",
+            "Workflow ID": "={{ $workflow.id }}",
+            "Execution ID": "={{ $execution.id }}",
+            "Execution Resume URL": "={{ $execution.resumeUrl }}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "Workflow Name",
+              "displayName": "Workflow Name",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string",
+              "removed": false
+            },
+            {
+              "id": "Completion Message",
+              "displayName": "Completion Message",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string",
+              "removed": false
+            },
+            {
+              "id": "Workflow ID",
+              "displayName": "Workflow ID",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string",
+              "removed": false
+            },
+            {
+              "id": "Execution ID",
+              "displayName": "Execution ID",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string",
+              "removed": false
+            },
+            {
+              "id": "Execution Resume URL",
+              "displayName": "Execution Resume URL",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string",
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": true
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.executeWorkflow",
+      "typeVersion": 1.3,
+      "position": [
+        -144,
+        656
+      ],
+      "id": "0c8da574-bf2d-4bbf-9c95-06cbd9991465",
+      "name": "Call 'Success Logger'1"
+    },
+    {
+      "parameters": {
+        "workflowId": {
+          "__rl": true,
+          "value": "uNo2nab5wWq5G2iH",
+          "mode": "list",
+          "cachedResultUrl": "/workflow/uNo2nab5wWq5G2iH",
+          "cachedResultName": "Create/Edit File in Github"
+        },
+        "workflowInputs": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Repository Owner": "={{ $('Config1').item.json.repo_owner }}",
+            "Repository Name": "={{ $('Config1').item.json.repo_name }}",
+            "File Path": "={{ $('Config1').item.json.repo_path }}/{{$('Loop Over Items1').item.json.name}}.json"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "Repository Owner",
+              "displayName": "Repository Owner",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string",
+              "removed": false
+            },
+            {
+              "id": "Repository Name",
+              "displayName": "Repository Name",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string",
+              "removed": false
+            },
+            {
+              "id": "File Path",
+              "displayName": "File Path",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string",
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": true
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.executeWorkflow",
+      "typeVersion": 1.3,
+      "position": [
+        -336,
+        960
+      ],
+      "id": "51a672e7-43a3-4e26-8713-861517a66b69",
+      "name": "Call 'Create/Edit File in Github'"
     }
   ],
   "pinData": {},
@@ -903,6 +1312,6 @@
     }
   ],
   "triggerCount": 1,
-  "updatedAt": "2025-10-03T05:43:53.000Z",
-  "versionId": "8849d0e9-cfc3-456e-a802-e1be79fba9e3"
+  "updatedAt": "2025-10-03T12:04:37.000Z",
+  "versionId": "de033208-84dc-42c7-a3fd-4b3351fa35a8"
 }
