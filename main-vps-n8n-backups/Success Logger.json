@@ -71,7 +71,7 @@
           "mappingMode": "defineBelow",
           "value": {
             "Workflow Name": "={{ $json['Workflow Name'] }}",
-            "Date Time": "={{ $now.format('ccc, ff') }}",
+            "Date Time": "={{ $now.format('ccc, ff a') }}",
             "Completion Message": "={{ $json['Completion Message'] }}",
             "Execution Resume URL": "={{ $json['Execution Resume URL'] }}",
             "Workflow ID": "={{ $json['Workflow ID'] }}",
@@ -183,8 +183,15 @@
     }
   ],
   "staticData": null,
-  "tags": [],
+  "tags": [
+    {
+      "createdAt": "2025-09-29T05:19:22.714Z",
+      "updatedAt": "2025-09-29T05:19:22.714Z",
+      "id": "CtJhwl7VjSRt4q5D",
+      "name": "Google Sheets"
+    }
+  ],
   "triggerCount": 0,
-  "updatedAt": "2025-10-03T05:32:16.000Z",
-  "versionId": "4c41cda6-5926-4c58-bf4b-85c7a1a4d8d7"
+  "updatedAt": "2025-10-03T05:43:48.000Z",
+  "versionId": "8e16e503-aea1-4370-8830-c0eab71a5e73"
 }
