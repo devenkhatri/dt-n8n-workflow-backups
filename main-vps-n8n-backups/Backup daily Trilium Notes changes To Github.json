@@ -132,11 +132,6 @@
             "node": "Completed Notification",
             "type": "main",
             "index": 0
-          },
-          {
-            "node": "Append row in sheet",
-            "type": "main",
-            "index": 0
           }
         ],
         [
@@ -217,7 +212,13 @@
     },
     "Completed Notification": {
       "main": [
-        []
+        [
+          {
+            "node": "Append row in sheet",
+            "type": "main",
+            "index": 0
+          }
+        ]
       ]
     }
   },
@@ -709,8 +710,8 @@
       "name": "Completed Notification",
       "type": "n8n-nodes-base.slack",
       "position": [
-        320,
-        -496
+        304,
+        -432
       ],
       "webhookId": "e7b949f3-d644-44ae-89d9-7087eb2eae45",
       "executeOnce": true,
@@ -791,7 +792,7 @@
             "Workflow Name": "={{ $workflow.name }}",
             "Date Time": "={{ $now.format('ccc, ff') }}",
             "Completion Message": "=✅ 'Backup daily n8n Workflows changes To Github' workflow has completed at {{ $now.format('ccc, ff') }}  - {{ $('Get Workflows').all().length }} workflows have been processed.",
-            "Workflow Execution URL": "="
+            "Workflow Execution URL": "=  https://n8n.devengoratela.in/workflow/{{ $workflow.id }}/executions/{{ $execution.id }}"
           },
           "matchingColumns": [],
           "schema": [
@@ -912,6 +913,6 @@
     }
   ],
   "triggerCount": 1,
-  "updatedAt": "2025-10-03T05:07:28.000Z",
-  "versionId": "452a47a2-62a8-405e-b28a-63a123068250"
+  "updatedAt": "2025-10-03T05:15:14.000Z",
+  "versionId": "2f2c2652-b102-4b32-b361-e6025b4f06ed"
 }
