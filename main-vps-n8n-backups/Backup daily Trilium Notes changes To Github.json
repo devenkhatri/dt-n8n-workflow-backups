@@ -1,5 +1,5 @@
 {
-  "active": false,
+  "active": true,
   "connections": {
     "Config": {
       "main": [
@@ -789,9 +789,9 @@
           "mappingMode": "defineBelow",
           "value": {
             "Workflow Name": "={{ $workflow.name }}",
-            "Date Time": "={{ $('Schedule Trigger').item.json['Readable date'] }}",
-            "Completion Message": "=✅ 'Backup daily n8n Workflows changes To Github' workflow has completed at {{ $('Schedule Trigger').item.json['Readable date'] }}  - {{ $('Get Workflows').all().length }} workflows have been processed.",
-            "Workflow Execution URL": "={{ $execution.resumeUrl }}"
+            "Date Time": "={{ $now.format('ccc, ff') }}",
+            "Completion Message": "=✅ 'Backup daily n8n Workflows changes To Github' workflow has completed at {{ $now.format('ccc, ff') }}  - {{ $('Get Workflows').all().length }} workflows have been processed.",
+            "Workflow Execution URL": "="
           },
           "matchingColumns": [],
           "schema": [
@@ -852,7 +852,7 @@
       "typeVersion": 4.7,
       "position": [
         576,
-        -431.3541384269574
+        -432
       ],
       "id": "72ff7ed4-5b0e-4a43-a484-a4764eded216",
       "name": "Append row in sheet",
@@ -912,6 +912,6 @@
     }
   ],
   "triggerCount": 1,
-  "updatedAt": "2025-10-03T04:51:32.000Z",
-  "versionId": "c6befe36-2ce2-4574-a6ca-61827e3fe019"
+  "updatedAt": "2025-10-03T05:07:28.000Z",
+  "versionId": "452a47a2-62a8-405e-b28a-63a123068250"
 }
