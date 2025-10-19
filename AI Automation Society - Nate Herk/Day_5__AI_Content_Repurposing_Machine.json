@@ -1,0 +1,627 @@
+{
+  "name": "Day 5: AI Content Repurposing Machine",
+  "nodes": [
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.deepseek.com/v1/chat/completions",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "Bearer {{$credentials.apiKey}}"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"model\": \"deepseek-chat\",\n  \"messages\": [\n    {\n      \"role\": \"system\",\n      \"content\": \"You are an expert content strategist. Analyze the provided content and extract: 1) Main topic/theme 2) 3-5 key points 3) Target audience 4) Tone/style 5) Primary call-to-action. Return as structured JSON.\"\n    },\n    {\n      \"role\": \"user\",\n      \"content\": \"{{ $json.body.content }}\"\n    }\n  ],\n  \"response_format\": {\n    \"type\": \"json_object\"\n  }\n}",
+        "options": {}
+      },
+      "id": "f3917c23-36bc-4b31-9895-680ea4bff3f3",
+      "name": "Analyze Content",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        460,
+        280
+      ],
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "vSAJXOzWrX84Exvs",
+          "name": "Header Auth account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.deepseek.com/v1/chat/completions",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "Bearer {{$credentials.apiKey}}"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"model\": \"deepseek-chat\",\n  \"messages\": [\n    {\n      \"role\": \"system\",\n      \"content\": \"Transform the content into a LinkedIn carousel (5-7 slides). Format:\\n- Slide 1: Hook + Problem statement\\n- Slides 2-5: One key insight per slide (2-3 bullet points each)\\n- Slide 6: Results/benefits\\n- Slide 7: CTA + follow for more\\n\\nProvide title and bullet points for each slide. Include design suggestions.\"\n    },\n    {\n      \"role\": \"user\",\n      \"content\": \"Original content: {{ $('Webhook').item.json.body.content }}\\n\\nContent analysis: {{ $json }}\"\n    }\n  ]\n}",
+        "options": {}
+      },
+      "id": "b24515dd-7b83-4b77-bb47-75a0ca1ef724",
+      "name": "LinkedIn Carousel",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        700,
+        160
+      ],
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "vSAJXOzWrX84Exvs",
+          "name": "Header Auth account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.deepseek.com/v1/chat/completions",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "Bearer {{$credentials.apiKey}}"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"model\": \"deepseek-chat\",\n  \"messages\": [\n    {\n      \"role\": \"system\",\n      \"content\": \"Create a Twitter/X thread (5-10 tweets). Format:\\n- Tweet 1: Hook (question/stat/bold claim)\\n- Tweets 2-8: Expand on points (280 chars each)\\n- Tweet 9: Summary/takeaway\\n- Tweet 10: CTA + 'Follow for more'\\n\\nInclude thread numbering (1/10, 2/10...), relevant emojis, and 2-3 hashtags.\"\n    },\n    {\n      \"role\": \"user\",\n      \"content\": \"Original content: {{ $('Webhook').item.json.body.content }}\\n\\nContent analysis: {{ $json }}\"\n    }\n  ]\n}",
+        "options": {}
+      },
+      "id": "86680f2c-c5e7-4ba3-b623-4558f068489e",
+      "name": "Twitter Thread",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        700,
+        280
+      ],
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "vSAJXOzWrX84Exvs",
+          "name": "Header Auth account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.deepseek.com/v1/chat/completions",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "Bearer {{$credentials.apiKey}}"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"model\": \"deepseek-chat\",\n  \"messages\": [\n    {\n      \"role\": \"system\",\n      \"content\": \"Create Instagram carousel content (8-10 slides).\\nStructure:\\n- Slide 1: Eye-catching title\\n- Slides 2-9: Visual points (minimal text, 3-5 words per slide)\\n- Slide 10: Save this post + follow\\n\\nAlso create caption with: Hook (first line), expanded content, 15-20 hashtags, CTA.\"\n    },\n    {\n      \"role\": \"user\",\n      \"content\": \"Original content: {{ $('Webhook').item.json.body.content }}\\n\\nContent analysis: {{ $json }}\"\n    }\n  ]\n}",
+        "options": {}
+      },
+      "id": "56e1622c-dc61-4ce5-948f-b442a83bbaed",
+      "name": "Instagram Carousel",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        700,
+        400
+      ],
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "vSAJXOzWrX84Exvs",
+          "name": "Header Auth account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.deepseek.com/v1/chat/completions",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "Bearer {{$credentials.apiKey}}"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"model\": \"deepseek-chat\",\n  \"messages\": [\n    {\n      \"role\": \"system\",\n      \"content\": \"Create a YouTube Short script (45-60 seconds).\\nFormat:\\n- 0-3 sec: Hook\\n- 4-10 sec: Problem explanation\\n- 11-40 sec: Solution steps (quick & visual)\\n- 41-50 sec: Results/benefits\\n- 51-60 sec: CTA\\n\\nInclude: On-screen text suggestions, B-roll ideas, transition cues.\"\n    },\n    {\n      \"role\": \"user\",\n      \"content\": \"Original content: {{ $('Webhook').item.json.body.content }}\\n\\nContent analysis: {{ $json }}\"\n    }\n  ]\n}",
+        "options": {}
+      },
+      "id": "7b3e6cfe-55b8-48bc-aba8-39aabc254107",
+      "name": "YouTube Script",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        700,
+        520
+      ],
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "vSAJXOzWrX84Exvs",
+          "name": "Header Auth account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.deepseek.com/v1/chat/completions",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "Bearer {{$credentials.apiKey}}"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"model\": \"deepseek-chat\",\n  \"messages\": [\n    {\n      \"role\": \"system\",\n      \"content\": \"Create newsletter content with:\\n- 3 subject line options\\n- Opening hook\\n- Problem/solution format\\n- Bullet point takeaways\\n- CTA to full content\\n- P.S. line that adds value\"\n    },\n    {\n      \"role\": \"user\",\n      \"content\": \"Original content: {{ $('Webhook').item.json.body.content }}\\n\\nContent analysis: {{ $json }}\"\n    }\n  ]\n}",
+        "options": {}
+      },
+      "id": "f3dae010-fee6-4780-a3c9-9e6963464306",
+      "name": "Newsletter Section",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        700,
+        640
+      ],
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "vSAJXOzWrX84Exvs",
+          "name": "Header Auth account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.deepseek.com/v1/chat/completions",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "Bearer {{$credentials.apiKey}}"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"model\": \"deepseek-chat\",\n  \"messages\": [\n    {\n      \"role\": \"system\",\n      \"content\": \"Create SEO-optimized blog post with:\\n- SEO title (60 chars, with keyword)\\n- Meta description (155 chars)\\n- H1, H2, H3 structure\\n- Introduction (keyword in first 100 words)\\n- Detailed sections\\n- Conclusion with CTA\\n- 5-7 relevant keywords\\n- Internal linking suggestions\"\n    },\n    {\n      \"role\": \"user\",\n      \"content\": \"Original content: {{ $('Webhook').item.json.body.content }}\\n\\nContent analysis: {{ $json }}\"\n    }\n  ]\n}",
+        "options": {}
+      },
+      "id": "bda3990b-4d9a-4868-b80a-9826eef77b3d",
+      "name": "SEO Blog Post",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        700,
+        760
+      ],
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "vSAJXOzWrX84Exvs",
+          "name": "Header Auth account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "append",
+        "documentId": {
+          "__rl": true,
+          "value": "1tFOJzajwfusTZNCMPo2aX8kcD4gsuSI3Le6D-4HsMBI",
+          "mode": "id"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "AI Content repurposing machine",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1tFOJzajwfusTZNCMPo2aX8kcD4gsuSI3Le6D-4HsMBI/edit#gid=0"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Date": "={{ new Date().toISOString() }}",
+            "LinkedIn Carousel": "={{ $json.linkedin }}",
+            "Twitter Thread": "={{ $json.twitter }}",
+            "Instagram Carousel": "={{ $json.instagram }}",
+            "YouTube Script": "={{ $json.youtube }}",
+            "Newsletter": "={{ $json.newsletter }}",
+            "SEO Blog Post": "={{ $json.blog }}",
+            "Original Content": "={{ $('Webhook').item.json.body.content }}"
+          },
+          "matchingColumns": [
+            "Original Content"
+          ],
+          "schema": [
+            {
+              "id": "Date",
+              "displayName": "Date",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Original Content",
+              "displayName": "Original Content",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "LinkedIn Carousel",
+              "displayName": "LinkedIn Carousel",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Twitter Thread",
+              "displayName": "Twitter Thread",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Instagram Carousel",
+              "displayName": "Instagram Carousel",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "YouTube Script",
+              "displayName": "YouTube Script",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Newsletter",
+              "displayName": "Newsletter",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "SEO Blog Post",
+              "displayName": "SEO Blog Post",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "id": "2196cad9-da41-4a57-a4b5-d612e8291367",
+      "name": "Save to Google Sheets",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.4,
+      "position": [
+        1360,
+        480
+      ],
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "DCGrCjADin2huwok",
+          "name": "Google Sheets account 3"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "a32e1763-1c11-4f3d-8806-6e32c4854f8d",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        240,
+        280
+      ],
+      "id": "a5806e29-58ce-43b8-80bf-ee975d048e6d",
+      "name": "Webhook",
+      "webhookId": "a32e1763-1c11-4f3d-8806-6e32c4854f8d"
+    },
+    {
+      "parameters": {
+        "mode": "combine",
+        "combineBy": "combineByPosition",
+        "numberInputs": 6,
+        "options": {}
+      },
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3.2,
+      "position": [
+        1020,
+        420
+      ],
+      "id": "4086d725-ed19-4291-b07d-55280148497f",
+      "name": "Merge"
+    },
+    {
+      "parameters": {
+        "jsCode": "// Get the original content from webhook\nconst webhookData = $items(\"Webhook\");\nconst originalContent = webhookData && webhookData[0] ? webhookData[0].json.content : \"No content\";\n\n// Get all platform outputs\nconst linkedinData = $items(\"LinkedIn Carousel\")[0].json.choices[0].message.content;\nconst twitterData = $items(\"Twitter Thread\")[0].json.choices[0].message.content;\nconst instagramData = $items(\"Instagram Carousel\")[0].json.choices[0].message.content;\nconst youtubeData = $items(\"YouTube Script\")[0].json.choices[0].message.content;\nconst newsletterData = $items(\"Newsletter Section\")[0].json.choices[0].message.content;\nconst blogData = $items(\"SEO Blog Post\")[0].json.choices[0].message.content;\n\nreturn [{\n  originalContent: originalContent,\n  linkedin: linkedinData,\n  twitter: twitterData,\n  instagram: instagramData,\n  youtube: youtubeData,\n  newsletter: newsletterData,\n  blog: blogData\n}];"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1200,
+        480
+      ],
+      "id": "4264c108-bce5-44b8-a2c2-4c64733fae93",
+      "name": "Code"
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={{ JSON.stringify($input.all()) }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.4,
+      "position": [
+        1720,
+        480
+      ],
+      "id": "c424aebe-0383-4be6-9440-615e035b6e0e",
+      "name": "Respond to Webhook"
+    },
+    {
+      "parameters": {
+        "jsCode": "// Get all the platform outputs\nreturn [{\n  \"LinkedIn Carousel\": $('LinkedIn Carousel').item.json.choices[0].message.content,\n  \"Twitter Thread\": $('Twitter Thread').item.json.choices[0].message.content,\n  \"Instagram Carousel\": $('Instagram Carousel').item.json.choices[0].message.content,\n  \"YouTube Script\": $('YouTube Script').item.json.choices[0].message.content,\n  \"Newsletter\": $('Newsletter Section').item.json.choices[0].message.content,\n  \"SEO Blog Post\": $('SEO Blog Post').item.json.choices[0].message.content\n}];"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1540,
+        480
+      ],
+      "id": "5f82564e-18c6-4925-a0cc-8c7ed076c971",
+      "name": "Code1"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Analyze Content": {
+      "main": [
+        [
+          {
+            "node": "LinkedIn Carousel",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Twitter Thread",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Instagram Carousel",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "YouTube Script",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Newsletter Section",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "SEO Blog Post",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "LinkedIn Carousel": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Twitter Thread": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Instagram Carousel": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 2
+          }
+        ]
+      ]
+    },
+    "YouTube Script": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 3
+          }
+        ]
+      ]
+    },
+    "Newsletter Section": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 4
+          }
+        ]
+      ]
+    },
+    "SEO Blog Post": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 5
+          }
+        ]
+      ]
+    },
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Analyze Content",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Merge": {
+      "main": [
+        [
+          {
+            "node": "Code",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code": {
+      "main": [
+        [
+          {
+            "node": "Save to Google Sheets",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Save to Google Sheets": {
+      "main": [
+        [
+          {
+            "node": "Code1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code1": {
+      "main": [
+        [
+          {
+            "node": "Respond to Webhook",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": true,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "3c0b1bd9-b509-48c6-af1a-c9a8210617b6",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "6298067642c3e349581f2e29092e2f6c83f0a76b4135fb1998c90c198e1c5829"
+  },
+  "id": "QcL6d8q2kivcPDZm",
+  "tags": []
+}
