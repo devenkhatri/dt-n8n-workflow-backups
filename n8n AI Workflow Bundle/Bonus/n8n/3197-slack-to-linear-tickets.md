@@ -1,13 +1,13 @@
-# Workflow Analysis for Slack to Linear Ticket Creation with AI Summarization
+# Workflow Analysis for Slack to Linear Ticket Creation
 
 ## Description
-This workflow automates the creation of Linear tickets from Slack messages, leveraging AI to summarize the message content for better ticket descriptions. It enhances team productivity by streamlining the process of converting development-related discussions into actionable tasks.
+This workflow automates the creation of Linear tickets from specific Slack messages, extracting relevant information and organizing it for efficient task management.
 
 ## Input Details
-The workflow is manually triggered and receives a Slack message URL as input.
+The workflow is triggered manually and receives data from a "When a card is moved..." trigger.
 
 ## Process Summary
-The workflow starts by extracting basic information from the provided Slack URL. It then retrieves the message content, channel details, and user information from Slack. Subsequently, it uses an AI model to summarize the extracted Slack message. Finally, it creates a new issue in Linear, populating details like title, description, and status based on the summarized message and predefined settings.
+The workflow starts by retrieving items. It then extracts specific data from these items, combining the client and project into a single string. Next, it sets a fixed date and generates a timestamp. Finally, it uses this processed information to create a new issue in Linear.
 
 ## Output Details
-The workflow creates a new issue in Linear with a summarized description from the Slack message.
+The workflow creates a new issue (ticket) in Linear with details extracted from the initial input.
