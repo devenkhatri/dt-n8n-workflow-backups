@@ -1,13 +1,13 @@
-# Workflow Analysis for Automate Linear Issue Creation from Slack Messages
+# Workflow Analysis for Slack to Linear Ticket Creation
 
 ## Description
-This workflow automatically creates a new issue in Linear based on a message posted in a designated Slack channel. It extracts key information from the Slack message, such as the sender, channel, and message text, and uses it to populate the Linear issue details.
+This workflow automates the creation of Linear tickets from specific Slack messages, ensuring that important discussions or requests in Slack are seamlessly converted into actionable tasks in Linear.
 
 ## Input Details
-The workflow is triggered by new messages in a specific Slack channel via a Slack Trigger.
+The workflow is triggered by an HTTP POST request, likely from a Slack webhook, containing channel ID, event ID, message text, user ID, and timestamp.
 
 ## Process Summary
-The workflow starts by listening for new messages in a specified Slack channel. It then extracts information about the sender, channel, and message content from the Slack message. Next, it constructs a descriptive issue title and body for Linear using the extracted Slack message data. Finally, it creates a new issue in Linear with the prepared title and body.
+The workflow receives a Slack message via a webhook. It then filters messages based on whether they were posted by a specific user and contain a new thread. If the message meets the criteria, it extracts the message text and user information. Finally, a new issue is created in Linear with the extracted message content and Slack user details.
 
 ## Output Details
-The workflow creates a new issue in Linear with details extracted from the Slack message.
+A new issue is created in Linear with details from the Slack message.
