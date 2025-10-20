@@ -1,13 +1,13 @@
-# Workflow Analysis for Slack to Linear Ticket Creation
+# Workflow Analysis for Automate Linear Issue Creation from Slack Messages
 
 ## Description
-This workflow listens for specific reactions to Slack messages, extracts relevant information, and creates a new issue in Linear. It is designed to streamline the process of converting Slack discussions into actionable Linear tickets for project management.
+This workflow automatically creates a new issue in Linear based on a message posted in a designated Slack channel. It extracts key information from the Slack message, such as the sender, channel, and message text, and uses it to populate the Linear issue details.
 
 ## Input Details
-The workflow is triggered by an HTTP Webhook when a specific emoji reaction is added to a message in Slack.
+The workflow is triggered by new messages in a specific Slack channel via a Slack Trigger.
 
 ## Process Summary
-First, the workflow checks if the reaction emoji is an "issue" emoji. If it is, it retrieves the user who added the reaction and the details of the original Slack message. Then, it extracts the message text and a link to the message, formats a title for the Linear issue, and creates a new issue in Linear with the extracted details. Finally, it sends a confirmation message back to the Slack channel indicating that the Linear issue has been created.
+The workflow starts by listening for new messages in a specified Slack channel. It then extracts information about the sender, channel, and message content from the Slack message. Next, it constructs a descriptive issue title and body for Linear using the extracted Slack message data. Finally, it creates a new issue in Linear with the prepared title and body.
 
 ## Output Details
-The workflow creates a new issue in Linear and sends a confirmation message to the relevant Slack channel.
+The workflow creates a new issue in Linear with details extracted from the Slack message.
