@@ -1,13 +1,13 @@
 # Workflow Analysis for WhatsApp AI Sales Agent
 
 ## Description
-This workflow automates customer interactions on WhatsApp using an AI sales agent. It retrieves customer conversations, processes them with an AI model, and responds via WhatsApp.
+This workflow automates customer interactions on WhatsApp using AI, providing instant responses and lead qualification for sales teams.
 
 ## Input Details
-The workflow is triggered by an HTTP request containing WhatsApp message data, including a unique ID for the message, the sender's phone number, and the message content.
+The workflow is triggered by an incoming WhatsApp message received via a webhook.
 
 ## Process Summary
-The workflow starts by extracting WhatsApp message details from the incoming request. It then retrieves previous messages from the same customer using a Supabase database. An AI model then processes the conversation history and generates a response. Finally, the generated AI response is sent back to the customer via WhatsApp, and the conversation is updated in the Supabase database.
+The workflow starts by extracting the message and sender details from the incoming WhatsApp message. It then uses an AI model (ChatGPT) to generate an appropriate response based on the customer's message, incorporating a predefined sales persona and product information. If the AI determines the message is a lead, it extracts lead information like name, phone, and email using another AI model and stores it in a Google Sheet. Finally, the generated AI response is sent back to the customer on WhatsApp.
 
 ## Output Details
-The workflow sends an AI-generated chat response to the customer via WhatsApp and updates the conversation history in Supabase.
+The workflow sends automated AI-generated responses back to the WhatsApp sender and optionally logs lead information into a Google Sheet.
