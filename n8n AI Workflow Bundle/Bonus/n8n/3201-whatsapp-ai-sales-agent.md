@@ -1,13 +1,13 @@
 # Workflow Analysis for WhatsApp AI Sales Agent
 
 ## Description
-This workflow automates customer interactions on WhatsApp using an AI sales agent. It uses a custom set of instructions and a knowledge base to answer customer questions and provide support, escalating to a human agent when necessary.
+This workflow automates customer interactions on WhatsApp using AI to answer questions, recommend products, and assist with purchases, improving customer service and sales efficiency.
 
 ## Input Details
-The workflow is triggered by an incoming WhatsApp message received via a webhook.
+The workflow is triggered by an incoming message to a WhatsApp business account.
 
 ## Process Summary
-The workflow starts by extracting the customer's message and contact information from the incoming WhatsApp message. It then uses a custom system prompt and the message history to interact with an AI sales agent, which determines the appropriate response or action. If the AI determines a human agent is needed, it notifies the sales team via Slack and creates a lead in Zoho CRM. Otherwise, the AI generates a response, potentially using a knowledge base for additional information, and sends it back to the customer via WhatsApp.
+The workflow receives a WhatsApp message and extracts relevant information. It then uses an AI model (ChatGPT) to generate a response based on the customer's query. If the AI deems the conversation important for a human, it sends a notification to a Slack channel. Finally, the AI-generated response is sent back to the customer on WhatsApp.
 
 ## Output Details
-The workflow sends automated responses to customers on WhatsApp, notifies a sales team on Slack if human intervention is required, and creates leads in Zoho CRM for follow-up.
+The workflow sends AI-generated responses to customers on WhatsApp and can optionally send notifications to a Slack channel for important conversations.
