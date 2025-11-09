@@ -1,0 +1,14 @@
+const input = $input.first().json.output;
+let cleaned = input.replace(/'/g, '"').replace(/\s+/g, ' ').trim();
+try {
+  const parsed = JSON.parse(cleaned);
+  return [{ json: parsed }];
+} catch (error) {
+  return [{
+    json: {
+      error: 'Failed to parse JSON',
+      errorMessage: error.message,
+      originalInput: input
+    }
+  }];
+}

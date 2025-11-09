@@ -1,0 +1,452 @@
+{
+  "name": "Day2_Social_media_Multi_Posting'",
+  "nodes": [
+    {
+      "parameters": {
+        "jsCode": "// This simulates receiving a post - in production, could be from a form, email, etc.\n// For testing, just edit the post content here:\n\nconst originalPost = `Just finished Day 1 of my automation challenge! Built an email classifier that saves 2 hours daily. It reads emails, identifies urgency, and even drafts responses. This is why I love n8n!`;\n\nconst topic = \"automation\"; // technology, marketing, business, etc.\n\nreturn {\n  originalPost: originalPost,\n  topic: topic,\n  timestamp: new Date().toISOString(),\n  postLength: originalPost.length\n};"
+      },
+      "id": "e4be67f2-7e24-4ee4-8bbd-78b8a616fa4a",
+      "name": "Your Post Content",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        100,
+        340
+      ]
+    },
+    {
+      "parameters": {
+        "modelId": {
+          "__rl": true,
+          "value": "gpt-3.5-turbo",
+          "mode": "list"
+        },
+        "messages": {
+          "values": [
+            {
+              "content": "You are a social media expert. Adapt the given post for LinkedIn. LinkedIn posts should be:\n- Professional and insightful\n- 1300 characters max (ideal: 600-1000)\n- Use 3-5 relevant hashtags at the end\n- Include a call-to-action\n- Break into short paragraphs (2-3 sentences each)\n- Start with a hook\n\nRespond with JSON:\n{\"platform\": \"linkedin\", \"content\": \"adapted post without hashtags\", \"hashtags\": [\"tag1\", \"tag2\"], \"character_count\": 0, \"hook\": \"opening line\"}"
+            },
+            {
+              "content": "=Original post: {{$json[\"originalPost\"]}}\n\nTopic/Industry: {{$json[\"topic\"]}}"
+            }
+          ]
+        },
+        "jsonOutput": true,
+        "options": {
+          "temperature": 0.7
+        }
+      },
+      "id": "aa533cc4-c6c9-47d0-8eb5-e286175c2075",
+      "name": "LinkedIn Formatter",
+      "type": "@n8n/n8n-nodes-langchain.openAi",
+      "typeVersion": 1.8,
+      "position": [
+        360,
+        60
+      ],
+      "credentials": {
+        "openAiApi": {
+          "id": "JrbGw6Jxg8rwVMek",
+          "name": "OpenAi account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "modelId": {
+          "__rl": true,
+          "value": "gpt-3.5-turbo",
+          "mode": "list"
+        },
+        "messages": {
+          "values": [
+            {
+              "content": "You are a social media expert. Adapt the given post for Twitter/X. Twitter posts should be:\n- Concise and punchy\n- Under 280 characters per tweet\n- Use 2-3 trending hashtags\n- Include 1-2 emojis\n- Can be a thread if needed (max 3 tweets)\n- Start with attention grabber\n\nRespond with JSON:\n{\"platform\": \"twitter\", \"tweets\": [{\"content\": \"tweet without hashtags\", \"position\": 1}], \"hashtags\": [\"tag1\", \"tag2\"], \"total_thread_length\": 0}"
+            },
+            {
+              "content": "=Original post: {{$json.originalData.originalPost}}\nTopic/Industry: {{$json.originalData.topic}}"
+            }
+          ]
+        },
+        "jsonOutput": true,
+        "options": {
+          "temperature": 0.8
+        }
+      },
+      "id": "bd9fa6ff-840b-4c92-8eeb-a8ce968802d6",
+      "name": "Twitter Formatter",
+      "type": "@n8n/n8n-nodes-langchain.openAi",
+      "typeVersion": 1.8,
+      "position": [
+        360,
+        340
+      ],
+      "credentials": {
+        "openAiApi": {
+          "id": "JrbGw6Jxg8rwVMek",
+          "name": "OpenAi account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "modelId": {
+          "__rl": true,
+          "value": "gpt-3.5-turbo",
+          "mode": "list"
+        },
+        "messages": {
+          "values": [
+            {
+              "content": "You are a social media expert. Adapt the given post for Facebook. Facebook posts should be:\n- Conversational and engaging\n- Personal story angle\n- 1-3 hashtags worked naturally into text\n- End with a question to encourage comments\n- Use casual language\n- Include relevant emoji\n\nRespond with JSON:\n{\"platform\": \"facebook\", \"content\": \"adapted post with hashtags included\", \"engagement_question\": \"question to end with\", \"character_count\": 0}"
+            },
+            {
+              "content": "=Original post: {{$json}}\nFull data: {{JSON.stringify($json)}}"
+            }
+          ]
+        },
+        "jsonOutput": true,
+        "options": {
+          "temperature": 0.8
+        }
+      },
+      "id": "c2d94f60-1b49-4b5b-9031-bd381ad7aad7",
+      "name": "Facebook Formatter",
+      "type": "@n8n/n8n-nodes-langchain.openAi",
+      "typeVersion": 1.8,
+      "position": [
+        360,
+        600
+      ],
+      "credentials": {
+        "openAiApi": {
+          "id": "JrbGw6Jxg8rwVMek",
+          "name": "OpenAi account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "// Debug version - let's see what we're getting\nconst input = $input.all();\nconsole.log(\"Raw input:\", JSON.stringify(input));\n\n// Try to get the data\nlet linkedinData;\ntry {\n  // Check different possible structures\n  if (input[0]?.json) {\n    const response = input[0].json;\n    if (response[0]?.message?.content) {\n      linkedinData = response[0].message.content;\n    } else if (response.message?.content) {\n      linkedinData = response.message.content;\n    } else if (response.content) {\n      linkedinData = response.content;\n    }\n  }\n  \n  if (!linkedinData) {\n    throw new Error(\"Could not find LinkedIn data\");\n  }\n} catch (error) {\n  return {\n    platform: \"LinkedIn\",\n    error: error.message,\n    debug: JSON.stringify(input)\n  };\n}\n\n// Format hashtags\nconst hashtags = linkedinData.hashtags.map(tag => `#${tag}`).join(' ');\n\n// Create final post\nconst finalPost = `${linkedinData.content}\\n\\n${hashtags}`;\n\n// Create preview\nconst preview = `\n🔵 LINKEDIN POST PREVIEW:\n━━━━━━━━━━━━━━━━━━━━\n${finalPost}\n━━━━━━━━━━━━━━━━━━━━\n📊 Character Count: ${finalPost.length}/1300\n`;\n\nreturn {\n  platform: \"LinkedIn\",\n  finalPost: finalPost,\n  preview: preview,\n  characterCount: finalPost.length,\n  hashtags: linkedinData.hashtags,  // if you have this line, comma here too\n  originalData: $('Your Post Content').item.json\n};"
+      },
+      "id": "5c703375-a2c1-4992-b3f0-248180e5ac6d",
+      "name": "Process LinkedIn",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        840,
+        60
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "// Debug version for Twitter\nconst input = $input.all();\n\n// Try to get the data\nlet twitterData;\ntry {\n  // Check different possible structures\n  if (input[0]?.json) {\n    const response = input[0].json;\n    if (response[0]?.message?.content) {\n      twitterData = response[0].message.content;\n    } else if (response.message?.content) {\n      twitterData = response.message.content;\n    } else if (response.content) {\n      twitterData = response.content;\n    }\n  }\n  \n  if (!twitterData) {\n    throw new Error(\"Could not find Twitter data\");\n  }\n} catch (error) {\n  return {\n    platform: \"Twitter\",\n    error: error.message,\n    debug: JSON.stringify(input)\n  };\n}\n\n// Get tweets and hashtags\nconst tweets = twitterData.tweets || [{content: \"Error: No tweets\", position: 1}];\nconst hashtags = twitterData.hashtags ? twitterData.hashtags.map(tag => `#${tag}`).join(' ') : '';\n\n// Format tweets with hashtags on the last one\nconst formattedTweets = tweets.map((tweet, index) => {\n  const isLast = index === tweets.length - 1;\n  const content = isLast ? `${tweet.content} ${hashtags}` : tweet.content;\n  \n  return {\n    position: tweet.position,\n    content: content,\n    characterCount: content.length\n  };\n});\n\n// Create preview\nlet preview = `\n🐦 TWITTER/X PREVIEW:\n━━━━━━━━━━━━━━━━━━━━\n`;\nformattedTweets.forEach(tweet => {\n  preview += `[${tweet.position}/${tweets.length}] ${tweet.content}\\n\\n`;\n});\npreview += `━━━━━━━━━━━━━━━━━━━━`;\n\nreturn {\n  platform: \"Twitter\",\n  tweets: formattedTweets,\n  preview: preview,\n  finalPost: formattedTweets.map(t => t.content).join('\\n\\n'),\n  isThread: tweets.length > 1\n};"
+      },
+      "id": "76fb0e3e-3bd0-4f58-9f37-e021d6856742",
+      "name": "Process Twitter",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        840,
+        340
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "// Facebook processor - using the working pattern\nconst input = $input.all();\n\n// Try to get the data\nlet fbData;\ntry {\n  // Check different possible structures\n  if (input[0]?.json) {\n    const response = input[0].json;\n    if (response[0]?.message?.content) {\n      fbData = response[0].message.content;\n    } else if (response.message?.content) {\n      fbData = response.message.content;\n    } else if (response.content) {\n      fbData = response.content;\n    }\n  }\n  \n  if (!fbData) {\n    throw new Error(\"Could not find Facebook data\");\n  }\n} catch (error) {\n  return {\n    platform: \"Facebook\",\n    error: error.message,\n    debug: JSON.stringify(input)\n  };\n}\n\n// Format the final post\nconst finalPost = fbData.engagement_question \n  ? `${fbData.content}\\n\\n${fbData.engagement_question}`\n  : fbData.content;\n\n// Create preview\nconst preview = `\n👤 FACEBOOK POST PREVIEW:\n━━━━━━━━━━━━━━━━━━━━\n${finalPost}\n━━━━━━━━━━━━━━━━━━━━\n📊 Character Count: ${finalPost.length}\n💬 Has engagement question: ${fbData.engagement_question ? '✓' : '✗'}\n`;\n\nreturn {\n  platform: \"Facebook\",\n  finalPost: finalPost,\n  preview: preview,\n  characterCount: finalPost.length\n};"
+      },
+      "id": "1ade2882-4786-49ee-bbfa-c2813ee6acc5",
+      "name": "Process Facebook",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        840,
+        600
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "append",
+        "documentId": {
+          "__rl": true,
+          "value": "https://docs.google.com/spreadsheets/d/1hRMhupZ13ok4ics_mO9oBdxo2g_-ztsmUMnKVArYj34/edit",
+          "mode": "url"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "Social Media Posts",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1hRMhupZ13ok4ics_mO9oBdxo2g_-ztsmUMnKVArYj34/edit#gid=0"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Date": "={{new Date().toLocaleDateString()}}",
+            "Time": "={{new Date().toLocaleTimeString()}}",
+            "Original Post": "={{$('Your Post Content').item.json.originalPost}}",
+            "LinkedIn": "={{$json[\"linkedin\"][\"finalPost\"]}}",
+            "Twitter": "={{$json[\"twitter\"][\"tweets\"].map(t => t.content).join('\\n\\n')}}",
+            "Facebook": "={{$json[\"facebook\"][\"finalPost\"]}}",
+            "Status": "Ready to Post"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "Date",
+              "displayName": "Date",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Time",
+              "displayName": "Time",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Original Post",
+              "displayName": "Original Post",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "LinkedIn",
+              "displayName": "LinkedIn",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Twitter",
+              "displayName": "Twitter",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Facebook",
+              "displayName": "Facebook",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Status",
+              "displayName": "Status",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "id": "2a6b6b9c-ab9a-4a2f-868d-a6a172933df9",
+      "name": "Save to Google Sheets",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4,
+      "position": [
+        1440,
+        340
+      ],
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "TS2tw0ZDUv6ZSM8o",
+          "name": "Google Sheets account 2"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "4d0af739-1d74-45d0-9fad-c61c3f8d50d7",
+              "name": "linkedin",
+              "value": "={{$('Process LinkedIn').item.json}}",
+              "type": "object"
+            },
+            {
+              "id": "twitter-data",
+              "name": "twitter",
+              "value": "={{$('Process Twitter').item.json}}",
+              "type": "object"
+            },
+            {
+              "id": "facebook-data",
+              "name": "facebook",
+              "value": "={{$('Process Facebook').item.json}}",
+              "type": "object"
+            },
+            {
+              "id": "all-previews",
+              "name": "all_previews",
+              "value": "={{$('Process LinkedIn').item.json.preview + '\\n\\n' + $('Process Twitter').item.json.preview + '\\n\\n' + $('Process Facebook').item.json.preview}}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "4b1a4304-cf1c-4a45-8795-42388170f07a",
+      "name": "Combine All Posts",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        1140,
+        340
+      ]
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        -160,
+        340
+      ],
+      "id": "10a3ccf7-f451-4d6d-ab26-294f3dc8ca32",
+      "name": "When clicking ‘Execute workflow’"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Your Post Content": {
+      "main": [
+        [
+          {
+            "node": "LinkedIn Formatter",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "LinkedIn Formatter": {
+      "main": [
+        [
+          {
+            "node": "Process LinkedIn",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Twitter Formatter": {
+      "main": [
+        [
+          {
+            "node": "Process Twitter",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Facebook Formatter": {
+      "main": [
+        [
+          {
+            "node": "Process Facebook",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Process LinkedIn": {
+      "main": [
+        [
+          {
+            "node": "Twitter Formatter",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Process Twitter": {
+      "main": [
+        [
+          {
+            "node": "Facebook Formatter",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Process Facebook": {
+      "main": [
+        [
+          {
+            "node": "Combine All Posts",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Combine All Posts": {
+      "main": [
+        [
+          {
+            "node": "Save to Google Sheets",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "When clicking ‘Execute workflow’": {
+      "main": [
+        [
+          {
+            "node": "Your Post Content",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "dd8bc83f-5c16-42e0-ad9a-d7fda2ba206c",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "6298067642c3e349581f2e29092e2f6c83f0a76b4135fb1998c90c198e1c5829"
+  },
+  "id": "caAouDNt0pdnc5CU",
+  "tags": []
+}

@@ -1,0 +1,406 @@
+{
+  "name": "Day 6- Whatsapp AI Lead Responder",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "whatsapp-webhook",
+        "options": {}
+      },
+      "id": "646218e9-964d-4e1e-89b3-9bc412d7007b",
+      "name": "WhatsApp Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 1,
+      "position": [
+        220,
+        220
+      ],
+      "webhookId": "whatsapp-incoming"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.deepseek.com/v1/chat/completions",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "Bearer {{$credentials.deepseekApi.apiKey}}"
+            },
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"model\": \"deepseek-chat\",\n  \"messages\": [\n    {\n      \"role\": \"system\",\n      \"content\": \"You are a helpful business assistant for a company. Analyze the incoming message and provide:\\n1. Intent (inquiry, support, complaint, other)\\n2. Sentiment (positive, neutral, negative)\\n3. Suggested response\\n4. Lead score (1-10)\\n\\nRespond in JSON format:\\n{\\n  \\\"intent\\\": \\\"...\\\",\\n  \\\"sentiment\\\": \\\"...\\\",\\n  \\\"suggestedResponse\\\": \\\"...\\\",\\n  \\\"leadScore\\\": X,\\n  \\\"summary\\\": \\\"...\\\"\\n}\"\n    },\n    {\n      \"role\": \"user\",\n      \"content\": \"Customer message: {{$json.message}}\\nFrom: {{$json.from}}\"\n    }\n  ],\n  \"temperature\": 0.7,\n  \"max_tokens\": 500\n}",
+        "options": {}
+      },
+      "id": "6404e664-2c44-422e-b5f1-1fc1666c6ece",
+      "name": "AI Analyze Message",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        620,
+        220
+      ],
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "vSAJXOzWrX84Exvs",
+          "name": "Header Auth account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "// Parse AI response - handle markdown code blocks\nconst aiResponseText = $input.first().json.choices[0].message.content;\n\n// Remove markdown code blocks if present\nconst cleanedResponse = aiResponseText.replace(/```json\\n?/g, '').replace(/```\\n?/g, '').trim();\n\n// Parse the cleaned JSON\nconst aiResponse = JSON.parse(cleanedResponse);\n\n// Get original message data\nconst messageData = $node[\"WhatsApp Webhook\"].json.body;\n\n// Prepare response based on intent\nlet finalResponse = aiResponse.suggestedResponse;\n\n// Add personalization\nif (aiResponse.intent === \"inquiry\") {\n  finalResponse += \"\\n\\nWould you like to schedule a call to discuss further?\";\n} else if (aiResponse.intent === \"support\") {\n  finalResponse += \"\\n\\nI'm here to help! Is this urgent?\";\n}\n\n// Add signature\nfinalResponse += \"\\n\\n- AI Assistant\";\n\nreturn {\n  to: messageData.from,\n  message: finalResponse,\n  aiAnalysis: aiResponse,\n  originalMessage: messageData.message,\n  timestamp: new Date().toISOString()\n};"
+      },
+      "id": "eca9a988-050c-4bc2-81ac-cd3d1d9ba16c",
+      "name": "Prepare Response",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        840,
+        220
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "http://host.docker.internal:3000/send",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "number",
+              "value": "={{$json.to}}"
+            },
+            {
+              "name": "message",
+              "value": "={{$json.message}}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "50c2a69f-ffd2-4d5c-9d06-635ffbe9124a",
+      "name": "Send WhatsApp Reply",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        1040,
+        220
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "append",
+        "documentId": {
+          "__rl": true,
+          "value": "18kB3FwkAvs9C2p21RIEOYNVI6TUcIO78GRorCkgDsFY",
+          "mode": "id"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "Day 6",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/18kB3FwkAvs9C2p21RIEOYNVI6TUcIO78GRorCkgDsFY/edit#gid=0"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Phone": "={{$node[\"Prepare Response\"].json[\"to\"]}}",
+            "Message": "={{$node[\"Prepare Response\"].json[\"originalMessage\"]}}",
+            "Intent": "={{$node[\"Prepare Response\"].json[\"aiAnalysis\"][\"intent\"]}}",
+            "Sentiment": "={{$node[\"Prepare Response\"].json[\"aiAnalysis\"][\"sentiment\"]}}",
+            "Lead Score": "={{$node[\"Prepare Response\"].json[\"aiAnalysis\"][\"leadScore\"]}}",
+            "AI Response": "={{$node[\"Prepare Response\"].json[\"message\"]}}",
+            "Timestamp": "={{$node[\"Prepare Response\"].json[\"timestamp\"]}}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "Phone",
+              "displayName": "Phone",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Message",
+              "displayName": "Message",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Intent",
+              "displayName": "Intent",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Sentiment",
+              "displayName": "Sentiment",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Lead Score",
+              "displayName": "Lead Score",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "AI Response",
+              "displayName": "AI Response",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Timestamp",
+              "displayName": "Timestamp",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "id": "ac59a53f-0c98-47aa-a045-9589ec45e819",
+      "name": "Save to Google Sheets",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4,
+      "position": [
+        1240,
+        220
+      ],
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "DCGrCjADin2huwok",
+          "name": "Google Sheets account 3"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 1
+          },
+          "conditions": [
+            {
+              "id": "high-score",
+              "leftValue": "={{$json.aiAnalysis.leadScore}}",
+              "rightValue": 7,
+              "operator": {
+                "type": "number",
+                "operation": "gte"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "fdb42abf-9c85-4a6e-8847-ff03c8d87b2e",
+      "name": "High Value Lead?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2,
+      "position": [
+        1040,
+        420
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "http://host.docker.internal:3000/send",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "number",
+              "value": "919999999999"
+            },
+            {
+              "name": "message",
+              "value": "=\"🔥 High Value Lead Alert!\\n\\n\" +\n\"From: \" + $json.to + \"\\n\" +\n\"Score: \" + $json.aiAnalysis.leadScore + \"/10\\n\" +\n\"Intent: \" + $json.aiAnalysis.intent + \"\\n\\n\" +\n\"Message: \" + $json.originalMessage + \"\\n\\n\" +\n\"Please follow up ASAP!\""
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "6e803803-d320-472e-8c8c-150562cafbce",
+      "name": "Notify Sales Team",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        1240,
+        420
+      ]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "bacecf3d-d519-4eb8-a199-0fae72171271",
+              "name": "message",
+              "value": "={{$json.body.message}}",
+              "type": "string"
+            },
+            {
+              "id": "1ec18dcf-685f-4018-8b30-9de472b7a0b0",
+              "name": "from",
+              "value": "={{$json.body.from}}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        420,
+        220
+      ],
+      "id": "344e314c-ae73-4fe9-af11-e1cbc290ddfa",
+      "name": "Edit Fields"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "WhatsApp Webhook": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AI Analyze Message": {
+      "main": [
+        [
+          {
+            "node": "Prepare Response",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Prepare Response": {
+      "main": [
+        [
+          {
+            "node": "Send WhatsApp Reply",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "High Value Lead?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Send WhatsApp Reply": {
+      "main": [
+        [
+          {
+            "node": "Save to Google Sheets",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "High Value Lead?": {
+      "main": [
+        [
+          {
+            "node": "Notify Sales Team",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields": {
+      "main": [
+        [
+          {
+            "node": "AI Analyze Message",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": true,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "cdb2aaf0-3c18-405e-b072-b2015560495c",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "6298067642c3e349581f2e29092e2f6c83f0a76b4135fb1998c90c198e1c5829"
+  },
+  "id": "cXCad5zivlgxIvbD",
+  "tags": []
+}
