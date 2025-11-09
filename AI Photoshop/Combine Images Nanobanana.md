@@ -1,16 +1,16 @@
 # Workflow Analysis for Combine Images Nanobanana
 
 ## Description
-This workflow uses the Nano-Banana AI service to combine two input images based on a text prompt, then saves the resulting image to a specified Google Drive folder with a custom title.
+This workflow intelligently merges two images using AI (Nano Banana) based on a provided text prompt, then stores the result in Google Drive and returns a shareable link.
 
 ## Input Details
-Triggered by another workflow, it receives a text prompt, two Google Drive image file IDs, and a desired output image title.
+Triggered by another workflow, it receives a text prompt, two Google Drive file IDs for source images, and a title for the output image.
 
 ## Process Summary
-The workflow collects the two Google Drive image IDs and downloads the images. It uploads them to IMGBB to get public URLs, then sends those URLs along with the text prompt to the Nano-Banana AI service. It polls the AI service until the combined image is ready, downloads the result, and uploads it to a designated Google Drive folder using the provided title.
+The workflow downloads two images from Google Drive using their file IDs, uploads them to IMGBB to get public URLs, and sends these URLs along with a text prompt to the Nano Banana AI service. It polls Nano Banana until the combined image is ready, downloads the result, and uploads it to a designated Google Drive folder with the specified title. Finally, it constructs a response message with the file name and shareable Google Drive link.
 
 ## Output Details
-The AI-generated combined image is uploaded to Google Drive, and the workflow returns a message containing the file name and a link to the image in Google Drive.
+Returns a message containing the name and shareable Google Drive web link of the newly created combined image file.
 
 ## Tags
-AI Image Generation, Image Editing, Google Drive, Nano-Banana, Image Processing, Workflow Automation
+AI image generation, image editing, Google Drive, IMGBB, Nano Banana, workflow automation
