@@ -1,16 +1,16 @@
 # Workflow Analysis for Combine Images Nanobanana
 
 ## Description
-This workflow combines two images using an AI model (Nano Banana) based on a provided text prompt, then uploads the resulting image to Google Drive and returns a shareable link.
+This workflow takes two input images and a text prompt, combines them using an AI image generation service called Nano-Banana, and saves the resulting image to a specified Google Drive folder with a custom title.
 
 ## Input Details
-The workflow is triggered manually or by another workflow with input containing a prompt, two image file identifiers (image1 and image2), and a title for the output image.
+The workflow is triggered by another workflow and receives a text prompt, two image file IDs from Google Drive, and a title for the output image.
 
 ## Process Summary
-The workflow starts by receiving a prompt, two Google Drive image IDs, and a title. It downloads the two images from Google Drive, uploads them to IMGBB to get public URLs, then sends those URLs along with the prompt to the Nano Banana AI service to generate a new combined image. The workflow polls the AI service until the result is ready, downloads the resulting image, uploads it to a specific Google Drive folder with the given title, and finally constructs a response message with the image name and Google Drive link.
+The workflow first structures the two input image IDs into an array and splits them into separate items. It then downloads each image from Google Drive and uploads them to IMGBB to obtain public URLs. These URLs, along with the provided prompt, are sent to the Nano-Banana AI service to generate a new combined image. The workflow polls the AI service until the result is ready, downloads the generated image, and uploads it to a designated Google Drive folder using the provided title.
 
 ## Output Details
-The workflow outputs a message containing the name of the generated image and its shareable Google Drive link.
+The workflow uploads the AI-generated image to Google Drive and returns a message containing the file name and a direct link to the uploaded image.
 
 ## Tags
-AI image generation, image combination, Google Drive, Nano Banana, IMGBB, HTTP request, workflow automation
+AI Image Generation, Google Drive, Image Processing, Nano-Banana, Workflow Integration
