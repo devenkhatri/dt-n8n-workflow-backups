@@ -1,16 +1,16 @@
 # Workflow Analysis for AFT - 01 - Sales Agent
 
 ## Description
-An automated sales workflow that manages leads through multiple stages: importing new leads into a CRM, sending up to three AI-personalized follow-up emails at scheduled intervals, updating CRM status when prospects book calls via Calendly, and re-engaging no-shows with a follow-up email.
+An automated sales workflow that moves new leads from a list into a CRM, sends up to three AI-personalized follow-up emails every two days, updates CRM records when calls are scheduled via Calendly, and follows up with no-shows.
 
 ## Input Details
-The workflow is triggered by scheduled intervals for lead processing and follow-ups, Calendly event bookings for call scheduling, and manual CRM updates for no-shows.
+The workflow is triggered by scheduled intervals to check for new leads, existing CRM entries for follow-ups, and Calendly booking events; it receives lead data from Google Sheets and event data from Calendly.
 
 ## Process Summary
-First, new leads from a Google Sheet are transferred to a CRM sheet and assigned unique IDs. Concurrently, the system checks existing CRM contacts who have started a follow-up sequence but haven't booked a call, sending up to three AI-generated personalized emails every 2 days based on the number of previous follow-ups. When someone books a '30 Minute Meeting' via Calendly, the CRM is updated to reflect that a call is scheduled. Separately, every 6 hours the system checks for prospects marked as 'No' in the 'Showed Call?' column and sends them a re-engagement email.
+First, new leads from a Google Sheet are transferred to a CRM sheet, assigned unique IDs, and removed from the original list. Separately, the system checks CRM records every few days to identify leads eligible for follow-up emails (based on last contact date and number of prior follow-ups), generates personalized messages using AI, sends them via Gmail, and updates follow-up status. When a Calendly '30 Minute Meeting' is booked, the CRM is updated to mark the lead as having scheduled a call. Additionally, leads manually marked as 'No' in the 'Showed Call?' column are automatically emailed a no-show follow-up and their status is updated.
 
 ## Output Details
-The workflow outputs updated CRM records in Google Sheets, sends personalized emails via Gmail, and maintains synchronized lead status across the sales pipeline.
+The workflow outputs updated CRM records in Google Sheets, sends personalized follow-up and no-show emails via Gmail, and deletes processed leads from the original list.
 
 ## Tags
-sales automation, crm, google sheets, gmail, calendly, ai email, follow-up sequence, lead management, no-show recovery
+sales automation, CRM sync, email follow-up, lead management, Calendly integration, Google Sheets, AI personalization, no-show recovery
