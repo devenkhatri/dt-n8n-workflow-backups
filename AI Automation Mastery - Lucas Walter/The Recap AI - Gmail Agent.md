@@ -1,16 +1,16 @@
 # Workflow Analysis for The Recap AI - Gmail Agent
 
 ## Description
-This workflow has two main functions: (1) It builds a structured knowledge base from a lawn care company's website by scraping all pages and using AI to organize the content into a comprehensive document stored in Google Drive, and (2) It monitors a Gmail inbox to automatically respond to customer inquiries about services, pricing, or policies using the knowledge base, while logging all email interactions to Google Sheets.
+This workflow creates a structured knowledge base from a lawn care company's website and uses it to automatically respond to customer emails with accurate information about services, pricing, and policies.
 
 ## Input Details
-The workflow is triggered either by a manual form submission containing a website URL and Google Drive folder ID, or by receiving a new email in a monitored Gmail account.
+The workflow is triggered either by a manual form submission with a website URL and Google Drive folder ID, or by a new email arriving in a monitored Gmail inbox.
 
 ## Process Summary
-For knowledge base creation: The workflow scrapes all URLs from the provided website using Firecrawl, processes the scraped content with an AI model to synthesize a structured knowledge base following strict formatting guidelines, converts the result to HTML, and uploads it as a Google Doc to the specified Drive folder. For email handling: The workflow analyzes incoming emails to determine if they contain service-related questions, consults the knowledge base to assess if it can provide an accurate response, sends a professional reply when appropriate, and logs all decisions and actions to Google Sheets.
+When triggered by a form, it scrapes the entire website using Firecrawl, processes the content with an AI model to create a structured knowledge base following specific guidelines, converts it to HTML, and saves it as a Google Doc in the specified Drive folder. When triggered by an email, it analyzes the message to determine if it's a service-related inquiry, checks if the knowledge base contains sufficient information to answer it accurately, sends a professional reply if appropriate, and logs all decisions and actions to Google Sheets for tracking.
 
 ## Output Details
-The workflow produces a Google Doc containing a structured knowledge base uploaded to a specified Drive folder, and optionally sends automated email replies to customers while logging all email processing decisions to a Google Sheet.
+The workflow generates a Google Doc containing a structured knowledge base in a specified Drive folder and optionally sends automated email responses to customers while logging all email processing decisions to a Google Sheet.
 
 ## Tags
 knowledge base, web scraping, AI, Gmail automation, Google Drive, Google Sheets, customer support, lawn care, email auto-reply, Firecrawl
