@@ -1,16 +1,16 @@
 # Workflow Analysis for The Recap AI - Podcast Generator
 
 ## Description
-This workflow automatically generates a short, engaging podcast script about fun and interesting upcoming events in Austin, Texas, and then converts it into an audio file. It pulls event information from an RSS feed, scrapes the linked web pages for content, filters out controversial topics, and creates a professionally formatted script with voice annotations for natural-sounding narration.
+This workflow automatically creates a short, engaging podcast about fun and interesting upcoming events in Austin, Texas, by gathering event data, generating a natural-sounding script with AI, and converting it into an audio file.
 
 ## Input Details
-The workflow is triggered manually and fetches event data from a specified RSS feed URL.
+The workflow is manually triggered and receives event data by fetching from a specified Austin events RSS feed URL.
 
 ## Process Summary
-The workflow starts by manually triggering a fetch of an RSS feed containing Austin event links. It then uses Firecrawl to batch-scrape the content from those URLs into markdown format, polling until the scraping is complete or retry limits are reached. Once the content is gathered, it uses Google's Gemini 2.5 Pro to generate a concise, engaging podcast script following specific guidelines for tone, structure, and ElevenLabs audio annotations. Finally, the generated script is sent to ElevenLabs to produce an MP3 audio file of the narrated podcast.
+The workflow begins by fetching an RSS feed of Austin events, then uses Firecrawl to scrape the content from each event's linked webpage into markdown. It employs Google's Gemini 2.5 Pro to generate a concise and engaging podcast script with specific tone, structure, and voice annotations for natural narration. The script is then sent to ElevenLabs to be converted into a narrated audio file. The process includes polling for scraping completion and implements retry logic for robustness.
 
 ## Output Details
-The workflow produces an audio file (MP3) of a narrated podcast about Austin events, generated via the ElevenLabs API.
+The workflow produces an MP3 audio file of a narrated podcast about Austin events, generated through the ElevenLabs API.
 
 ## Tags
 podcast,ai,austin,content-generation,text-to-speech,scraping,rss,automation
