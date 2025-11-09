@@ -1,16 +1,16 @@
 # Workflow Analysis for The Recap AI - Facebook Ad Thief
 
 ## Description
-This workflow enables users to upload a product image and provide a Facebook Ad Library URL to automatically generate new ad images that mimic competitor ads but feature the user's product instead.
+This workflow enables users to automatically generate new Facebook ad creatives that mimic competitor ad styles by replacing competitor branding with the user's own product image using AI.
 
 ## Input Details
-The workflow is triggered by a form submission containing a Facebook Ad Library URL and a product image file.
+The workflow is triggered by a form submission containing a Facebook Ad Library URL and an uploaded product image file.
 
 ## Process Summary
-The workflow converts the uploaded product image to base64, scrapes Facebook ads from the provided URL using an Apify actor, and downloads each competitor ad image. It converts each ad image to base64 and uploads it to Google Drive as a reference. A detailed prompt is constructed and sent to an AI model to first refine the prompt and then generate a new ad image blending the competitor's style with the user's product. The workflow checks if the AI response was blocked due to prohibited content, and if not, saves the generated image to Google Drive with a sequential filename.
+The workflow first converts the uploaded product image to base64 format, then scrapes Facebook ads from the provided URL using an Apify actor. For each scraped ad, it downloads the ad image, converts it to base64, and saves it to Google Drive as a reference. It constructs a detailed AI prompt to clone the competitor ad while substituting all branding with the user's product (ThriveMix), then sends both images and the prompt to Google's Gemini AI. If the AI response is not blocked for prohibited content, the generated ad image is extracted and uploaded to a specified Google Drive folder.
 
 ## Output Details
-The workflow produces AI-generated ad images that mimic competitor ads but feature the user's product, and saves them to a specified Google Drive folder.
+The workflow produces new AI-generated ad images that replicate competitor ad styles featuring the user's product and saves them to a designated Google Drive folder.
 
 ## Tags
-facebook ads, AI image generation, ad cloning, competitor analysis, Google Drive, Apify, Gemini AI, image editing, marketing automation
+facebook ads, ad generation, image cloning, AI image generation, Google Drive, competitor analysis, marketing automation
