@@ -1,16 +1,16 @@
 # Workflow Analysis for Nano Photoshop Agent
 
 ## Description
-A Telegram-based AI assistant that helps users manage, edit, and generate images using Google Drive for storage and AI models like Claude and GPT for intelligent interactions.
+A Telegram-integrated AI assistant that manages photo uploads to Google Drive and performs AI-powered image operations like renaming, editing, combining images, and searching through stored files.
 
 ## Input Details
-The workflow is triggered by messages sent to a Telegram bot, which can include either text messages or photo uploads.
+The workflow is triggered by messages sent to a Telegram bot, which can include either a photo or text input.
 
 ## Process Summary
-When a user sends a message to the Telegram bot, the workflow first checks if it's a photo or text. If it's a photo, the image is downloaded from Telegram and uploaded to a designated Google Drive folder. A response message with the Google Drive file ID is then prepared. The user's input (either text or photo metadata) is passed to an AI-powered 'Photoshop Agent' that uses either GPT-5-mini or Claude Sonnet 3.5 as its reasoning engine. The agent can perform actions like renaming files, combining images, editing images, or searching stored files using connected tools and maintains conversation memory per user.
+When a message arrives via Telegram, the workflow checks if it contains a photo or text. If it's a photo, the image is downloaded, uploaded to a designated Google Drive folder, and a confirmation message with the file ID is prepared. Text inputs or the prepared photo confirmation are then sent to an AI-powered Photoshop Agent that uses either GPT-5-mini or Claude Sonnet 3.5 as its reasoning engine. The agent can perform various actions using connected tools, including renaming files in Google Drive, combining two images, editing images with AI, or searching through raw or AI-generated image libraries in Google Drive. The agent's response is sent back to the user via Telegram.
 
 ## Output Details
-The workflow sends a response back to the user via Telegram, which may include file links, AI-generated responses, or results from image editing operations.
+The workflow sends a response message back to the user in Telegram, which may include a file ID confirmation or results from AI-powered image operations.
 
 ## Tags
-telegram, google drive, ai agent, image editing, claude, gpt, file management, image generation
+Telegram, Google Drive, AI Agent, Image Editing, File Management, Claude, GPT, Image Generation
