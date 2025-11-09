@@ -1,0 +1,2891 @@
+{
+  "name": "AFT - 01 - Sales Agent",
+  "nodes": [
+    {
+      "parameters": {
+        "documentId": {
+          "__rl": true,
+          "value": "1_-9SAOxJSg0HgxyqSMyGdZ_H_vq1oBS8YRsm88P8q9E",
+          "mode": "list",
+          "cachedResultName": "[AFT] The Sales Agent - Lead List",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1_-9SAOxJSg0HgxyqSMyGdZ_H_vq1oBS8YRsm88P8q9E/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "Sheet1",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1_-9SAOxJSg0HgxyqSMyGdZ_H_vq1oBS8YRsm88P8q9E/edit#gid=0"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        -336,
+        -48
+      ],
+      "id": "42ca9581-d21e-4239-9c2e-b90b9b8f6cfd",
+      "name": "Get Email List",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "fEEh3dtbP9SEhsE5",
+          "name": "Google Sheets account DT - AFT"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 3,
+      "position": [
+        -144,
+        -48
+      ],
+      "id": "5c47cce4-db01-411a-a418-94b6bd1d406f",
+      "name": "Process Each Contact"
+    },
+    {
+      "parameters": {
+        "content": "## Flow 1: CRM Agent\nThis flow checks your Lead List every set time (you can set it  you want) and moves new leads to your CRM.\n",
+        "height": 480,
+        "width": 1664
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -640,
+        -256
+      ],
+      "typeVersion": 1,
+      "id": "27ab0cc4-959e-4520-8d18-b759da0f51a7",
+      "name": "Sticky Note"
+    },
+    {
+      "parameters": {
+        "amount": 1
+      },
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        576,
+        -32
+      ],
+      "id": "7d867c5a-ec67-41ba-ad8b-353352ea951a",
+      "name": "Wait",
+      "webhookId": "6f5a26b2-2b3f-4c6f-9ee4-964be60325ab"
+    },
+    {
+      "parameters": {
+        "operation": "appendOrUpdate",
+        "documentId": {
+          "__rl": true,
+          "value": "19Ft0P5PgslMch0EqtMSdLPJTPSs5fmIimKbOZyGedqM",
+          "mode": "list",
+          "cachedResultName": "[AFT] The Sales Agent - CRM",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/19Ft0P5PgslMch0EqtMSdLPJTPSs5fmIimKbOZyGedqM/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "Sheet1",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/19Ft0P5PgslMch0EqtMSdLPJTPSs5fmIimKbOZyGedqM/edit#gid=0"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "ID": "={{ null }}",
+            "First Name": "={{ $json['First Name'] }}",
+            "Last Name": "={{ $json['Last Name'] }}",
+            "Role": "={{ $json.Role }}",
+            "Company Name": "={{ $json['Company Name'] }}",
+            "Company Address": "={{ $json['Company Address'] }}",
+            "Company Industry": "={{ $json['Company Industry'] }}",
+            "Contact Email": "={{ $json['Contact Email'] }}",
+            "Contact Phone(optional)": "={{ $json['Contact Phone(optional)'] }}",
+            "Website (optional)": "={{ $json['Website (optional)'] }}"
+          },
+          "matchingColumns": [
+            "ID"
+          ],
+          "schema": [
+            {
+              "id": "ID",
+              "displayName": "ID",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "First Name",
+              "displayName": "First Name",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Last Name",
+              "displayName": "Last Name",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Role",
+              "displayName": "Role",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Company Name",
+              "displayName": "Company Name",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Company Address",
+              "displayName": "Company Address",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Company Industry",
+              "displayName": "Company Industry",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Contact Email",
+              "displayName": "Contact Email",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Contact Phone(optional)",
+              "displayName": "Contact Phone(optional)",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Website (optional)",
+              "displayName": "Website (optional)",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Started Sequence?",
+              "displayName": "Started Sequence?",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Sequence Last Date",
+              "displayName": "Sequence Last Date",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Follow Ups",
+              "displayName": "Follow Ups",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Call Scheduled?",
+              "displayName": "Call Scheduled?",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Showed Call?",
+              "displayName": "Showed Call?",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Sales Transcript ID ",
+              "displayName": "Sales Transcript ID ",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Latest/Closed Transcript ID",
+              "displayName": "Latest/Closed Transcript ID",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Proposal sent?",
+              "displayName": "Proposal sent?",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Closed?",
+              "displayName": "Closed?",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Contract Sent? ",
+              "displayName": "Contract Sent? ",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Contract ID ",
+              "displayName": "Contract ID ",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Contract Signed?",
+              "displayName": "Contract Signed?",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        112,
+        -32
+      ],
+      "id": "003fb88a-4148-414c-873b-3ad16f054e68",
+      "name": "Transfer to CRM",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "fEEh3dtbP9SEhsE5",
+          "name": "Google Sheets account DT - AFT"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "documentId": {
+          "__rl": true,
+          "value": "19Ft0P5PgslMch0EqtMSdLPJTPSs5fmIimKbOZyGedqM",
+          "mode": "list",
+          "cachedResultName": "[AFT] The Sales Agent - CRM",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/19Ft0P5PgslMch0EqtMSdLPJTPSs5fmIimKbOZyGedqM/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "Sheet1",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/19Ft0P5PgslMch0EqtMSdLPJTPSs5fmIimKbOZyGedqM/edit#gid=0"
+        },
+        "filtersUI": {
+          "values": [
+            {
+              "lookupColumn": "Contact Email",
+              "lookupValue": "={{ $json['Contact Email'] }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        352,
+        -32
+      ],
+      "id": "7dea3c65-5eb1-416c-a82f-18b6e8c4f091",
+      "name": "Get Row from CRM",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "fEEh3dtbP9SEhsE5",
+          "name": "Google Sheets account DT - AFT"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "appendOrUpdate",
+        "documentId": {
+          "__rl": true,
+          "value": "19Ft0P5PgslMch0EqtMSdLPJTPSs5fmIimKbOZyGedqM",
+          "mode": "list",
+          "cachedResultName": "[AFT] The Sales Agent - CRM",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/19Ft0P5PgslMch0EqtMSdLPJTPSs5fmIimKbOZyGedqM/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "Sheet1",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/19Ft0P5PgslMch0EqtMSdLPJTPSs5fmIimKbOZyGedqM/edit#gid=0"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Contact Email": "={{ $json['Contact Email'] }}",
+            "ID": "={{ $json.row_number }}"
+          },
+          "matchingColumns": [
+            "Contact Email"
+          ],
+          "schema": [
+            {
+              "id": "ID",
+              "displayName": "ID",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "First Name",
+              "displayName": "First Name",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Last Name",
+              "displayName": "Last Name",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Role",
+              "displayName": "Role",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Company Name",
+              "displayName": "Company Name",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Company Address",
+              "displayName": "Company Address",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Company Industry",
+              "displayName": "Company Industry",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Contact Email",
+              "displayName": "Contact Email",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Contact Phone(optional)",
+              "displayName": "Contact Phone(optional)",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Website (optional)",
+              "displayName": "Website (optional)",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Started Sequence?",
+              "displayName": "Started Sequence?",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Sequence Last Date",
+              "displayName": "Sequence Last Date",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Follow Ups",
+              "displayName": "Follow Ups",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Call Scheduled?",
+              "displayName": "Call Scheduled?",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Showed Call?",
+              "displayName": "Showed Call?",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Sales Transcript ID ",
+              "displayName": "Sales Transcript ID ",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Latest/Closed Transcript ID",
+              "displayName": "Latest/Closed Transcript ID",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Proposal sent?",
+              "displayName": "Proposal sent?",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Closed?",
+              "displayName": "Closed?",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Contract Sent? ",
+              "displayName": "Contract Sent? ",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Contract ID ",
+              "displayName": "Contract ID ",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Contract Signed?",
+              "displayName": "Contract Signed?",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        800,
+        -32
+      ],
+      "id": "6cdec78d-c071-4b84-bd34-c5d01dad5982",
+      "name": "Update ID in CRM",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "fEEh3dtbP9SEhsE5",
+          "name": "Google Sheets account DT - AFT"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "fieldsToSummarize": {
+          "values": [
+            {
+              "field": "Contact Email"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.summarize",
+      "typeVersion": 1.1,
+      "position": [
+        208,
+        -208
+      ],
+      "id": "572abb17-c0d8-4fc1-a41c-89061417f14b",
+      "name": "Count Processed Leads"
+    },
+    {
+      "parameters": {
+        "operation": "delete",
+        "documentId": {
+          "__rl": true,
+          "value": "1_-9SAOxJSg0HgxyqSMyGdZ_H_vq1oBS8YRsm88P8q9E",
+          "mode": "list",
+          "cachedResultName": "[AFT] The Sales Agent - Lead List",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1_-9SAOxJSg0HgxyqSMyGdZ_H_vq1oBS8YRsm88P8q9E/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "Sheet1",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1_-9SAOxJSg0HgxyqSMyGdZ_H_vq1oBS8YRsm88P8q9E/edit#gid=0"
+        },
+        "numberToDelete": "={{ $json.count_Contact_Email }}"
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        464,
+        -208
+      ],
+      "id": "7d63ff01-76bc-46ca-9a6f-61542b9e6256",
+      "name": "Delete rows or columns from sheet",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "fEEh3dtbP9SEhsE5",
+          "name": "Google Sheets account DT - AFT"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {}
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.2,
+      "position": [
+        -544,
+        -48
+      ],
+      "id": "3004e0b7-367d-4d30-a524-44b605b64702",
+      "name": "Schedule check of new emails"
+    },
+    {
+      "parameters": {
+        "content": "## Flow 2: Follow-Up Agent\nThis flow sends up to 3 personalized follow-up emails automatically every 2 days.",
+        "height": 704,
+        "width": 1664,
+        "color": 4
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -640,
+        240
+      ],
+      "typeVersion": 1,
+      "id": "278e6e90-c384-415e-9887-b90e50e995ba",
+      "name": "Sticky Note1"
+    },
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {}
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.2,
+      "position": [
+        -576,
+        480
+      ],
+      "id": "b5e6ace2-1a56-4458-9c58-4f7c5bb592bf",
+      "name": "Schedule Trigger (Follow Ups)"
+    },
+    {
+      "parameters": {
+        "documentId": {
+          "__rl": true,
+          "value": "19Ft0P5PgslMch0EqtMSdLPJTPSs5fmIimKbOZyGedqM",
+          "mode": "list",
+          "cachedResultName": "[AFT] The Sales Agent - CRM",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/19Ft0P5PgslMch0EqtMSdLPJTPSs5fmIimKbOZyGedqM/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "Sheet1",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/19Ft0P5PgslMch0EqtMSdLPJTPSs5fmIimKbOZyGedqM/edit#gid=0"
+        },
+        "filtersUI": {
+          "values": [
+            {
+              "lookupColumn": "Started Sequence?",
+              "lookupValue": "true"
+            },
+            {
+              "lookupColumn": "Call Scheduled?",
+              "lookupValue": "false"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        -384,
+        480
+      ],
+      "id": "4319b39a-da00-47f5-80bb-8e7ce76885f1",
+      "name": "Get rows from CRM",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "fEEh3dtbP9SEhsE5",
+          "name": "Google Sheets account DT - AFT"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "loose",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "a1b9f74d-ce40-4c80-8619-6d8e24fe38e3",
+              "leftValue": "={{ $json['Sequence Last Date'] }}",
+              "rightValue": "={{ $now.minus({days: 2}).format('MM-dd-yy') }}\n",
+              "operator": {
+                "type": "dateTime",
+                "operation": "beforeOrEquals"
+              }
+            },
+            {
+              "id": "ca16fb84-8d13-45ac-b875-87ba9b243775",
+              "leftValue": "={{ $json['Follow Ups'] }}",
+              "rightValue": 3,
+              "operator": {
+                "type": "number",
+                "operation": "lt"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "looseTypeValidation": true,
+        "options": {}
+      },
+      "type": "n8n-nodes-base.filter",
+      "typeVersion": 2.2,
+      "position": [
+        -176,
+        480
+      ],
+      "id": "5b50b1da-810b-4e99-b680-dd72fd911b46",
+      "name": "Filter"
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "loose",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $json['Follow Ups'] }}",
+                    "rightValue": 1,
+                    "operator": {
+                      "type": "number",
+                      "operation": "lt"
+                    },
+                    "id": "b32666c9-88bb-42a1-9a91-654b56720167"
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "follow up 1"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "loose",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "cf4cfcc5-fc33-41a4-a01f-630885e7d7ee",
+                    "leftValue": "={{ $json['Follow Ups'] }}",
+                    "rightValue": 2,
+                    "operator": {
+                      "type": "number",
+                      "operation": "lt"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "follow up 2"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "loose",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "3f3bc0ec-1a01-49a0-87f9-fc94cf3eae95",
+                    "leftValue": "={{ $json['Follow Ups'] }}",
+                    "rightValue": 3,
+                    "operator": {
+                      "type": "number",
+                      "operation": "lt"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "follow up 3"
+            }
+          ]
+        },
+        "looseTypeValidation": true,
+        "options": {}
+      },
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.3,
+      "position": [
+        48,
+        464
+      ],
+      "id": "c4f2e7b4-a4fb-4d7c-bf93-fc86bf91c73a",
+      "name": "Which follow-up phase?"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "Hi [Name],\n\nI wanted to follow up on our recent message about AI solutions. I know your inbox is probably overflowing, so I'll keep this brief.\nMany businesses we work with initially hesitate because they're not sure where AI fits into their current operations. The truth is, the companies seeing the biggest ROI right now aren't the ones with the fanciest tech stacks—they're the ones who started small and scaled strategically.\n\nWhat we're seeing work in 2025:\n\n- Customer service automation reducing response times by 60%\n- Data analysis that used to take days now happening in minutes\n- Personalized customer experiences at scale\n\nI'd love to spend 15 minutes learning about your specific challenges and sharing what might be possible for your team.\n\nWould you be open to a quick conversation?\n\n[CALENDAR LINK PLACEHOLDER]\n\nBest,\n[YOUR NAME PLACEHOLDER]\n\nP.S. No pressure - if the timing isn't right, just let me know when might work better.\n",
+        "messages": {
+          "messageValues": [
+            {
+              "message": "=Your goal is to replace the placeholders inside the email with the corresponding values from the data below (only where applicable).\n\nAvailable variables:\n\n- Name: {{ $('Get rows from CRM').item.json['First Name'] }} \n\n- Role: {{ $('Get rows from CRM').item.json.Role }}\n\n- Company Name: {{ $('Get rows from CRM').item.json['Company Name'] }}\n\n- Industry: {{ $('Get rows from CRM').item.json['Company Industry'] }}\n\n- Calendar Link: [CALENDAR LINK PLACEHOLDER]\n\nInstructions:\nOnly output the final email with the placeholders replaced.\nDo not include comments, explanations, or any extra text.\n"
+            }
+          ]
+        },
+        "batching": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.chainLlm",
+      "typeVersion": 1.7,
+      "position": [
+        320,
+        320
+      ],
+      "id": "7e3223c4-5427-49f8-b90c-2d55683ec5a1",
+      "name": "Create Follow-Up 1 Email with AI"
+    },
+    {
+      "parameters": {
+        "sendTo": "={{ $('Get rows from CRM').item.json['Contact Email'] }}",
+        "subject": "Follow Up 1 - Dhimahi Technolabs",
+        "emailType": "text",
+        "message": "={{ $json.text }}",
+        "options": {
+          "appendAttribution": false
+        }
+      },
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.1,
+      "position": [
+        624,
+        320
+      ],
+      "id": "47db4935-7805-40f7-929a-ddfd79b4b8b0",
+      "name": "Send First Follow Up",
+      "webhookId": "ef1f7441-146d-482c-9543-a9e99e555c23",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "MdIGR3k6h7OPEYUE",
+          "name": "Gmail account DT - AFT"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "documentId": {
+          "__rl": true,
+          "value": "19Ft0P5PgslMch0EqtMSdLPJTPSs5fmIimKbOZyGedqM",
+          "mode": "list",
+          "cachedResultName": "[AFT] The Sales Agent - CRM",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/19Ft0P5PgslMch0EqtMSdLPJTPSs5fmIimKbOZyGedqM/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "Sheet1",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/19Ft0P5PgslMch0EqtMSdLPJTPSs5fmIimKbOZyGedqM/edit#gid=0"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Contact Email": "={{ $('Get rows from CRM').item.json['Contact Email'] }}",
+            "Follow Ups": "1",
+            "Sequence Last Date": "={{ $now.toFormat('MM-dd-yy') }}"
+          },
+          "matchingColumns": [
+            "Contact Email"
+          ],
+          "schema": [
+            {
+              "id": "ID",
+              "displayName": "ID",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "First Name",
+              "displayName": "First Name",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Last Name",
+              "displayName": "Last Name",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Role",
+              "displayName": "Role",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Company Name",
+              "displayName": "Company Name",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Company Address",
+              "displayName": "Company Address",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Company Industry",
+              "displayName": "Company Industry",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Contact Email",
+              "displayName": "Contact Email",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Contact Phone(optional)",
+              "displayName": "Contact Phone(optional)",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Website (optional)",
+              "displayName": "Website (optional)",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Started Sequence?",
+              "displayName": "Started Sequence?",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Sequence Last Date",
+              "displayName": "Sequence Last Date",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Follow Ups",
+              "displayName": "Follow Ups",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Call Scheduled?",
+              "displayName": "Call Scheduled?",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Showed Call?",
+              "displayName": "Showed Call?",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Sales Transcript ID ",
+              "displayName": "Sales Transcript ID ",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Latest/Closed Transcript ID",
+              "displayName": "Latest/Closed Transcript ID",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Proposal sent?",
+              "displayName": "Proposal sent?",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Closed?",
+              "displayName": "Closed?",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Contract Sent? ",
+              "displayName": "Contract Sent? ",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Contract ID ",
+              "displayName": "Contract ID ",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Contract Signed?",
+              "displayName": "Contract Signed?",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "row_number",
+              "displayName": "row_number",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true,
+              "readOnly": true,
+              "removed": true
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        816,
+        320
+      ],
+      "id": "c2b8a868-31fd-4a78-8345-240e03e17a7f",
+      "name": "Update CRM (Follow Up 1)",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "fEEh3dtbP9SEhsE5",
+          "name": "Google Sheets account DT - AFT"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "Hi [Name],\n\nI wanted to share a quick win that might resonate with you.\n\nMany teams I talk to feel uncertain about where to start with AI - how complex it will be, whether it’s worth the cost, and if it’ll actually make a measurable difference.\n\nWhat we’ve seen is that real progress usually starts small: one workflow, one process, one measurable result. Once that’s in place, scaling becomes easy - and the ROI tends to follow fast.\n\nIf that sounds worth exploring, how about a quick 20-minute chat to discuss what this could look like for your business?\n\n[CALENDAR LINK PLACEHOLDER]\n\nLooking forward to connecting,\n[YOUR NAME PLACEHOLDER]\n\nP.S. Happy to send a case study or example before the call if you’d like a preview.\n",
+        "messages": {
+          "messageValues": [
+            {
+              "message": "=Your goal is to replace the placeholders inside the email with the corresponding values from the data below (only where applicable).\n\nAvailable variables:\n\n- Name: {{ $('Get rows from CRM').item.json['First Name'] }} \n\n- Role: {{ $('Get rows from CRM').item.json.Role }}\n\n- Company Name: {{ $('Get rows from CRM').item.json['Company Name'] }}\n\n- Industry: {{ $('Get rows from CRM').item.json['Company Industry'] }}\n\n- Calendar Link: [CALENDAR LINK PLACEHOLDER]\n\nInstructions:\nOnly output the final email with the placeholders replaced.\nDo not include comments, explanations, or any extra text.\n"
+            }
+          ]
+        },
+        "batching": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.chainLlm",
+      "typeVersion": 1.7,
+      "position": [
+        320,
+        480
+      ],
+      "id": "4cc39763-e114-4a27-ae12-467fdd231bcd",
+      "name": "Create Follow-Up 2 Email with AI"
+    },
+    {
+      "parameters": {
+        "sendTo": "={{ $('Get rows from CRM').item.json['Contact Email'] }}",
+        "subject": "Follow Up 2 - Dhimahi Technolabs",
+        "emailType": "text",
+        "message": "={{ $json.text }}",
+        "options": {
+          "appendAttribution": false
+        }
+      },
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.1,
+      "position": [
+        624,
+        512
+      ],
+      "id": "af4e5eaa-ac6d-4ced-9f71-b56516af359e",
+      "name": "Send Second Follow Up",
+      "webhookId": "ef1f7441-146d-482c-9543-a9e99e555c23",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "MdIGR3k6h7OPEYUE",
+          "name": "Gmail account DT - AFT"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "documentId": {
+          "__rl": true,
+          "value": "19Ft0P5PgslMch0EqtMSdLPJTPSs5fmIimKbOZyGedqM",
+          "mode": "list",
+          "cachedResultName": "[AFT] The Sales Agent - CRM",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/19Ft0P5PgslMch0EqtMSdLPJTPSs5fmIimKbOZyGedqM/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "Sheet1",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/19Ft0P5PgslMch0EqtMSdLPJTPSs5fmIimKbOZyGedqM/edit#gid=0"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Contact Email": "={{ $('Get rows from CRM').item.json['Contact Email'] }}",
+            "Follow Ups": "2",
+            "Sequence Last Date": "={{ $now.toFormat('MM-dd-yy') }}"
+          },
+          "matchingColumns": [
+            "Contact Email"
+          ],
+          "schema": [
+            {
+              "id": "ID",
+              "displayName": "ID",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "First Name",
+              "displayName": "First Name",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Last Name",
+              "displayName": "Last Name",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Role",
+              "displayName": "Role",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Company Name",
+              "displayName": "Company Name",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Company Address",
+              "displayName": "Company Address",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Company Industry",
+              "displayName": "Company Industry",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Contact Email",
+              "displayName": "Contact Email",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Contact Phone(optional)",
+              "displayName": "Contact Phone(optional)",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Website (optional)",
+              "displayName": "Website (optional)",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Started Sequence?",
+              "displayName": "Started Sequence?",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Sequence Last Date",
+              "displayName": "Sequence Last Date",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Follow Ups",
+              "displayName": "Follow Ups",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Call Scheduled?",
+              "displayName": "Call Scheduled?",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Showed Call?",
+              "displayName": "Showed Call?",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Sales Transcript ID ",
+              "displayName": "Sales Transcript ID ",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Latest/Closed Transcript ID",
+              "displayName": "Latest/Closed Transcript ID",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Proposal sent?",
+              "displayName": "Proposal sent?",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Closed?",
+              "displayName": "Closed?",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Contract Sent? ",
+              "displayName": "Contract Sent? ",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Contract ID ",
+              "displayName": "Contract ID ",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Contract Signed?",
+              "displayName": "Contract Signed?",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "row_number",
+              "displayName": "row_number",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true,
+              "readOnly": true,
+              "removed": true
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        832,
+        512
+      ],
+      "id": "6bb7fbb9-fba4-4d16-a824-026de0a10de2",
+      "name": "Update CRM (Follow Up 2)",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "fEEh3dtbP9SEhsE5",
+          "name": "Google Sheets account DT - AFT"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "sendTo": "={{ $('Get rows from CRM').item.json['Contact Email'] }}",
+        "subject": "Follow Up 3 - Dhimahi Technolabs",
+        "emailType": "text",
+        "message": "={{ $json.text }}",
+        "options": {
+          "appendAttribution": false
+        }
+      },
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.1,
+      "position": [
+        624,
+        720
+      ],
+      "id": "c1075e8e-74b7-4f79-85db-9837fbbcf751",
+      "name": "Send Third Follow Up",
+      "webhookId": "ef1f7441-146d-482c-9543-a9e99e555c23",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "MdIGR3k6h7OPEYUE",
+          "name": "Gmail account DT - AFT"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "Hi [Name],\n\nI don't want to be that person who keeps flooding your inbox, so this will be my last message unless you'd like to continue the conversation.\n\nI genuinely believe AI could make a meaningful impact on your business, but I also know timing is everything - and that's completely okay.\n\nIf you ever want to explore what we could do together, my calendar is always open:\n\n[CALENDAR LINK PLACEHOLDER]\n\nWishing you all the best,\n[YOUR NAME PLACEHOLDER]\n\nP.S. If you'd prefer I check back in a few months when things might be less hectic, just reply with \"Later\", and I'll make a note to reach out next quarter.\n",
+        "messages": {
+          "messageValues": [
+            {
+              "message": "=Your goal is to replace the placeholders inside the email with the corresponding values from the data below (only where applicable).\n\nAvailable variables:\n\n- Name: {{ $('Get rows from CRM').item.json['First Name'] }} \n\n- Role: {{ $('Get rows from CRM').item.json.Role }}\n\n- Company Name: {{ $('Get rows from CRM').item.json['Company Name'] }}\n\n- Industry: {{ $('Get rows from CRM').item.json['Company Industry'] }}\n\n- Calendar Link: [CALENDAR LINK PLACEHOLDER]\n\nInstructions:\nOnly output the final email with the placeholders replaced.\nDo not include comments, explanations, or any extra text.\n"
+            }
+          ]
+        },
+        "batching": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.chainLlm",
+      "typeVersion": 1.7,
+      "position": [
+        320,
+        656
+      ],
+      "id": "6ed91c3f-1ddc-4cc5-b32f-d3884f2ba79e",
+      "name": "Create Follow-Up 3 Email with AI"
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "documentId": {
+          "__rl": true,
+          "value": "19Ft0P5PgslMch0EqtMSdLPJTPSs5fmIimKbOZyGedqM",
+          "mode": "list",
+          "cachedResultName": "[AFT] The Sales Agent - CRM",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/19Ft0P5PgslMch0EqtMSdLPJTPSs5fmIimKbOZyGedqM/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "Sheet1",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/19Ft0P5PgslMch0EqtMSdLPJTPSs5fmIimKbOZyGedqM/edit#gid=0"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Contact Email": "={{ $('Get rows from CRM').item.json['Contact Email'] }}",
+            "Follow Ups": "3",
+            "Sequence Last Date": "={{ $now.toFormat('MM-dd-yy') }}"
+          },
+          "matchingColumns": [
+            "Contact Email"
+          ],
+          "schema": [
+            {
+              "id": "ID",
+              "displayName": "ID",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "First Name",
+              "displayName": "First Name",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Last Name",
+              "displayName": "Last Name",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Role",
+              "displayName": "Role",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Company Name",
+              "displayName": "Company Name",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Company Address",
+              "displayName": "Company Address",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Company Industry",
+              "displayName": "Company Industry",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Contact Email",
+              "displayName": "Contact Email",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Contact Phone(optional)",
+              "displayName": "Contact Phone(optional)",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Website (optional)",
+              "displayName": "Website (optional)",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Started Sequence?",
+              "displayName": "Started Sequence?",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Sequence Last Date",
+              "displayName": "Sequence Last Date",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Follow Ups",
+              "displayName": "Follow Ups",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Call Scheduled?",
+              "displayName": "Call Scheduled?",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Showed Call?",
+              "displayName": "Showed Call?",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Sales Transcript ID ",
+              "displayName": "Sales Transcript ID ",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Latest/Closed Transcript ID",
+              "displayName": "Latest/Closed Transcript ID",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Proposal sent?",
+              "displayName": "Proposal sent?",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Closed?",
+              "displayName": "Closed?",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Contract Sent? ",
+              "displayName": "Contract Sent? ",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Contract ID ",
+              "displayName": "Contract ID ",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Contract Signed?",
+              "displayName": "Contract Signed?",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "row_number",
+              "displayName": "row_number",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true,
+              "readOnly": true,
+              "removed": true
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        848,
+        720
+      ],
+      "id": "40771834-9c8b-49c0-b629-5227691874fe",
+      "name": "Update CRM (Follow Up 3)",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "fEEh3dtbP9SEhsE5",
+          "name": "Google Sheets account DT - AFT"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "content": "## Flow 3: Concierge Agent\nThis flow watches Calendly and updates your CRM when someone books a call.\n",
+        "height": 544,
+        "width": 784,
+        "color": 3
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -640,
+        976
+      ],
+      "typeVersion": 1,
+      "id": "8b62289d-2b46-4a56-8d0a-a6ee6da17087",
+      "name": "Sticky Note2"
+    },
+    {
+      "parameters": {
+        "events": [
+          "invitee.created"
+        ]
+      },
+      "type": "n8n-nodes-base.calendlyTrigger",
+      "typeVersion": 1,
+      "position": [
+        -576,
+        1136
+      ],
+      "id": "971f80c0-52cf-4b06-9d69-1d797869f6ca",
+      "name": "Calendly Trigger",
+      "webhookId": "b5d06c10-9a41-4177-a001-3a70f743ea0e",
+      "credentials": {
+        "calendlyApi": {
+          "id": "XBHUNJqIJ1XqBOJl",
+          "name": "Calendly account - DT AFT"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "loose",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "54322eba-1962-4f67-8669-bfe735d19f78",
+              "leftValue": "={{ $json.payload.scheduled_event.name }}",
+              "rightValue": "30 Minute Meeting",
+              "operator": {
+                "type": "string",
+                "operation": "equals",
+                "name": "filter.operator.equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "looseTypeValidation": true,
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        -368,
+        1136
+      ],
+      "id": "6fabddb0-a262-421c-9d3e-f991179916e5",
+      "name": "If"
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "documentId": {
+          "__rl": true,
+          "value": "19Ft0P5PgslMch0EqtMSdLPJTPSs5fmIimKbOZyGedqM",
+          "mode": "list",
+          "cachedResultName": "[AFT] The Sales Agent - CRM",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/19Ft0P5PgslMch0EqtMSdLPJTPSs5fmIimKbOZyGedqM/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "Sheet1",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/19Ft0P5PgslMch0EqtMSdLPJTPSs5fmIimKbOZyGedqM/edit#gid=0"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Contact Email": "={{ $json.payload.email }}",
+            "Call Scheduled?": "true"
+          },
+          "matchingColumns": [
+            "Contact Email"
+          ],
+          "schema": [
+            {
+              "id": "ID",
+              "displayName": "ID",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "First Name",
+              "displayName": "First Name",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Last Name",
+              "displayName": "Last Name",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Role",
+              "displayName": "Role",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Company Name",
+              "displayName": "Company Name",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Company Address",
+              "displayName": "Company Address",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Company Industry",
+              "displayName": "Company Industry",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Contact Email",
+              "displayName": "Contact Email",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Contact Phone(optional)",
+              "displayName": "Contact Phone(optional)",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Website (optional)",
+              "displayName": "Website (optional)",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Started Sequence?",
+              "displayName": "Started Sequence?",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Sequence Last Date",
+              "displayName": "Sequence Last Date",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Follow Ups",
+              "displayName": "Follow Ups",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Call Scheduled?",
+              "displayName": "Call Scheduled?",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Showed Call?",
+              "displayName": "Showed Call?",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Sales Transcript ID ",
+              "displayName": "Sales Transcript ID ",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Latest/Closed Transcript ID",
+              "displayName": "Latest/Closed Transcript ID",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Proposal sent?",
+              "displayName": "Proposal sent?",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Closed?",
+              "displayName": "Closed?",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Contract Sent? ",
+              "displayName": "Contract Sent? ",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Contract ID ",
+              "displayName": "Contract ID ",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Contract Signed?",
+              "displayName": "Contract Signed?",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "row_number",
+              "displayName": "row_number",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true,
+              "readOnly": true,
+              "removed": true
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        -64,
+        1120
+      ],
+      "id": "1571bca9-7f15-4c96-9fe0-4ddc0724bbcc",
+      "name": "Update CRM (Call Scheduled)",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "fEEh3dtbP9SEhsE5",
+          "name": "Google Sheets account DT - AFT"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "content": "## Flow 4: No-Show Agent\nThis flow emails leads who you mark as \"No\" in the \"Showed Call?\" column.\n",
+        "height": 544,
+        "width": 848,
+        "color": 5
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        176,
+        976
+      ],
+      "typeVersion": 1,
+      "id": "8aacf805-855f-49d2-8784-29142a03a247",
+      "name": "Sticky Note3"
+    },
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "hours",
+              "hoursInterval": 6
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.2,
+      "position": [
+        208,
+        1184
+      ],
+      "id": "47c20ad3-708c-4a1f-8c42-87aef2e7a604",
+      "name": "Schedule Trigger (No shows)"
+    },
+    {
+      "parameters": {
+        "documentId": {
+          "__rl": true,
+          "value": "19Ft0P5PgslMch0EqtMSdLPJTPSs5fmIimKbOZyGedqM",
+          "mode": "list",
+          "cachedResultName": "[AFT] The Sales Agent - CRM",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/19Ft0P5PgslMch0EqtMSdLPJTPSs5fmIimKbOZyGedqM/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "Sheet1",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/19Ft0P5PgslMch0EqtMSdLPJTPSs5fmIimKbOZyGedqM/edit#gid=0"
+        },
+        "filtersUI": {
+          "values": [
+            {
+              "lookupColumn": "Showed Call?",
+              "lookupValue": "No"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        416,
+        1184
+      ],
+      "id": "cee758c8-2609-45db-86eb-e487e4b91934",
+      "name": "Find No-Shows",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "fEEh3dtbP9SEhsE5",
+          "name": "Google Sheets account DT - AFT"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "sendTo": "={{ $json['Contact Email'] }}",
+        "subject": "Quick follow-up on our call",
+        "emailType": "text",
+        "message": "=Hi {{ $json['First Name'] }},  I waited on our call today but didn't see you jump on - totally understand things get hectic!  I'm still happy to chat.  Want to reschedule?   Here's my calendar: 📅 YOUR_CALENDLY_LINK_HERE  Or if you'd prefer, just reply with a time that works better for you.  Best, [Your Name]",
+        "options": {
+          "appendAttribution": false
+        }
+      },
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.1,
+      "position": [
+        624,
+        1184
+      ],
+      "id": "f97e0435-006e-4aef-bba5-7b7797c87efa",
+      "name": "Send No-Show Follow-Up",
+      "webhookId": "e7049452-9aa6-4762-b6f4-0c02c5843bec",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "MdIGR3k6h7OPEYUE",
+          "name": "Gmail account DT - AFT"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "documentId": {
+          "__rl": true,
+          "value": "19Ft0P5PgslMch0EqtMSdLPJTPSs5fmIimKbOZyGedqM",
+          "mode": "list",
+          "cachedResultName": "[AFT] The Sales Agent - CRM",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/19Ft0P5PgslMch0EqtMSdLPJTPSs5fmIimKbOZyGedqM/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "Sheet1",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/19Ft0P5PgslMch0EqtMSdLPJTPSs5fmIimKbOZyGedqM/edit#gid=0"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Contact Email": "={{ $('Find No-Shows').item.json['Contact Email'] }}"
+          },
+          "matchingColumns": [
+            "Contact Email"
+          ],
+          "schema": [
+            {
+              "id": "ID",
+              "displayName": "ID",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "First Name",
+              "displayName": "First Name",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Last Name",
+              "displayName": "Last Name",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Role",
+              "displayName": "Role",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Company Name",
+              "displayName": "Company Name",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Company Address",
+              "displayName": "Company Address",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Company Industry",
+              "displayName": "Company Industry",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Contact Email",
+              "displayName": "Contact Email",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Contact Phone(optional)",
+              "displayName": "Contact Phone(optional)",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Website (optional)",
+              "displayName": "Website (optional)",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Started Sequence?",
+              "displayName": "Started Sequence?",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Sequence Last Date",
+              "displayName": "Sequence Last Date",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Follow Ups",
+              "displayName": "Follow Ups",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Call Scheduled?",
+              "displayName": "Call Scheduled?",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Showed Call?",
+              "displayName": "Showed Call?",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Sales Transcript ID ",
+              "displayName": "Sales Transcript ID ",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Latest/Closed Transcript ID",
+              "displayName": "Latest/Closed Transcript ID",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Proposal sent?",
+              "displayName": "Proposal sent?",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Closed?",
+              "displayName": "Closed?",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Contract Sent? ",
+              "displayName": "Contract Sent? ",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Contract ID ",
+              "displayName": "Contract ID ",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Contract Signed?",
+              "displayName": "Contract Signed?",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "row_number",
+              "displayName": "row_number",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true,
+              "readOnly": true,
+              "removed": true
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        832,
+        1184
+      ],
+      "id": "ad21ae4f-e0bf-4891-92be-36d8cc0673f7",
+      "name": "Update \"No Show\" status",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "fEEh3dtbP9SEhsE5",
+          "name": "Google Sheets account DT - AFT"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "model": "meta-llama/llama-3.3-70b-instruct:free",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenRouter",
+      "typeVersion": 1,
+      "position": [
+        64,
+        752
+      ],
+      "id": "7d6b35b6-b965-49d4-96b9-8e43a6e55496",
+      "name": "OpenRouter Chat Model",
+      "credentials": {
+        "openRouterApi": {
+          "id": "qTG8djFnYrLFxRRy",
+          "name": "OpenRouter account DG - AFT"
+        }
+      }
+    }
+  ],
+  "pinData": {
+    "Get rows from CRM": [
+      {
+        "json": {
+          "row_number": 2,
+          "ID": 2,
+          "First Name": "Manthan",
+          "Last Name": "Oza",
+          "Role": "Owner",
+          "Company Name": "Advento",
+          "Company Address": "Gandhinagar, Gujarat",
+          "Company Industry": "Manufacturing",
+          "Contact Email": "deven.list+1@gmail.com",
+          "Contact Phone(optional)": "",
+          "Website (optional)": "",
+          "Started Sequence?": true,
+          "Sequence Last Date": "11/1/2025",
+          "Follow Ups": "",
+          "Call Scheduled?": false,
+          "Showed Call?": "",
+          "Sales Transcript ID ": "",
+          "Latest/Closed Transcript ID": "",
+          "Proposal sent?": false,
+          "Closed?": false,
+          "Contract Sent? ": false,
+          "Contract ID ": "",
+          "Contract Signed?": false
+        }
+      }
+    ],
+    "Create Follow-Up 1 Email with AI": [
+      {
+        "json": {
+          "text": "Hi Manthan,\n\nI wanted to follow up on our recent message about AI solutions. I know your inbox is probably overflowing, so I'll keep this brief. Many businesses we work with initially hesitate because they're not sure where AI fits into their current operations. The truth is, the companies seeing the biggest ROI right now aren't the ones with the fanciest tech stacks—they're the ones who started small and scaled strategically.\n\nWhat we're seeing work in 2025:\n\n- Customer service automation reducing response times by 60%\n- Data analysis that used to take days now happening in minutes\n- Personalized customer experiences at scale\n\nI'd love to spend 15 minutes learning about your specific challenges and sharing what might be possible for your team.\n\nWould you be open to a quick conversation?\n\n[CALENDAR LINK PLACEHOLDER]\n\nBest,  \nManthan\n\nP.S. No pressure - if the timing isn't right, just let me know when might work better."
+        }
+      }
+    ],
+    "Create Follow-Up 3 Email with AI": [
+      {
+        "json": {
+          "text": "Hi Manthan,\n\nI wanted to follow up on our recent message about AI solutions. I know your inbox is probably overflowing, so I'll keep this brief. Many businesses we work with initially hesitate because they're not sure where AI fits into their current operations. The truth is, the companies seeing the biggest ROI right now aren't the ones with the fanciest tech stacks—they're the ones who started small and scaled strategically.\n\nWhat we're seeing work in 2025:\n\n- Customer service automation reducing response times by 60%\n- Data analysis that used to take days now happening in minutes\n- Personalized customer experiences at scale\n\nI'd love to spend 15 minutes learning about your specific challenges and sharing what might be possible for your team.\n\nWould you be open to a quick conversation?\n\n[CALENDAR LINK PLACEHOLDER]\n\nBest,  \nManthan\n\nP.S. No pressure - if the timing isn't right, just let me know when might work better."
+        }
+      }
+    ]
+  },
+  "connections": {
+    "Get Email List": {
+      "main": [
+        [
+          {
+            "node": "Process Each Contact",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Process Each Contact": {
+      "main": [
+        [
+          {
+            "node": "Count Processed Leads",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Transfer to CRM",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wait": {
+      "main": [
+        [
+          {
+            "node": "Update ID in CRM",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Transfer to CRM": {
+      "main": [
+        [
+          {
+            "node": "Get Row from CRM",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get Row from CRM": {
+      "main": [
+        [
+          {
+            "node": "Wait",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Update ID in CRM": {
+      "main": [
+        [
+          {
+            "node": "Process Each Contact",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Count Processed Leads": {
+      "main": [
+        [
+          {
+            "node": "Delete rows or columns from sheet",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Schedule check of new emails": {
+      "main": [
+        [
+          {
+            "node": "Get Email List",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Schedule Trigger (Follow Ups)": {
+      "main": [
+        [
+          {
+            "node": "Get rows from CRM",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get rows from CRM": {
+      "main": [
+        [
+          {
+            "node": "Filter",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Filter": {
+      "main": [
+        [
+          {
+            "node": "Which follow-up phase?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Which follow-up phase?": {
+      "main": [
+        [
+          {
+            "node": "Create Follow-Up 1 Email with AI",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Create Follow-Up 2 Email with AI",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Create Follow-Up 3 Email with AI",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Create Follow-Up 1 Email with AI": {
+      "main": [
+        [
+          {
+            "node": "Send First Follow Up",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Send First Follow Up": {
+      "main": [
+        [
+          {
+            "node": "Update CRM (Follow Up 1)",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Create Follow-Up 2 Email with AI": {
+      "main": [
+        [
+          {
+            "node": "Send Second Follow Up",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Send Second Follow Up": {
+      "main": [
+        [
+          {
+            "node": "Update CRM (Follow Up 2)",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Send Third Follow Up": {
+      "main": [
+        [
+          {
+            "node": "Update CRM (Follow Up 3)",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Create Follow-Up 3 Email with AI": {
+      "main": [
+        [
+          {
+            "node": "Send Third Follow Up",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Calendly Trigger": {
+      "main": [
+        [
+          {
+            "node": "If",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If": {
+      "main": [
+        [
+          {
+            "node": "Update CRM (Call Scheduled)",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Schedule Trigger (No shows)": {
+      "main": [
+        [
+          {
+            "node": "Find No-Shows",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Find No-Shows": {
+      "main": [
+        [
+          {
+            "node": "Send No-Show Follow-Up",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Send No-Show Follow-Up": {
+      "main": [
+        [
+          {
+            "node": "Update \"No Show\" status",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenRouter Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Create Follow-Up 3 Email with AI",
+            "type": "ai_languageModel",
+            "index": 0
+          },
+          {
+            "node": "Create Follow-Up 2 Email with AI",
+            "type": "ai_languageModel",
+            "index": 0
+          },
+          {
+            "node": "Create Follow-Up 1 Email with AI",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "cf417363-152c-4ae6-89d5-e5b7221805c8",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "744bee391b0562aa4a95fe235a476c95299d49b073b59d27231bf50be6b8320f"
+  },
+  "id": "9XieQ28C8c9gmQTW",
+  "tags": []
+}
