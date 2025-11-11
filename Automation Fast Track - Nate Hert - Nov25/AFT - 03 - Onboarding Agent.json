@@ -1,0 +1,1600 @@
+{
+  "name": "AFT - 03 - Onboarding Agent",
+  "nodes": [
+    {
+      "parameters": {
+        "pollTimes": {
+          "item": [
+            {
+              "mode": "everyHour"
+            }
+          ]
+        },
+        "documentId": {
+          "__rl": true,
+          "value": "19Ft0P5PgslMch0EqtMSdLPJTPSs5fmIimKbOZyGedqM",
+          "mode": "list",
+          "cachedResultName": "[AFT] The Sales Agent - CRM",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/19Ft0P5PgslMch0EqtMSdLPJTPSs5fmIimKbOZyGedqM/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "Sheet1",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/19Ft0P5PgslMch0EqtMSdLPJTPSs5fmIimKbOZyGedqM/edit#gid=0"
+        },
+        "event": "rowUpdate",
+        "options": {
+          "columnsToWatch": [
+            "Closed?"
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.googleSheetsTrigger",
+      "typeVersion": 1,
+      "position": [
+        -384,
+        -64
+      ],
+      "id": "6667d6f3-d381-4aa7-bcd0-c2f5fe721eda",
+      "name": "Google Sheets Trigger",
+      "credentials": {
+        "googleSheetsTriggerOAuth2Api": {
+          "id": "BETwXZNNGIygVqz0",
+          "name": "Google Sheets Trigger account - DT AFT"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "content": "## Flow 1: Contract Creation System\nThis flow activates when you mark a deal as \"Closed?\" in your CRM.",
+        "height": 464,
+        "width": 2896
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -432,
+        -176
+      ],
+      "typeVersion": 1,
+      "id": "b1b0c873-5feb-4932-af62-25bc23ca7d37",
+      "name": "Sticky Note"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "loose",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "10382bae-a312-408d-99d5-6d0b0a6a0c50",
+              "leftValue": "={{ $json['Closed?'] }}",
+              "rightValue": "",
+              "operator": {
+                "type": "string",
+                "operation": "notEmpty",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "looseTypeValidation": true,
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        -176,
+        -64
+      ],
+      "id": "0c43d88d-add9-41d7-93d4-792ba8c2b9e1",
+      "name": "If"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "018b65be-13ed-42a7-9012-5b3caa0f8c1b",
+              "name": "Transcripts",
+              "value": "=[{{ $json['Sales Transcript ID '] }},{{ $json['Latest/Closed Transcript ID'] }}]",
+              "type": "array"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        48,
+        -80
+      ],
+      "id": "5404d48c-c4ab-4463-b6a1-a7992974c7bf",
+      "name": "Prepare Lead Data Fields"
+    },
+    {
+      "parameters": {
+        "fieldToSplitOut": "Transcripts",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.splitOut",
+      "typeVersion": 1,
+      "position": [
+        256,
+        -80
+      ],
+      "id": "c5285d2d-0306-472c-b0b6-0949f8207cb1",
+      "name": "Split IDs for Individual Processing"
+    },
+    {
+      "parameters": {
+        "url": "=https://api.fathom.ai/external/v1/recordings/{{ $json.Transcripts }}/transcript",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "X-Api-Key",
+              "value": "UXSJk0NYDgfNv_x23GuAyQ.XIU6JhLs9_WtGFXzk84QkAg9qQ5LF0hQQmUl0S3Sk00"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.3,
+      "position": [
+        464,
+        -80
+      ],
+      "id": "8c8325e1-3780-45b1-a7bf-551d1735eeb5",
+      "name": "Get Transcripts from Fathom"
+    },
+    {
+      "parameters": {
+        "fieldsToAggregate": {
+          "fieldToAggregate": [
+            {
+              "fieldToAggregate": "transcript"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.aggregate",
+      "typeVersion": 1,
+      "position": [
+        672,
+        -80
+      ],
+      "id": "9c42c171-e4c2-4242-8559-037495586b3a",
+      "name": "Combine All Transcripts"
+    },
+    {
+      "parameters": {
+        "jsCode": "// Get the transcript array from the HTTP Request node\nconst transcripts = $input.item.json.transcript;\n\n// Format function to group consecutive messages from same speaker\nfunction formatTranscript(transcript) {\n  let formattedTranscript = '';\n  let currentSpeaker = null;\n  let currentText = [];\n\n  transcript.forEach((entry, idx) => {\n    const speakerName = entry.speaker.display_name;\n    const text = entry.text;\n    \n    if (speakerName === currentSpeaker) {\n      currentText.push(text);\n    } else {\n      if (currentSpeaker !== null) {\n        formattedTranscript += `**${currentSpeaker}:**\\n${currentText.join(' ')}\\n\\n`;\n      }\n      currentSpeaker = speakerName;\n      currentText = [text];\n    }\n    \n    if (idx === transcript.length - 1) {\n      formattedTranscript += `**${currentSpeaker}:**\\n${currentText.join(' ')}`;\n    }\n  });\n  \n  return formattedTranscript.trim();\n}\n\n// Process both transcripts\nconst initialSalesCallTranscript = formatTranscript(transcripts[0]);\nconst latestClosingCallTranscript = formatTranscript(transcripts[1]);\n\n// Return ONE item with both transcripts only\nreturn {\n  json: {\n    initial_sales_call_transcript: initialSalesCallTranscript,\n    latest_closing_call_transcript: latestClosingCallTranscript\n  }\n};\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        880,
+        -80
+      ],
+      "id": "64b4dcfb-ea47-41d7-8653-ef855aa88024",
+      "name": "Clean Up Fathom Data"
+    },
+    {
+      "parameters": {
+        "text": "= Initial/Sales Call:{{ $json.initial_sales_call_transcript }}\n              Latest/Closing Call:{{ $json.latest_closing_call_transcript }}\n              If any information contradicts, always use the data mentioned in the closing call.",
+        "attributes": {
+          "attributes": [
+            {
+              "name": "Project Title",
+              "description": "Project Title (keep in mind this is for a contract, so everything should look clean and professional)",
+              "required": true
+            },
+            {
+              "name": "Project.Fee",
+              "description": "Project Fee (keep in mind this is for a contract, so everything should look clean and professional)",
+              "required": true
+            },
+            {
+              "name": "Deposit %, milestone amounts, due dates",
+              "description": "We have two milestones, each with a deposit percentage and a due date. Please structure them clearly, as they will be included in a single line of the contract.",
+              "required": true
+            },
+            {
+              "name": "Start Date",
+              "description": "=A week from {{$now}} - we need to specify an **exact date**  for that (no time required).",
+              "required": true
+            },
+            {
+              "name": "Estimated Completion Date",
+              "description": "Estimated completion date - this is usually based on what we discussed during the call at the start of the project. The project start date serves as the official start date.",
+              "required": true
+            },
+            {
+              "name": "Ongoing monthly maintenance",
+              "description": "If a specific monthly cost was mentioned, use that amount from the call extract and label it as monthly ongoing maintenance. If it wasn't mentioned, default to $700 per month",
+              "required": true
+            },
+            {
+              "name": "Project Scope",
+              "description": "Describe the project scope in a structured and concise way, as it will be placed above the project deliverables in the contract.",
+              "required": true
+            },
+            {
+              "name": "Project Deliverables",
+              "description": "Describe the project deliverables concisely, as they will be listed underneath the project scope.",
+              "required": true
+            },
+            {
+              "name": "Functionality System Must Have",
+              "description": "Describe or state concisely what functionality the system must have. Keep in mind that this will be placed above the \"Functionality to Meet Acceptance Criteria\" field.",
+              "required": true
+            },
+            {
+              "name": "Functionality To Meet Acceptance",
+              "description": "Describe or state concisely what functionality the system must have to meet the acceptance criteria. Keep in mind that this section will be placed underneath the functionality.",
+              "required": true
+            },
+            {
+              "name": "Milestone One",
+              "description": "Since payment is based on milestones and we have two in total, state Milestone One concisely and clearly.",
+              "required": true
+            },
+            {
+              "name": "Milestone one payment percent",
+              "description": "What will be the payment percentage for Milestone One? If nothing is mentioned, default to 50%.",
+              "required": true
+            },
+            {
+              "name": "Milestone One Due Date",
+              "description": "The due date for Milestone One should be based on the conversation. Estimate how long it will take to reach Milestone One and add that duration to the extracted dates.",
+              "required": true
+            },
+            {
+              "name": "Milestone two",
+              "description": "Since payment is based on milestones and we have two in total, state Milestone Two concisely and clearly.",
+              "required": true
+            },
+            {
+              "name": "Milestone Two Payment Percent",
+              "description": "What will be the payment percentage for Milestone Two? If nothing is mentioned, default to 50%.",
+              "required": true
+            },
+            {
+              "name": "Milestone Two Due Date",
+              "description": "The due date for Milestone Two should be based on the conversation. Estimate how long it will take to reach Milestone Two and add that duration to the extracted dates.",
+              "required": true
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.informationExtractor",
+      "typeVersion": 1.2,
+      "position": [
+        1088,
+        -80
+      ],
+      "id": "cfa31e2b-c1da-4bcf-859f-428bea3e6a68",
+      "name": "Extract information for the contract"
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "mode": "list",
+          "value": "gpt-4.1-mini"
+        },
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.2,
+      "position": [
+        1024,
+        128
+      ],
+      "id": "3a02f2bb-1adf-4378-b52e-3d7f0da446a1",
+      "name": "OpenAI Chat Model",
+      "credentials": {
+        "openAiApi": {
+          "id": "Cv9IjmIiYr4zARqR",
+          "name": "n8n free OpenAI API credits"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.pandadoc.com/public/v1/documents",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "API-Key 30212e09253e3cc1b893fe23d00e315c97996b65"
+            },
+            {
+              "name": "accept",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"template_uuid\": \"nkz7S6ZPQ982oov4yYoG24\",\n  \"recipients\": [\n    {\n      \"redirect\": {\n        \"is_enabled\": false,\n        \"url\": null\n      },\n      \"type\": \"recipient\",\n      \"role\": \"Buyer\",\n      \"signing_order\": 2,\n      \"email\": \"{{ $('Google Sheets Trigger').item.json['Contact Email'].trim() }}\",\n      \"first_name\": \"{{ $('Google Sheets Trigger').item.json['First Name'] }}\",\n      \"last_name\": \"{{ $('Google Sheets Trigger').item.json['Last Name'] }}\"\n    },\n    {\n      \"redirect\": {\n        \"is_enabled\": false,\n        \"url\": null\n      },\n      \"type\": \"recipient\",\n      \"role\": \"Seller\",\n      \"signing_order\": 1,\n      \"email\": \"YOUR_EMAIL\",\n      \"first_name\": \"YOUR_FIRST_NAME\",\n      \"last_name\": \"YOUR_LAST_NAME\"\n    }\n  ],\n  \"name\": \"Contract for {{ $('Google Sheets Trigger').item.json['Company Name'] }}\",\n  \"tokens\": [\n    {\n      \"name\": \"Project.Title\",\n      \"value\": \"{{ $json.output['Project Title '] }}\"\n    },\n    {\n      \"name\": \"Buyer.FirstName\",\n      \"value\": \"{{ $('Google Sheets Trigger').item.json['First Name'] }}\"\n    },\n    {\n      \"name\": \"Buyer.LastName\",\n      \"value\": \"{{ $('Google Sheets Trigger').item.json['Last Name'] }}\"\n    },\n    {\n      \"name\": \"Buyer.Company\",\n      \"value\": \"{{ $('Google Sheets Trigger').item.json['Company Name'] }}\"\n    },\n    {\n      \"name\": \"Buyer.Address\",\n      \"value\": \"{{ $('Google Sheets Trigger').item.json['Company Address'] }}\"\n    },\n    {\n      \"name\": \"Seller.Company\",\n      \"value\": \"YOUR_COMPANY_NAME\"\n    },\n    {\n      \"name\": \"Seller.Address\",\n      \"value\": \"YOUR_ADDRESS\"\n    },\n    {\n      \"name\": \"Project.Fee\",\n      \"value\": \"{{ $json.output['Project.Fee'] }}\"\n    },\n    {\n      \"name\": \"Deposit %, milestone amounts, due dates\",\n      \"value\": \"{{ $json.output['Deposit %, milestone amounts, due dates'] }}\"\n    },\n    {\n      \"name\": \"Start.Date\",\n      \"value\": \"{{ $json.output['Start Date'] }}\"\n    },\n    {\n      \"name\": \"EstimatedCompletionDate\",\n      \"value\": \"{{ $json.output['Estimated Completion Date'] }}\"\n    },\n    {\n      \"name\": \"Ongoing.monthly.maintenance\",\n      \"value\": \"{{ $json.output['Ongoing monthly maintenance'] }}\"\n    },\n    {\n      \"name\": \"Seller.FirstName\",\n      \"value\": \"YOUR_FIRST_NAME\"\n    },\n    {\n      \"name\": \"Seller.LastName\",\n      \"value\": \"YOUR_LAST_NAME\"\n    },\n    {\n      \"name\": \"Project.Scope\",\n      \"value\": \"{{ $json.output['Project Scope'] }}\"\n    },\n    {\n      \"name\": \"Project.Deliverables\",\n      \"value\": \"{{ $json.output['Project Deliverables'] }}\"\n    },\n    {\n      \"name\": \"Functionality.System.Must.Have\",\n      \"value\": \"{{ $json.output['Functionality System Must Have'] }}\"\n    },\n    {\n      \"name\": \"milestoneone\",\n      \"value\": \"{{ $json.output['Milestone One'] }}\"\n    },\n    {\n      \"name\": \"milestoneoneduedate\",\n      \"value\": \"{{ $json.output['Milestone One Due Date'] }}\"\n    },\n    {\n      \"name\": \"milestoneonepaymentpercent\",\n      \"value\": \"{{ $json.output['Milestone one payment percent'] }}\"\n    },\n    {\n      \"name\": \"milestonetwo\",\n      \"value\": \"{{ $json.output['Milestone two'] }}\"\n    },\n    {\n      \"name\": \"milestonetwoduedate\",\n      \"value\": \"{{ $json.output['Milestone Two Due Date'] }}\"\n    },\n    {\n      \"name\": \"milestonetwopaymentpercent\",\n      \"value\": \"{{ $json.output['Milestone Two Payment Percent'] }}\"\n    },\n    {\n      \"name\": \"Functionality.To.Meet.Acceptance\",\n      \"value\": \"{{ $json.output['Functionality To Meet Acceptance'] }}\"\n    }\n  ]\n}\n",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.3,
+      "position": [
+        1440,
+        -80
+      ],
+      "id": "7256fc64-f588-436c-9e86-acea5ace03c2",
+      "name": "Create PandaDoc Contract"
+    },
+    {
+      "parameters": {
+        "amount": 15
+      },
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        1648,
+        -80
+      ],
+      "id": "53e71ca2-c35c-4de9-aa2e-dd43aacd0a18",
+      "name": "Wait",
+      "webhookId": "9ebc741f-a641-44d4-8707-d8e62e8691e1"
+    },
+    {
+      "parameters": {
+        "url": "=https://api.pandadoc.com/public/v1/documents/{{ $json.id }}",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "API-Key 30212e09253e3cc1b893fe23d00e315c97996b65"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.3,
+      "position": [
+        1856,
+        -80
+      ],
+      "id": "e526657e-8dcd-418d-9444-75f96e0f1742",
+      "name": "Check Document Status"
+    },
+    {
+      "parameters": {
+        "sendTo": "dhimahitechnolabs@gmail.com",
+        "subject": "=Please review the contract for {{ $('Google Sheets Trigger').item.json['Company Name'] }}",
+        "message": "=<!DOCTYPE html> <html lang=\"en\"> <head>     <meta charset=\"UTF-8\">     <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">     <title>Document Review Request</title> </head> <body style=\"margin:0;padding:0;font-family:'Helvetica Neue','Helvetica',Arial,sans-serif;\">     <table width=\"100%\" cellpadding=\"0\" cellspacing=\"0\" border=\"0\" id=\"background-table\">         <tbody>             <tr>                 <td align=\"center\" bgcolor=\"#e5e5e5\">                     <table width=\"480\" cellpadding=\"0\" cellspacing=\"0\" border=\"0\">                         <tbody>                             <tr>                                 <td width=\"480\" height=\"30\"></td>                             </tr>                                                          <!-- Logo -->                             <tr>                                 <td width=\"480\" height=\"30\" align=\"center\">                                     <img style=\"display:block;height:50px;text-align:center;border:none\"                                           src=\"https://ci3.googleusercontent.com/meips/ADKq_NbIyITpPGxTiY44VH7l_2C0PODwsRpYl8te8n4qf0MySrV6nsJJ54Yzgc_S90Aw1ZCCmMxWdF2bVwXEiRFyn-PpEtFqWhmYw7ROohiBZ3MpvQJpEzbUpgEr=s0-d-e1-ft#https://s3-us-west-2.amazonaws.com/pd-emails/images/pd-logo-new.png\"                                           alt=\"\"                                           title=\"\"                                           height=\"50\"                                           border=\"0\">                                 </td>                             </tr>                                                          <tr>                                 <td width=\"480\" height=\"30\"></td>                             </tr>                                                          <!-- Main Content Box -->                             <tr>                                 <td width=\"480\" id=\"content-table\" bgcolor=\"#ffffff\" align=\"center\">                                     <table width=\"480\" cellpadding=\"0\" cellspacing=\"0\" border=\"0\" id=\"email-base-table\">                                         <tbody>                                             <tr>                                                 <td width=\"40\"></td>                                                 <td width=\"400\" height=\"30\"></td>                                                 <td width=\"40\"></td>                                             </tr>                                             <tr>                                                 <td width=\"40\"></td>                                                 <td width=\"400\">                                                     <table width=\"400\" cellpadding=\"0\" cellspacing=\"0\" border=\"0\" id=\"basic-table\">                                                         <tbody>                                                             <tr>                                                                 <td width=\"400\">                                                                     <table width=\"400\" cellpadding=\"0\" cellspacing=\"0\" border=\"0\">                                                                         <tbody>                                                                             <tr>                                                                                 <td width=\"70\" valign=\"top\"></td>                                                                                 <td width=\"330\" valign=\"top\" style=\"font-family:'Helvetica Neue','Helvetica',Arial,sans-serif;font-size:15px;color:#333b40;margin:0;padding:0;border-collapse:collapse;line-height:22px!important\">                                                                                     <b></b> You need to review a <b>[DEV] Contract for {{ $('Google Sheets Trigger').item.json['Company Name'] }} </b>.                                                                                 </td>                                                                             </tr>                                                                         </tbody>                                                                     </table>                                                                 </td>                                                             </tr>                                                             <tr>                                                                 <td width=\"400\">                                                                     <hr size=\"1\" noshade style=\"margin:10px 0 20px 0;border:none;color:#eaeaea;background-color:#eaeaea;height:1px\">                                                                 </td>                                                             </tr>                                                                                                                          <tr>                                                                 <td width=\"400\" align=\"center\">                                                                     <table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" style=\"width:100%;text-align:center;border-collapse:separate;border-top-left-radius:3px;border-top-right-radius:3px;border-bottom-right-radius:3px;border-bottom-left-radius:3px\">                                                                         <tbody>                                                                             <tr>                                                                                 <td valign=\"middle\" style=\"width:50%;border-radius:2px;font-size:16px;letter-spacing:1.2px;padding:0px;margin-right:20px;background-color:#248567\">                                                                                     <a title=\"Review the document\"                                                                                         href=\"https://app.pandadoc.com/a/#/documents/{{ $json.id }}\"                                                                                         style=\"font-size:13px;line-height:100%;text-align:center;text-decoration:none;color:#ffffff;word-wrap:break-word;text-transform:uppercase;display:inline-block;padding:11px 25px\"                                                                                         target=\"_blank\">                                                                                         Review the document                                                                                     </a>                                                                                 </td>                                                                             </tr>                                                                         </tbody>                                                                     </table>                                                                 </td>                                                             </tr>                                                         </tbody>                                                     </table>                                                 </td>                                                 <td width=\"40\"></td>                                             </tr>                                             <tr>                                                 <td width=\"40\"></td>                                                 <td width=\"400\" height=\"30\"></td>                                                 <td width=\"40\"></td>                                             </tr>                                         </tbody>                                     </table>                                 </td>                             </tr>                                                          <!-- Footer -->                             <tr>                                 <td width=\"480\">                                     <table width=\"480\" cellpadding=\"0\" cellspacing=\"0\" border=\"0\">                                         <tbody>                                             <tr>                                                 <td width=\"51\"></td>                                                 <td width=\"378\">                                                     <p align=\"center\" style=\"color:#767676;font-size:12px;line-height:15px;text-align:center;padding-bottom:20px;font-family:'Helvetica Neue','Helvetica',Arial,sans-serif\">                                                         Use PandaDoc to create, send, track, and eSign documents — quickly and securely.                                                     </p>                                                 </td>                                                 <td width=\"51\"></td>                                             </tr>                                         </tbody>                                     </table>                                 </td>                             </tr>                         </tbody>                     </table>                 </td>             </tr>         </tbody>     </table> </body> </html>",
+        "options": {
+          "appendAttribution": false
+        }
+      },
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.1,
+      "position": [
+        2064,
+        -80
+      ],
+      "id": "d249512f-f21d-4966-b4fb-f73d1523fde3",
+      "name": "Send a message",
+      "webhookId": "963fdba1-4655-405c-92e3-cb3a8a2ee93a",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "MdIGR3k6h7OPEYUE",
+          "name": "Gmail account DT - AFT"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "documentId": {
+          "__rl": true,
+          "value": "19Ft0P5PgslMch0EqtMSdLPJTPSs5fmIimKbOZyGedqM",
+          "mode": "list",
+          "cachedResultName": "[AFT] The Sales Agent - CRM",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/19Ft0P5PgslMch0EqtMSdLPJTPSs5fmIimKbOZyGedqM/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "Sheet1",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/19Ft0P5PgslMch0EqtMSdLPJTPSs5fmIimKbOZyGedqM/edit#gid=0"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Contact Email": "={{ $('Google Sheets Trigger').item.json['Contact Email'] }}",
+            "Contract Sent? ": "true",
+            "Contract ID ": "={{ $('Check Document Status').item.json.id }}"
+          },
+          "matchingColumns": [
+            "Contact Email"
+          ],
+          "schema": [
+            {
+              "id": "ID",
+              "displayName": "ID",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "First Name",
+              "displayName": "First Name",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Last Name",
+              "displayName": "Last Name",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Role",
+              "displayName": "Role",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Company Name",
+              "displayName": "Company Name",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Company Address",
+              "displayName": "Company Address",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Company Industry",
+              "displayName": "Company Industry",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Contact Email",
+              "displayName": "Contact Email",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Contact Phone(optional)",
+              "displayName": "Contact Phone(optional)",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Website (optional)",
+              "displayName": "Website (optional)",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Started Sequence?",
+              "displayName": "Started Sequence?",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Sequence Last Date",
+              "displayName": "Sequence Last Date",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Follow Ups",
+              "displayName": "Follow Ups",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Call Scheduled?",
+              "displayName": "Call Scheduled?",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Showed Call?",
+              "displayName": "Showed Call?",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Sales Transcript ID ",
+              "displayName": "Sales Transcript ID ",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Latest/Closed Transcript ID",
+              "displayName": "Latest/Closed Transcript ID",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Proposal sent?",
+              "displayName": "Proposal sent?",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Closed?",
+              "displayName": "Closed?",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Contract Sent? ",
+              "displayName": "Contract Sent? ",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Contract ID ",
+              "displayName": "Contract ID ",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Contract Signed?",
+              "displayName": "Contract Signed?",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "row_number",
+              "displayName": "row_number",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true,
+              "readOnly": true,
+              "removed": true
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        2272,
+        -80
+      ],
+      "id": "2cb64a90-6065-4b4e-943c-fee4c23b48b2",
+      "name": "Update row in sheet",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "fEEh3dtbP9SEhsE5",
+          "name": "Google Sheets account DT - AFT"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "content": "## Flow 2: Contract Signed Monitoring System\nThis flow runs every hour to check for newly signed contracts and welcome new clients.\n",
+        "height": 432,
+        "width": 1424,
+        "color": 3
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -432,
+        320
+      ],
+      "typeVersion": 1,
+      "id": "122e8723-99ed-424a-9d30-68c9db9af736",
+      "name": "Sticky Note1"
+    },
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "hours"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.2,
+      "position": [
+        -384,
+        480
+      ],
+      "id": "3f81289a-b8e6-4115-8cdb-496316c07fe5",
+      "name": "Schedule Trigger"
+    },
+    {
+      "parameters": {
+        "documentId": {
+          "__rl": true,
+          "value": "19Ft0P5PgslMch0EqtMSdLPJTPSs5fmIimKbOZyGedqM",
+          "mode": "list",
+          "cachedResultName": "[AFT] The Sales Agent - CRM",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/19Ft0P5PgslMch0EqtMSdLPJTPSs5fmIimKbOZyGedqM/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "Sheet1",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/19Ft0P5PgslMch0EqtMSdLPJTPSs5fmIimKbOZyGedqM/edit#gid=0"
+        },
+        "filtersUI": {
+          "values": [
+            {
+              "lookupColumn": "Contract Sent? ",
+              "lookupValue": "true"
+            },
+            {
+              "lookupColumn": "Contract Signed?",
+              "lookupValue": "false"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        -176,
+        480
+      ],
+      "id": "a7d7b3f9-200c-4ff8-ae96-b2f93f043ed5",
+      "name": "check if contract is signed",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "fEEh3dtbP9SEhsE5",
+          "name": "Google Sheets account DT - AFT"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "url": "=https://api.pandadoc.com/public/v1/documents/{{ $json['Contract ID '] }}",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "API-Key 30212e09253e3cc1b893fe23d00e315c97996b65"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.3,
+      "position": [
+        32,
+        480
+      ],
+      "id": "4c93cab8-e68d-477c-80fc-ab87b7e80095",
+      "name": "Check Document Status (Signed?)"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "loose",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "6a7aebcd-daaa-4bc5-bdb5-4ddcfe75cf87",
+              "leftValue": "={{ $json.status }}",
+              "rightValue": "document.completed",
+              "operator": {
+                "type": "string",
+                "operation": "equals",
+                "name": "filter.operator.equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "looseTypeValidation": true,
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        240,
+        480
+      ],
+      "id": "d7ae9df4-6989-470a-a32d-d26566c922cc",
+      "name": "If document is completed"
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "documentId": {
+          "__rl": true,
+          "value": "19Ft0P5PgslMch0EqtMSdLPJTPSs5fmIimKbOZyGedqM",
+          "mode": "list",
+          "cachedResultName": "[AFT] The Sales Agent - CRM",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/19Ft0P5PgslMch0EqtMSdLPJTPSs5fmIimKbOZyGedqM/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "Sheet1",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/19Ft0P5PgslMch0EqtMSdLPJTPSs5fmIimKbOZyGedqM/edit#gid=0"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Contact Email": "={{ $('check if contract is signed').item.json['Contact Email'] }}",
+            "Contract Signed?": "true"
+          },
+          "matchingColumns": [
+            "Contact Email"
+          ],
+          "schema": [
+            {
+              "id": "ID",
+              "displayName": "ID",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "First Name",
+              "displayName": "First Name",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Last Name",
+              "displayName": "Last Name",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Role",
+              "displayName": "Role",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Company Name",
+              "displayName": "Company Name",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Company Address",
+              "displayName": "Company Address",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Company Industry",
+              "displayName": "Company Industry",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Contact Email",
+              "displayName": "Contact Email",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Contact Phone(optional)",
+              "displayName": "Contact Phone(optional)",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Website (optional)",
+              "displayName": "Website (optional)",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Started Sequence?",
+              "displayName": "Started Sequence?",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Sequence Last Date",
+              "displayName": "Sequence Last Date",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Follow Ups",
+              "displayName": "Follow Ups",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Call Scheduled?",
+              "displayName": "Call Scheduled?",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Showed Call?",
+              "displayName": "Showed Call?",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Sales Transcript ID ",
+              "displayName": "Sales Transcript ID ",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Latest/Closed Transcript ID",
+              "displayName": "Latest/Closed Transcript ID",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Proposal sent?",
+              "displayName": "Proposal sent?",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Closed?",
+              "displayName": "Closed?",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Contract Sent? ",
+              "displayName": "Contract Sent? ",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Contract ID ",
+              "displayName": "Contract ID ",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Contract Signed?",
+              "displayName": "Contract Signed?",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "row_number",
+              "displayName": "row_number",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true,
+              "readOnly": true,
+              "removed": true
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        448,
+        384
+      ],
+      "id": "ceafdcf6-0120-432f-8181-a7d161e1a038",
+      "name": "Update row in sheet (Contract Signed)",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "fEEh3dtbP9SEhsE5",
+          "name": "Google Sheets account DT - AFT"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "sendTo": "={{ $('check if contract is signed').item.json['Contact Email'] }}",
+        "subject": "Welcome to Dhimahi Technolabs",
+        "emailType": "text",
+        "message": "We are thrilled to welcome you to Dhimahi Technolabs and are excited to kick off our partnership! We're committed to helping you achieve your goals with our innovative solutions.\n\nHere's what you can expect next:\n- Kickoff meeting: Let's connect to discuss your goals and expectations. You can book a time that works for you here: https://calendly.com/dhimahitechnolabs/onboarding-call\n\n- Your point of contact: Your dedicated Account Manager. They'll reach out within 24 hours to introduce themselves and be your go-to for any questions.\n\nWe've also prepared some resources to help you get familiar with our process:\n- Onboarding guide: [Link]\n- FAQ page: [Link]\n\nWe're here to help you succeed, and we look forward to a successful partnership.\n\nBest regards,\nDhimahi Technolabs\n",
+        "options": {
+          "appendAttribution": false
+        }
+      },
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.1,
+      "position": [
+        656,
+        384
+      ],
+      "id": "27604fe0-1dcc-4b10-8df2-a5cb591299a9",
+      "name": "Send a welcome email",
+      "webhookId": "b8fc9a3d-0219-4a64-ae4f-0150456c57a3",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "MdIGR3k6h7OPEYUE",
+          "name": "Gmail account DT - AFT"
+        }
+      }
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.noOp",
+      "typeVersion": 1,
+      "position": [
+        448,
+        576
+      ],
+      "id": "b1dfca21-d51e-40e0-ad8d-b43a564e3c0a",
+      "name": "No Operation, do nothing"
+    },
+    {
+      "parameters": {
+        "content": "## Flow 3: Onboarding Call Folder Creation\nThis flow creates a Google Drive folder when a client books an onboarding call.\n",
+        "height": 432,
+        "width": 1440,
+        "color": 5
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        1024,
+        320
+      ],
+      "typeVersion": 1,
+      "id": "7e560ef5-0325-41cb-8706-97471a609c29",
+      "name": "Sticky Note2"
+    },
+    {
+      "parameters": {
+        "authentication": "oAuth2",
+        "events": [
+          "invitee.created"
+        ]
+      },
+      "type": "n8n-nodes-base.calendlyTrigger",
+      "typeVersion": 1,
+      "position": [
+        1072,
+        480
+      ],
+      "id": "2ba7a761-53e0-4b1b-97d6-003e11c71ee5",
+      "name": "Calendly Trigger",
+      "webhookId": "88dbf38e-e9f3-4233-921f-9075cc56b125",
+      "credentials": {
+        "calendlyOAuth2Api": {
+          "id": "eMbFkgV9VcZkUXHF",
+          "name": "Calendly account OAuth - DT AFT"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "loose",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "0786b68b-bf07-4efa-b429-6e4a0f6771aa",
+              "leftValue": "={{ $json.payload.scheduled_event.name }}",
+              "rightValue": "Onboarding call",
+              "operator": {
+                "type": "string",
+                "operation": "equals",
+                "name": "filter.operator.equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "looseTypeValidation": true,
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        1280,
+        480
+      ],
+      "id": "c4678bc0-3a51-43b1-a9b9-c57f4b443cee",
+      "name": "If an onboarding call is booked"
+    },
+    {
+      "parameters": {
+        "documentId": {
+          "__rl": true,
+          "value": "19Ft0P5PgslMch0EqtMSdLPJTPSs5fmIimKbOZyGedqM",
+          "mode": "list",
+          "cachedResultName": "[AFT] The Sales Agent - CRM",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/19Ft0P5PgslMch0EqtMSdLPJTPSs5fmIimKbOZyGedqM/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "Sheet1",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/19Ft0P5PgslMch0EqtMSdLPJTPSs5fmIimKbOZyGedqM/edit#gid=0"
+        },
+        "filtersUI": {
+          "values": [
+            {
+              "lookupColumn": "Contact Email",
+              "lookupValue": "={{ $('Calendly Trigger').item.json.payload.email }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        1488,
+        384
+      ],
+      "id": "7e5bd7d6-d239-40eb-9511-c93534dc108b",
+      "name": "Get company name",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "fEEh3dtbP9SEhsE5",
+          "name": "Google Sheets account DT - AFT"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resource": "folder",
+        "name": "={{ $json['Company Name'] }}",
+        "driveId": {
+          "__rl": true,
+          "value": "My Drive",
+          "mode": "list",
+          "cachedResultName": "My Drive",
+          "cachedResultUrl": "https://drive.google.com/drive/my-drive"
+        },
+        "folderId": {
+          "__rl": true,
+          "mode": "list",
+          "value": "root",
+          "cachedResultName": "/ (Root folder)"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleDrive",
+      "typeVersion": 3,
+      "position": [
+        1696,
+        384
+      ],
+      "id": "50535fe1-360b-4a2b-a597-0c0fc28ce47b",
+      "name": "Create a new client folder",
+      "credentials": {
+        "googleDriveOAuth2Api": {
+          "id": "ekvxvDXmqQXlWoZi",
+          "name": "Google Drive account DT - AFT"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "sendTo": "dhimahitechnolabs@gmail.com",
+        "subject": "=New onboarding call booked by {{ $('Get company name').item.json['Company Name'] }} (folder created)",
+        "emailType": "text",
+        "message": "={{ $('Get company name').item.json['Company Name'] }} booked an onboarding call at {{ $('Calendly Trigger').item.json.payload.scheduled_event.start_time.toDateTime().toFormat('yyyy-MM-dd h:mm a') }}.\n\nHere's the folder for {{ $('Get company name').item.json['Company Name'] }}: https://drive.google.com/drive/folders/{{ $json.id }}\n",
+        "options": {
+          "appendAttribution": false
+        }
+      },
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.1,
+      "position": [
+        1904,
+        384
+      ],
+      "id": "9c958ed3-8814-4cd7-9be4-f9d2174157c1",
+      "name": "Send a call and folder confirmation email",
+      "webhookId": "718d6420-8749-4b8c-b195-2d0b1f4ef486",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "MdIGR3k6h7OPEYUE",
+          "name": "Gmail account DT - AFT"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resource": "folder",
+        "operation": "share",
+        "folderNoRootId": {
+          "__rl": true,
+          "value": "={{ $('Create a new client folder').item.json.id }}",
+          "mode": "id"
+        },
+        "permissionsUi": {
+          "permissionsValues": {
+            "role": "writer",
+            "type": "user",
+            "emailAddress": "={{ $('Calendly Trigger').item.json.payload.email }}"
+          }
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleDrive",
+      "typeVersion": 3,
+      "position": [
+        2112,
+        384
+      ],
+      "id": "5699cabf-9052-4c05-8f45-792b63ea05a1",
+      "name": "Share folder with the client",
+      "credentials": {
+        "googleDriveOAuth2Api": {
+          "id": "ekvxvDXmqQXlWoZi",
+          "name": "Google Drive account DT - AFT"
+        }
+      }
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.noOp",
+      "typeVersion": 1,
+      "position": [
+        1488,
+        576
+      ],
+      "id": "25b6b043-3489-4a7f-8cf9-badc0d70f5e1",
+      "name": "No Operation, do nothing1"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Google Sheets Trigger": {
+      "main": [
+        [
+          {
+            "node": "If",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If": {
+      "main": [
+        [
+          {
+            "node": "Prepare Lead Data Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Prepare Lead Data Fields": {
+      "main": [
+        [
+          {
+            "node": "Split IDs for Individual Processing",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Split IDs for Individual Processing": {
+      "main": [
+        [
+          {
+            "node": "Get Transcripts from Fathom",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get Transcripts from Fathom": {
+      "main": [
+        [
+          {
+            "node": "Combine All Transcripts",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Combine All Transcripts": {
+      "main": [
+        [
+          {
+            "node": "Clean Up Fathom Data",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Clean Up Fathom Data": {
+      "main": [
+        [
+          {
+            "node": "Extract information for the contract",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Extract information for the contract",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Extract information for the contract": {
+      "main": [
+        [
+          {
+            "node": "Create PandaDoc Contract",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Create PandaDoc Contract": {
+      "main": [
+        [
+          {
+            "node": "Wait",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wait": {
+      "main": [
+        [
+          {
+            "node": "Check Document Status",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Check Document Status": {
+      "main": [
+        [
+          {
+            "node": "Send a message",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Send a message": {
+      "main": [
+        [
+          {
+            "node": "Update row in sheet",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Schedule Trigger": {
+      "main": [
+        [
+          {
+            "node": "check if contract is signed",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "check if contract is signed": {
+      "main": [
+        [
+          {
+            "node": "Check Document Status (Signed?)",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Check Document Status (Signed?)": {
+      "main": [
+        [
+          {
+            "node": "If document is completed",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If document is completed": {
+      "main": [
+        [
+          {
+            "node": "Update row in sheet (Contract Signed)",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "No Operation, do nothing",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Update row in sheet (Contract Signed)": {
+      "main": [
+        [
+          {
+            "node": "Send a welcome email",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Calendly Trigger": {
+      "main": [
+        [
+          {
+            "node": "If an onboarding call is booked",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If an onboarding call is booked": {
+      "main": [
+        [
+          {
+            "node": "Get company name",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "No Operation, do nothing1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get company name": {
+      "main": [
+        [
+          {
+            "node": "Create a new client folder",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Create a new client folder": {
+      "main": [
+        [
+          {
+            "node": "Send a call and folder confirmation email",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Send a call and folder confirmation email": {
+      "main": [
+        [
+          {
+            "node": "Share folder with the client",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "b4822ed0-b486-483d-9472-4aea4b99607a",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "744bee391b0562aa4a95fe235a476c95299d49b073b59d27231bf50be6b8320f"
+  },
+  "id": "uMeUoXDapjf84gun",
+  "tags": []
+}
