@@ -1,16 +1,16 @@
-# Workflow Analysis for ETL Pipeline
+# Workflow Analysis for ETL Pipeline for Tweet Processing
 
 ## Description
-Automated workflow that processes tweets and sends them to a Slack channel with sentiment analysis
+Automated workflow to process tweets, analyze sentiment, and notify via Slack
 
 ## Input Details
-The workflow is triggered by a cron node at 6am every day and receives tweets from Twitter using the Twitter API
+The workflow is triggered by a cron job at 6am every day and receives tweet data from Twitter
 
 ## Process Summary
-The workflow retrieves tweets from Twitter, inserts them into a MongoDB database, analyzes the sentiment of the tweets using Google Cloud Natural Language, sets the score and magnitude of the sentiment, and then sends the tweets to a Slack channel if the score is larger than a certain value. The workflow also handles errors using an error handler node. The workflow is automated and performs tasks such as data processing and sentiment analysis. The workflow uses various nodes such as Twitter, MongoDB, Google Cloud Natural Language, and Slack to perform its tasks.
+The workflow searches for tweets with the hashtag #OnThisDay, extracts the text, and inserts it into a MongoDB collection. It then analyzes the sentiment of the tweets using Google Cloud Natural Language, sets the score and magnitude, and checks if the score is larger than a certain threshold using an If Node. If true, it sends a notification to a Slack channel with the tweet text, score, and magnitude. The workflow also logs the tweet data into a Postgres database.
 
 ## Output Details
-The workflow produces tweets with sentiment analysis and sends them to a Slack channel
+The workflow produces a notification in a Slack channel and logs tweet data into a Postgres database
 
 ## Tags
-automation, n8n, production-ready, excellent, optimized, twitter, mongodb, google-cloud-natural-language, slack, cron, sentiment-analysis
+automation, n8n, production-ready, tweet-processing, sentiment-analysis
