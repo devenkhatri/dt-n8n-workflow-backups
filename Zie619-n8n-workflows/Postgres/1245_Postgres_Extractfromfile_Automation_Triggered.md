@@ -1,16 +1,16 @@
 # Workflow Analysis for Translate questions about e-mails into SQL queries and run them
 
 ## Description
-This workflow translates natural language questions about emails into SQL queries, runs them, and returns the results. It uses various nodes such as Postgres, AI Agent, and Merge to achieve this functionality.
+This workflow translates natural language questions about emails into SQL queries, executes them, and returns the results.
 
 ## Input Details
-The workflow receives natural language queries as input, either through a chat trigger or a manual trigger, which are then used to generate SQL queries.
+The workflow receives natural language queries about emails through a chat trigger or manual input.
 
 ## Process Summary
-The workflow starts by loading the database schema, then it extracts the table names and columns. It uses an AI Agent to generate a SQL query based on the natural language input. The query is then executed on the Postgres database, and the results are formatted and returned. The workflow also includes error handling and security measures.
+The workflow uses a combination of nodes to translate the natural language query into a SQL query, execute it on a PostgreSQL database, and format the results. It handles errors, checks for query existence, and adds a trailing semicolon if needed.
 
 ## Output Details
-The workflow produces the results of the SQL query as output, which can be used for further processing or analysis.
+The workflow produces the executed SQL query results, which can be used for further processing or analysis.
 
 ## Tags
-automation, n8n, production-ready, excellent, optimized, postgres, sql, natural-language-processing, AI, chatbot
+automation, n8n, production-ready, excellent, optimized, sql, postgresql, natural-language-processing, chatbot
