@@ -1,16 +1,16 @@
 # Workflow Analysis for RAG & GenAI App With WordPress Content
 
 ## Description
-This workflow integrates WordPress content with a GenAI application to provide automated chat functionality and document embedding.
+Automated workflow to integrate WordPress content with RAG and GenAI for enhanced user experience.
 
 ## Input Details
-The workflow is triggered by a manual trigger and receives WordPress posts and pages data.
+The workflow is triggered by a schedule trigger and receives data from WordPress posts and pages.
 
 ## Process Summary
-The workflow retrieves WordPress posts and pages, filters out unpublished and protected content, and stores the documents on Supabase. It also creates a table to store workflow execution history and sets up embeddings for the documents. Additionally, the workflow handles chat input from users, retrieves relevant documents, and responds with helpful answers using the AI agent.
+The workflow retrieves WordPress posts and pages, filters out unpublished and protected content, and then processes the content to create embeddings. It also handles chat input from users, retrieves relevant documents from Supabase, and provides a response using an AI agent. The workflow includes error handling and security measures.
 
 ## Output Details
-The workflow produces embedded documents on Supabase and provides chat responses to users via the AI agent.
+The workflow produces a response to the user's chat input and stores the workflow execution history in Supabase.
 
 ## Tags
-wordpress, genai, supabase, chatbot, document embedding, automation, n8n, production-ready, excellent, optimized
+RAG, GenAI, WordPress, automation, n8n, production-ready, optimized
