@@ -1,16 +1,16 @@
-# Workflow Analysis for ETL Pipeline Workflow
+# Workflow Analysis for ETL Pipeline
 
 ## Description
-Automated workflow for processing and analyzing Twitter data using natural language processing and storing it in a database
+This workflow is an automated ETL pipeline that processes data from Twitter and performs sentiment analysis using Google Cloud Natural Language, storing the results in a MongoDB database and sending notifications to a Slack channel.
 
 ## Input Details
-The workflow is triggered by a cron node at 6am every day and receives Twitter data using the Twitter API
+The workflow is triggered by a Cron node at 6am every day and receives data from Twitter based on the #OnThisDay hashtag.
 
 ## Process Summary
-The workflow uses the Twitter API to search for tweets with the hashtag #OnThisDay, then uses the Google Cloud Natural Language API to analyze the sentiment of the tweets, and finally stores the data in a Postgres database and sends a notification to a Slack channel if the sentiment score is high
+The workflow starts by fetching tweets from Twitter using the #OnThisDay hashtag, then stores the tweets in a MongoDB database. The tweets are then analyzed using Google Cloud Natural Language to determine their sentiment score and magnitude. The sentiment scores are then used to determine whether the tweet should be sent to a Slack channel. If the score is higher than a certain threshold, the tweet is sent to the Slack channel.
 
 ## Output Details
-The workflow produces a notification in a Slack channel with the tweet text and sentiment score, and also stores the data in a Postgres database
+The workflow produces a notification in a Slack channel with the tweet text, sentiment score, and magnitude, and also stores the tweet data in a MongoDB database.
 
 ## Tags
-automation, n8n, production-ready, excellent, optimized, etl, pipeline, twitter, natural-language-processing, postgres, slack
+automation, etl, twitter, mongodb, google cloud natural language, slack, cron, sentiment analysis
