@@ -1,16 +1,16 @@
 # Workflow Analysis for Youtube Searcher
 
 ## Description
-Automated workflow to fetch and analyze Youtube video data
+Automated workflow to find and process Youtube video data
 
 ## Input Details
-The workflow is triggered manually and receives channel IDs and URLs as input
+The workflow is triggered manually and receives Youtube video data
 
 ## Process Summary
-The workflow fetches video data from Youtube using the provided channel IDs, extracts relevant information such as view count, like count, and comment count, and stores it in a Postgres database. It also removes short videos, sanitizes the data, and structures it for further analysis. The workflow uses various nodes such as httpRequest, youTube, code, set, and postgres to perform these tasks.
+The workflow fetches Youtube video data, filters and processes it, and then saves it to a Postgres database. It uses various nodes such as httpRequest, youTube, code, and set to perform these tasks. The workflow also handles errors and has comprehensive security and documentation.
 
 ## Output Details
-The workflow produces a structured dataset of video information and stores it in a Postgres database
+The workflow produces a list of processed Youtube video data and saves it to a Postgres database
 
 ## Tags
-automation, youtube, postgres, data analysis, video analytics
+automation, youtube, postgres, workflow, n8n
