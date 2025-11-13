@@ -1,16 +1,16 @@
 # Workflow Analysis for Postgres Workflow
 
 ## Description
-Automated workflow that processes data and performs tasks in a Postgres database
+Automated workflow that processes data and performs automated tasks in Postgres
 
 ## Input Details
-The workflow is triggered by a manual trigger or a scheduled trigger every 4 hours
+The workflow is triggered manually or by a scheduled trigger every 4 hours
 
 ## Process Summary
-The workflow starts with a manual or scheduled trigger, then gets all workflows, filters out workflows with a specific tag, sets variables, and updates the Postgres database with new settings and error workflows. It also includes error handling and logging mechanisms. The workflow is designed to automate tasks and ensure data consistency in the Postgres database. It uses various nodes, including a Postgres node, a set node, a filter node, and an error handler node. The workflow is also optimized for production use with comprehensive error handling and security measures.
+The workflow starts with a manual trigger or a schedule trigger, then it gets all workflows, sets variables for default error workflow and exclusion tag, filters out workflows with the default error exclusion tag, and finally updates the workflow entity in Postgres with the new settings
 
 ## Output Details
-The workflow updates the Postgres database with new settings and error workflows
+The workflow produces an updated workflow entity in Postgres
 
 ## Tags
-automation, n8n, production-ready, excellent, optimized, postgres, workflow
+postgres,automation,n8n,production-ready,workflow-automation
