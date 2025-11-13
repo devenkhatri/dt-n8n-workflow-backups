@@ -1,16 +1,16 @@
-# Workflow Analysis for ETL Pipeline Workflow
+# Workflow Analysis for ETL Pipeline
 
 ## Description
-Automated workflow that extracts data from Twitter, processes it, and loads it into a database, also sending notifications to Slack.
+Automated workflow that processes tweets and sends them to a Slack channel with sentiment analysis
 
 ## Input Details
-The workflow is triggered by a Cron node at 6am every day and receives data from Twitter.
+The workflow is triggered by a cron node at 6am every day and receives tweets from Twitter using the Twitter API
 
 ## Process Summary
-The workflow starts with a Cron node that triggers the workflow daily at 6am, then a Twitter node searches for tweets with the hashtag #OnThisDay, the tweets are then inserted into a MongoDB database, after that a Google Cloud Natural Language node analyzes the sentiment of the tweets, the sentiment scores are then set as variables, if the score is larger than a certain value the workflow proceeds to send a notification to a Slack channel, otherwise it stops at a NoOp node, the workflow also handles errors with an Error Handler node.
+The workflow retrieves tweets from Twitter, inserts them into a MongoDB database, analyzes the sentiment of the tweets using Google Cloud Natural Language, sets the score and magnitude of the sentiment, and then sends the tweets to a Slack channel if the score is larger than a certain value. The workflow also handles errors using an error handler node. The workflow is automated and performs tasks such as data processing and sentiment analysis. The workflow uses various nodes such as Twitter, MongoDB, Google Cloud Natural Language, and Slack to perform its tasks.
 
 ## Output Details
-The workflow produces notifications in a Slack channel and updates a PostgreSQL database with the tweet data.
+The workflow produces tweets with sentiment analysis and sends them to a Slack channel
 
 ## Tags
-automation, n8n, production-ready, ETL, workflow
+automation, n8n, production-ready, excellent, optimized, twitter, mongodb, google-cloud-natural-language, slack, cron, sentiment-analysis
