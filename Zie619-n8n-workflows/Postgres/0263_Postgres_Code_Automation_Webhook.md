@@ -1,16 +1,16 @@
 # Workflow Analysis for Auto WordPress Blog Generator (GPT + Postgres + WP Media)
 
 ## Description
-Automated workflow generating WordPress blog posts using GPT, Postgres, and WP Media.
+Automated workflow that generates and publishes a WordPress blog post using GPT, Postgres, and WP Media.
 
 ## Input Details
-The workflow is triggered by a schedule trigger and receives data from various nodes, including httpRequest, code, and agent nodes.
+The workflow is triggered by a schedule trigger and receives no external data inputs.
 
 ## Process Summary
-The workflow loads WordPress categories, filters out excluded ones, picks the least-used category, generates a unique article title using GPT, creates a WordPress-style HTML article, and publishes the post to the WordPress site. It also updates the used category and title in the Postgres database. The workflow uses various nodes, including sticky notes, httpRequest, code, schedule trigger, and agent nodes, to perform these tasks. Additionally, it handles errors and exceptions, and follows best practices for security and documentation. The workflow consists of 56 nodes and integrates 11 different services.
+The workflow loads WordPress categories, filters out excluded categories, picks the least-used category, generates a unique article title using GPT, creates a WordPress-style HTML article, and publishes the post to WordPress. It also updates the used categories in the Postgres database.
 
 ## Output Details
-The workflow produces a published WordPress blog post and updates the Postgres database with the used category and title.
+The workflow produces a published WordPress blog post and updates the Postgres database with the used category information.
 
 ## Tags
-automation, n8n, production-ready, excellent, optimized, wordpress, gpt, postgres, wp-media
+automation, wordpress, gpt, postgres, wp media, blogging, content generation
