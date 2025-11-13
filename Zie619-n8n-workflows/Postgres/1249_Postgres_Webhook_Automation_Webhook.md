@@ -1,16 +1,16 @@
-# Workflow Analysis for Openai Workflow
+# Workflow Analysis for AI-Powered Real-Time Meeting Transcription
 
 ## Description
-Automated workflow for real-time transcription and analysis of meetings using OpenAI and other services.
+This workflow automates the transcription of virtual meetings in real-time, capturing discussions and decisions for later review and enhancing productivity and clarity in communications.
 
 ## Input Details
-The workflow is triggered by a webhook and receives transcription data.
+The workflow is triggered by a webhook receiving real-time transcription updates from a meeting.
 
 ## Process Summary
-The workflow integrates with Postgres, Supabase, and OpenAI to transcribe meetings, analyze the transcription, and store the results. It uses a webhook to receive real-time transcription updates and API calls to interact with the services. The workflow also includes error handling and security measures.
+The workflow creates a Recall.ai bot to join the meeting, sets up real-time transcription through AssemblyAI, and structures the transcription data in a Supabase database. It also creates an OpenAI thread for further interactions and generates notes based on the transcription. The workflow handles errors and exceptions through multiple error handler nodes.
 
 ## Output Details
-The workflow produces a transcription of the meeting and stores it in a database.
+The workflow produces a structured transcription of the meeting, stored in a Supabase database, and generates notes that can be easily accessed for future reference.
 
 ## Tags
-automation, n8n, production-ready, excellent, optimized
+real-time transcription, meeting automation, AI-powered, Recall.ai, AssemblyAI, Supabase, OpenAI, automation, productivity, communication
