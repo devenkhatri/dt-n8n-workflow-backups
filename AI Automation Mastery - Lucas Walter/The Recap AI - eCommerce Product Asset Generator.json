@@ -1,0 +1,848 @@
+{
+  "name": "The Recap AI - eCommerce Product Asset Generator",
+  "nodes": [
+    {
+      "parameters": {
+        "formTitle": "Asset Generator Form",
+        "formFields": {
+          "values": [
+            {
+              "fieldLabel": "Product Url",
+              "placeholder": "https://www.bose.com/p/headphones/bose-quietcomfort-ultra-headphones-2nd-gen/QCUH2-HEADPHONEARN.html?dwvar_QCUH2-HEADPHONEARN_color=DESERT+GOLD&quantity=1",
+              "requiredField": true
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.formTrigger",
+      "typeVersion": 2.3,
+      "position": [
+        0,
+        0
+      ],
+      "id": "5593aaef-7949-4e79-90ae-ed156817203c",
+      "name": "form_trigger",
+      "webhookId": "be18dc84-8c7c-4b7c-bce0-9a991a6f326e"
+    },
+    {
+      "parameters": {
+        "operation": "scrape",
+        "url": "={{ $json['Product Url'] }}",
+        "scrapeOptions": {
+          "options": {
+            "formats": {
+              "format": [
+                {
+                  "type": "json",
+                  "prompt": "Please extract the absolute URL of the main product image that is on this product listing e-commerce page. ",
+                  "schema": "{\n  \"type\": \"string\",\n  \"description\": \"The main product image url extracted from this ecommerce product page.\"\n}"
+                }
+              ]
+            },
+            "headers": {}
+          }
+        },
+        "requestOptions": {}
+      },
+      "type": "@mendable/n8n-nodes-firecrawl.firecrawl",
+      "typeVersion": 1,
+      "position": [
+        288,
+        0
+      ],
+      "id": "e6b75584-ca6a-4339-ba11-0bf078dff5b1",
+      "name": "scrape_product_page",
+      "credentials": {
+        "firecrawlApi": {
+          "id": "tTXd52Qm4ZR6N7sq",
+          "name": "Firecrawl"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "url": "={{ $json.data.json }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.3,
+      "position": [
+        528,
+        0
+      ],
+      "id": "bb28ca5f-3a27-4720-bf49-205bac6ca635",
+      "name": "fetch_image"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://generativelanguage.googleapis.com/v1beta/models/gemini-3-pro-image-preview:generateContent",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"contents\": [{\n    \"parts\": [\n      { \"text\": {{ JSON.stringify($json.prompt) }} },\n      {\n        \"inline_data\": {\n          \"mime_type\": \"image/png\",\n          \"data\": \"{{ $node['set_canvas_result'].json.result }}\"\n        }\n      }\n    ]\n  }],\n  \"generationConfig\": {\n    \"imageConfig\": {\n      \"aspectRatio\": \"16:9\",\n      \"imageSize\": \"2K\"\n    }\n  }\n}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1024,
+        256
+      ],
+      "id": "705fa154-8e00-4bce-a973-db1cd6ddc4fd",
+      "name": "generate_product_image",
+      "retryOnFail": true,
+      "waitBetweenTries": 5000,
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "abcMckGk9RG9i0Ba",
+          "name": "Google Gemini"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "binaryToPropery",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.extractFromFile",
+      "typeVersion": 1.1,
+      "position": [
+        768,
+        0
+      ],
+      "id": "89191451-94c7-4e2d-b044-67e7a7900ea0",
+      "name": "to_base64"
+    },
+    {
+      "parameters": {
+        "jsCode": "// n8n Code Node - Extract Grid Sections from Canvas\n\nconst sections = [\n  {\n    promptIndex: 1,\n    position: \"top-left\",\n    prompt: `CRITICAL TASK: CROP AND ZOOM INTO ONE QUADRANT ONLY.\n\nThe input image is a 2x2 collage containing 4 separate product photos arranged in a grid. You must ISOLATE and EXTRACT just ONE of these photos.\n\nTARGET: TOP-LEFT QUADRANT\n- This is the image in the UPPER-LEFT corner (rows 0-50% vertically, columns 0-50% horizontally)\n- It shows headphones facing a specific direction\n\nWHAT TO DO:\n1. IGNORE the top-right, bottom-left, and bottom-right photos completely\n2. CROP to only the top-left 25% of the total image area\n3. ZOOM/UPSCALE this cropped section to fill your entire output canvas\n4. The final output should look like a standalone product photo, not a collage\n\nFORBIDDEN:\n❌ Do NOT output all 4 images\n❌ Do NOT output a grid or collage\n❌ Do NOT show any dividing lines\n❌ Do NOT include any part of the other 3 product photos\n\nREQUIRED:\n✅ Output exactly ONE product photo\n✅ The product should fill the entire frame\n✅ Clean background, single product only\n✅ Match the quality and style of the original\n\nThink of it like zooming in 200% on just the upper-left corner of the image.`\n  },\n  {\n    promptIndex: 2,\n    position: \"top-right\",\n    prompt: `CRITICAL TASK: CROP AND ZOOM INTO ONE QUADRANT ONLY.\n\nThe input image is a 2x2 collage containing 4 separate product photos arranged in a grid. You must ISOLATE and EXTRACT just ONE of these photos.\n\nTARGET: TOP-RIGHT QUADRANT\n- This is the image in the UPPER-RIGHT corner (rows 0-50% vertically, columns 50-100% horizontally)\n- It shows headphones facing a specific direction\n\nWHAT TO DO:\n1. IGNORE the top-left, bottom-left, and bottom-right photos completely\n2. CROP to only the top-right 25% of the total image area\n3. ZOOM/UPSCALE this cropped section to fill your entire output canvas\n4. The final output should look like a standalone product photo, not a collage\n\nFORBIDDEN:\n❌ Do NOT output all 4 images\n❌ Do NOT output a grid or collage\n❌ Do NOT show any dividing lines\n❌ Do NOT include any part of the other 3 product photos\n\nREQUIRED:\n✅ Output exactly ONE product photo\n✅ The product should fill the entire frame\n✅ Clean background, single product only\n✅ Match the quality and style of the original\n\nThink of it like zooming in 200% on just the upper-right corner of the image.`\n  },\n  {\n    promptIndex: 3,\n    position: \"bottom-left\",\n    prompt: `CRITICAL TASK: CROP AND ZOOM INTO ONE QUADRANT ONLY.\n\nThe input image is a 2x2 collage containing 4 separate product photos arranged in a grid. You must ISOLATE and EXTRACT just ONE of these photos.\n\nTARGET: BOTTOM-LEFT QUADRANT\n- This is the image in the LOWER-LEFT corner (rows 50-100% vertically, columns 0-50% horizontally)\n- It shows headphones facing a specific direction\n\nWHAT TO DO:\n1. IGNORE the top-left, top-right, and bottom-right photos completely\n2. CROP to only the bottom-left 25% of the total image area\n3. ZOOM/UPSCALE this cropped section to fill your entire output canvas\n4. The final output should look like a standalone product photo, not a collage\n\nFORBIDDEN:\n❌ Do NOT output all 4 images\n❌ Do NOT output a grid or collage\n❌ Do NOT show any dividing lines\n❌ Do NOT include any part of the other 3 product photos\n\nREQUIRED:\n✅ Output exactly ONE product photo\n✅ The product should fill the entire frame\n✅ Clean background, single product only\n✅ Match the quality and style of the original\n\nThink of it like zooming in 200% on just the lower-left corner of the image.`\n  },\n  {\n    promptIndex: 4,\n    position: \"bottom-right\",\n    prompt: `CRITICAL TASK: CROP AND ZOOM INTO ONE QUADRANT ONLY.\n\nThe input image is a 2x2 collage containing 4 separate product photos arranged in a grid. You must ISOLATE and EXTRACT just ONE of these photos.\n\nTARGET: BOTTOM-RIGHT QUADRANT\n- This is the image in the LOWER-RIGHT corner (rows 50-100% vertically, columns 50-100% horizontally)\n- It shows headphones facing a specific direction\n\nWHAT TO DO:\n1. IGNORE the top-left, top-right, and bottom-left photos completely\n2. CROP to only the bottom-right 25% of the total image area\n3. ZOOM/UPSCALE this cropped section to fill your entire output canvas\n4. The final output should look like a standalone product photo, not a collage\n\nFORBIDDEN:\n❌ Do NOT output all 4 images\n❌ Do NOT output a grid or collage\n❌ Do NOT show any dividing lines\n❌ Do NOT include any part of the other 3 product photos\n\nREQUIRED:\n✅ Output exactly ONE product photo\n✅ The product should fill the entire frame\n✅ Clean background, single product only\n✅ Match the quality and style of the original\n\nThink of it like zooming in 200% on just the lower-right corner of the image.`\n  }\n];\n\nreturn sections.map(item => ({\n  json: {\n    promptIndex: item.promptIndex,\n    position: item.position,\n    prompt: item.prompt\n  }\n}));"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        288,
+        272
+      ],
+      "id": "6bd00074-b0c4-43cb-9c1f-ab02f94c1111",
+      "name": "build_prompts"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 3,
+      "position": [
+        528,
+        272
+      ],
+      "id": "24c9742b-a3cc-4b02-af9e-e414093bb3af",
+      "name": "iterate_prompts"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "480d6e40-1002-4e49-a8d4-66571f471f42",
+              "name": "=result",
+              "value": "={{ $json.candidates[0].content.parts.filter(item => item.inlineData).first().inlineData.data }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        1264,
+        256
+      ],
+      "id": "13e6ef9e-e1f8-44cc-b4ca-546067621ac0",
+      "name": "set_image_result"
+    },
+    {
+      "parameters": {
+        "operation": "toBinary",
+        "sourceProperty": "result",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.convertToFile",
+      "typeVersion": 1.1,
+      "position": [
+        1504,
+        256
+      ],
+      "id": "904a4feb-3879-4669-afc5-ec24d77f55cf",
+      "name": "convert_result_to_binary"
+    },
+    {
+      "parameters": {
+        "name": "=Output Image #{{ $runIndex + 1 }}",
+        "driveId": {
+          "__rl": true,
+          "mode": "list",
+          "value": "My Drive"
+        },
+        "folderId": {
+          "__rl": true,
+          "value": "https://drive.google.com/drive/u/0/folders/1VeWtBNdebPqZkzECQIqYQ6Jm0nXJWRxD",
+          "mode": "url"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleDrive",
+      "typeVersion": 3,
+      "position": [
+        1776,
+        256
+      ],
+      "id": "ce1af9ff-c687-412a-91b0-f0465e5bba7d",
+      "name": "upload_result_image",
+      "credentials": {
+        "googleDriveOAuth2Api": {
+          "id": "PgwI1k1VFnoEhOi6",
+          "name": "Google Drive account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "480d6e40-1002-4e49-a8d4-66571f471f42",
+              "name": "=result",
+              "value": "={{ $node['set_image_result'].json.result }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        2048,
+        256
+      ],
+      "id": "fe1464af-29f5-4612-a081-ad3ad443c04c",
+      "name": "set_final_result"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "40b4fc6a-0963-4647-919f-da367632a912",
+              "name": "prompt",
+              "value": "You will receive an uploaded product image. Generate four photorealistic images of the same product, maintaining perfect consistency in shape, proportions, colors, textures, reflections, and label design. Only change the rotation angle. Please pick rotation angle and rotation axis that's going to present our product provided the absolute best on an e-commerce product listing page. You must be sure the product is oriented correctly each image.\n\nThe final resulting image you generate will be on a 2x2 grid.\n\nAngles to generate:\n1. 90° rotation from original view\n2. 180° rotation from original view\n3. 270° rotation from original view\n4. 360° / full-front return to original orientation (for consistency check)\n\nRules:\n- Rotate only; do not alter design.\n- Match lighting, shadows, and rendering style.\n- Clean neutral studio background.\n- Center the product in each frame.\n- Photorealistic output.",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        1024,
+        0
+      ],
+      "id": "256983d4-cb00-4bd4-b36b-3b4f7fe2309c",
+      "name": "build_prompt"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://generativelanguage.googleapis.com/v1beta/models/gemini-3-pro-image-preview:generateContent",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"contents\": [{\n    \"parts\": [\n      { \"text\": {{ JSON.stringify($json.prompt) }} },\n      {\n        \"inline_data\": {\n          \"mime_type\": \"image/png\",\n          \"data\": \"{{ $node['to_base64'].json.data }}\"\n        }\n      }\n    ]\n  }],\n  \"generationConfig\": {\n    \"imageConfig\": {\n      \"aspectRatio\": \"16:9\",\n      \"imageSize\": \"2K\"\n    }\n  }\n}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1264,
+        0
+      ],
+      "id": "b3ce7a04-ff17-490f-b1d8-978379aa5503",
+      "name": "generate_image_canvas",
+      "retryOnFail": true,
+      "waitBetweenTries": 5000,
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "abcMckGk9RG9i0Ba",
+          "name": "Google Gemini"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "480d6e40-1002-4e49-a8d4-66571f471f42",
+              "name": "=result",
+              "value": "={{ $json.candidates[0].content.parts.filter(item => item.inlineData).first().inlineData.data }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        1504,
+        0
+      ],
+      "id": "b95b27bd-0036-4649-a7ed-d8525d809d62",
+      "name": "set_canvas_result"
+    },
+    {
+      "parameters": {
+        "name": "=Canvas",
+        "driveId": {
+          "__rl": true,
+          "mode": "list",
+          "value": "My Drive"
+        },
+        "folderId": {
+          "__rl": true,
+          "value": "https://drive.google.com/drive/u/0/folders/1VeWtBNdebPqZkzECQIqYQ6Jm0nXJWRxD",
+          "mode": "url"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleDrive",
+      "typeVersion": 3,
+      "position": [
+        2048,
+        0
+      ],
+      "id": "ff0427b1-10f8-49a9-aa0a-49af38139308",
+      "name": "upload_canvas",
+      "credentials": {
+        "googleDriveOAuth2Api": {
+          "id": "PgwI1k1VFnoEhOi6",
+          "name": "Google Drive account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "toBinary",
+        "sourceProperty": "result",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.convertToFile",
+      "typeVersion": 1.1,
+      "position": [
+        1776,
+        0
+      ],
+      "id": "cf44688e-ec5d-4e96-b963-a352bf832b33",
+      "name": "convert_canvas_result_to_binary"
+    },
+    {
+      "parameters": {
+        "aggregate": "aggregateAllItemData",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.aggregate",
+      "typeVersion": 1,
+      "position": [
+        288,
+        576
+      ],
+      "id": "ac29a993-0a22-437a-b844-269c82726be9",
+      "name": "aggregate"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://generativelanguage.googleapis.com/v1beta/models/veo-3.1-generate-preview:predictLongRunning",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"instances\": [\n    {\n      \"prompt\": {{ JSON.stringify($json.prompt) }},\n      \"referenceImages\": [\n        {\n          \"image\": {\n            \"bytesBase64Encoded\": \"{{ $node['to_base64'].json.data }}\",\n            \"mimeType\": \"image/png\"\n          },\n          \"referenceType\": \"asset\"\n        },\n        {\n          \"image\": {\n            \"bytesBase64Encoded\": \"{{ $node['aggregate'].json.data[0].result }}\",\n            \"mimeType\": \"image/png\"\n          },\n          \"referenceType\": \"asset\"\n        },\n        {\n          \"image\": {\n            \"bytesBase64Encoded\": \"{{ $node['aggregate'].json.data[1].result }}\",\n            \"mimeType\": \"image/png\"\n          },\n          \"referenceType\": \"asset\"\n        }\n      ]\n    }\n  ],\n  \"parameters\": {\n    \"durationSeconds\": 8,\n    \"personGeneration\": \"allow_adult\"\n  }\n}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        768,
+        576
+      ],
+      "id": "560b82ac-8667-4af9-90e9-ab963824b227",
+      "name": "generate_video",
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "abcMckGk9RG9i0Ba",
+          "name": "Google Gemini"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "04b8a93f-1317-458d-9c8a-9d062a41f5ba",
+              "name": "prompt",
+              "value": "Create a smooth, seamless product showcase video of the provided ecommerce. Please pay close attention to the product dimensions and marks on the provided reference image ingredients. The scaling needs to be right, so the object that we're actually showing in this video matches what that object looks like in reality. It's very important you get the hyperrealism correct here. \n\nVIDEO SPECIFICATIONS:\n- Duration: 4-6 seconds\n- Motion: Continuous smooth rotation, clockwise direction\n- Speed: Slow, elegant rotation completing one full 360° turn\n- Loop: The end frame should seamlessly connect back to the start frame for perfect looping\n\nPRODUCT & CAMERA:\n- Product stays perfectly centered throughout the entire rotation\n- Camera remains completely stationary - only the product rotates\n- Maintain consistent distance and framing - no zoom or camera movement\n- Eye-level perspective, straight-on angle\n\nLIGHTING & ENVIRONMENT:\n- Pure white background (#FFFFFF), clean studio setting\n- Soft, even studio lighting that remains constant throughout rotation\n- Subtle reflections and shadows for depth and realism\n- No harsh shadows or lighting changes during rotation\n\nQUALITY:\n- Photorealistic rendering matching the reference images\n- Preserve all product details: matte black finish, gold/champagne metal accents, BOSE branding\n- Smooth motion with no stuttering, jumping, or warping\n- High-end e-commerce product video quality\n\nAUDIO:\n- Completely muted audio\n- No music allowed in output\n- No sound effects allowed in the output\n\nREFERENCE: Use the provided images as keyframes showing the product from different angles. The video should smoothly transition through all these views in a continuous rotation.",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        528,
+        576
+      ],
+      "id": "e3cdefae-a02f-4c45-b801-b70807033725",
+      "name": "build_video_prompt"
+    },
+    {
+      "parameters": {
+        "url": "=https://generativelanguage.googleapis.com/v1beta/{{ $json.name }}",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1264,
+        576
+      ],
+      "id": "31cd183b-e5fd-4c81-b15b-c17ee490e1ce",
+      "name": "fetch_status",
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "abcMckGk9RG9i0Ba",
+          "name": "Google Gemini"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "amount": 10
+      },
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        1024,
+        576
+      ],
+      "id": "1ac9c20a-7887-41bc-9874-f325a2b533a4",
+      "name": "wait",
+      "webhookId": "c68c0f13-ed52-4cc2-86f0-a795b67f6b31"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "d978d0ad-9e4b-49ad-8992-40ab64744d1e",
+              "leftValue": "={{ $json.response }}",
+              "rightValue": "",
+              "operator": {
+                "type": "object",
+                "operation": "exists",
+                "singleValue": true
+              }
+            },
+            {
+              "id": "e4af1378-f9fe-4d4c-9c46-5cb3a9a06f06",
+              "leftValue": "={{ $json.response.generateVideoResponse.generatedSamples }}",
+              "rightValue": "",
+              "operator": {
+                "type": "array",
+                "operation": "exists",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        1504,
+        576
+      ],
+      "id": "7bc333e0-b75b-4179-8d8b-bc65b354b340",
+      "name": "check_response"
+    },
+    {
+      "parameters": {
+        "url": "={{ $json.response.generateVideoResponse.generatedSamples[0].video.uri }}",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1776,
+        560
+      ],
+      "id": "cf0c6ac9-8f6d-47c9-9817-3a3a67e82272",
+      "name": "download_video",
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "abcMckGk9RG9i0Ba",
+          "name": "Google Gemini"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "name": "=Output Video",
+        "driveId": {
+          "__rl": true,
+          "mode": "list",
+          "value": "My Drive"
+        },
+        "folderId": {
+          "__rl": true,
+          "value": "https://drive.google.com/drive/u/0/folders/1VeWtBNdebPqZkzECQIqYQ6Jm0nXJWRxD",
+          "mode": "url"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleDrive",
+      "typeVersion": 3,
+      "position": [
+        2048,
+        560
+      ],
+      "id": "e9b31802-8d49-491f-8ab0-3d6ac8685132",
+      "name": "upload_output_video",
+      "credentials": {
+        "googleDriveOAuth2Api": {
+          "id": "PgwI1k1VFnoEhOi6",
+          "name": "Google Drive account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "content": "## eCommerce Product Asset Generator",
+        "height": 912,
+        "width": 2048,
+        "color": 4
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        208,
+        -96
+      ],
+      "typeVersion": 1,
+      "id": "e7e1aff9-e2b2-4d8a-bdde-327dff7ccf24",
+      "name": "Sticky Note"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "form_trigger": {
+      "main": [
+        [
+          {
+            "node": "scrape_product_page",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "scrape_product_page": {
+      "main": [
+        [
+          {
+            "node": "fetch_image",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "fetch_image": {
+      "main": [
+        [
+          {
+            "node": "to_base64",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "to_base64": {
+      "main": [
+        [
+          {
+            "node": "build_prompt",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "generate_product_image": {
+      "main": [
+        [
+          {
+            "node": "set_image_result",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "build_prompts": {
+      "main": [
+        [
+          {
+            "node": "iterate_prompts",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "iterate_prompts": {
+      "main": [
+        [
+          {
+            "node": "aggregate",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "generate_product_image",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "set_image_result": {
+      "main": [
+        [
+          {
+            "node": "convert_result_to_binary",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "convert_result_to_binary": {
+      "main": [
+        [
+          {
+            "node": "upload_result_image",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "upload_result_image": {
+      "main": [
+        [
+          {
+            "node": "set_final_result",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "set_final_result": {
+      "main": [
+        [
+          {
+            "node": "iterate_prompts",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "build_prompt": {
+      "main": [
+        [
+          {
+            "node": "generate_image_canvas",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "generate_image_canvas": {
+      "main": [
+        [
+          {
+            "node": "set_canvas_result",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "set_canvas_result": {
+      "main": [
+        [
+          {
+            "node": "convert_canvas_result_to_binary",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "convert_canvas_result_to_binary": {
+      "main": [
+        [
+          {
+            "node": "upload_canvas",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "upload_canvas": {
+      "main": [
+        [
+          {
+            "node": "build_prompts",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "aggregate": {
+      "main": [
+        [
+          {
+            "node": "build_video_prompt",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "build_video_prompt": {
+      "main": [
+        [
+          {
+            "node": "generate_video",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "fetch_status": {
+      "main": [
+        [
+          {
+            "node": "check_response",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "wait": {
+      "main": [
+        [
+          {
+            "node": "fetch_status",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "check_response": {
+      "main": [
+        [
+          {
+            "node": "download_video",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "wait",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "download_video": {
+      "main": [
+        [
+          {
+            "node": "upload_output_video",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "generate_video": {
+      "main": [
+        [
+          {
+            "node": "wait",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "03251f70-9ae6-46ce-9d3c-67526bed9f20",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "06e5009344f682419c20ccd4ecdcb5223bbb91761882af93ac6d468dbc2cbf8d"
+  },
+  "id": "aTXXssNsVidQzd9u",
+  "tags": []
+}

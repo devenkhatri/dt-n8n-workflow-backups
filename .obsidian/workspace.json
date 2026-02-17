@@ -1,0 +1,195 @@
+{
+  "main": {
+    "id": "9fbdde3f840b650f",
+    "type": "split",
+    "children": [
+      {
+        "id": "dd918c84a44d9de5",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "32d08c920b90cb16",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "main-vps-n8n-backups/Content - Newsletter Agent.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Content - Newsletter Agent"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "c15894cf883ccf47",
+    "type": "split",
+    "children": [
+      {
+        "id": "db55d0f7fa0dae80",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "5a138544925cfb97",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical",
+                "autoReveal": false
+              },
+              "icon": "lucide-folder-closed",
+              "title": "Files"
+            }
+          },
+          {
+            "id": "a9ae9bb695c59551",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-search",
+              "title": "Search"
+            }
+          },
+          {
+            "id": "34005a7efbdd8931",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {},
+              "icon": "lucide-bookmark",
+              "title": "Bookmarks"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "87355a93fc7a9ae1",
+    "type": "split",
+    "children": [
+      {
+        "id": "fe2f4a12af5b6a29",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "d5849eb43391fceb",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "main-vps-n8n-backups/Content - Newsletter Agent.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-coming-in",
+              "title": "Backlinks for Content - Newsletter Agent"
+            }
+          },
+          {
+            "id": "454e1987ab338a86",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "main-vps-n8n-backups/Content - Newsletter Agent.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-going-out",
+              "title": "Outgoing links from Content - Newsletter Agent"
+            }
+          },
+          {
+            "id": "726606ee47041736",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-tags",
+              "title": "Tags"
+            }
+          },
+          {
+            "id": "01cd3a0c209d0683",
+            "type": "leaf",
+            "state": {
+              "type": "all-properties",
+              "state": {
+                "sortOrder": "frequency",
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-archive",
+              "title": "All properties"
+            }
+          },
+          {
+            "id": "de76067e3a12de43",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "main-vps-n8n-backups/Content - Newsletter Agent.md",
+                "followCursor": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-list",
+              "title": "Outline of Content - Newsletter Agent"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:Open quick switcher": false,
+      "graph:Open graph view": false,
+      "canvas:Create new canvas": false,
+      "daily-notes:Open today's daily note": false,
+      "templates:Insert template": false,
+      "command-palette:Open command palette": false,
+      "bases:Create new base": false
+    }
+  },
+  "active": "32d08c920b90cb16",
+  "lastOpenFiles": [
+    "main-vps-n8n-backups/Backup workflows to git repository.md",
+    "main-vps-n8n-backups/AI News Data Ingestion.md",
+    "main-vps-n8n-backups/Backup daily n8n Workflows changes To Github.md",
+    "main-vps-n8n-backups/9999 - DT - Default Error Logger.md",
+    "Automation Fast Track - Nate Hert - Nov25/AFT - 02 - Proposal Agent.md",
+    "Automation Fast Track - Nate Hert - Nov25/AFT - 01 - Sales Agent.md"
+  ]
+}
